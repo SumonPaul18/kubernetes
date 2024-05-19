@@ -165,7 +165,7 @@ W2	w2.letscloud.io	192.168.58.6	2	3.75	Ubuntu 20.04
 Quick Tip
 For beginners who still have no experience of deploying multiple containers, Minikube is a great way to start.
 
-#Conclusion
+# Conclusion
 After following the steps mentioned in this article carefully, you should now have Kubernetes installed on Ubuntu. Kubernetes allows you to launch and manage Docker containers across multiple servers in the pod.
 
 #### In this article, we have explained the installation of the Kubernetes container management system on Ubuntu 20.04. Kubernetes has a lot of functionality and features to offer. The Kubernetes Official Documentation is the best place to learn.
