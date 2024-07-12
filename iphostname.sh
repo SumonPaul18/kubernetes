@@ -15,8 +15,8 @@ timedatectl
 echo
 read -p "$(echo -e "${bgreen}${bold}${blink}Type System Hostname: ${nc}")" hostname
 hostnamectl set-hostname $hostname
-exec bash
-
+echo "$IP_ADDRESS $hostname.paulco.xyz cloud" >> /etc/hosts
+hostname -f
 # Creates a backup
 cp /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bak_`date +%Y%m%d%H%M`
 ip a
