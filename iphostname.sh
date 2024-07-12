@@ -15,7 +15,6 @@ timedatectl
 echo
 read -p "$(echo -e "${bgreen}${bold}${blink}Type System Hostname: ${nc}")" hostname
 hostnamectl set-hostname $hostname
-echo "$IP_ADDRESS $hostname.paulco.xyz cloud" >> /etc/hosts
 hostname -f
 # Creates a backup
 cp /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bak_`date +%Y%m%d%H%M`
@@ -25,7 +24,8 @@ read -p "Type DHCP Interface Name: " DHCP_INTERFACE
 read -p "Type static IP Address with CIDR: " IP_ADDRESS
 read -p "Type Gateway4: " GATEWAY
 read -p "Type DNS: " DNS
-
+echo "$IP_ADDRESS $hostname.paulco.xyz $hostname" >> /etc/hosts
+hostname -f
 cat <<EOF | sudo tee /etc/netplan/00-installer-config.yaml
 network:
   renderer: networkd
