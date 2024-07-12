@@ -15,7 +15,7 @@
   > Unique hostname, MAC address, and product_uuid for every node.
   > Certain ports are open on your machines.
   > Swap disabled. You MUST disable swap for the kubelet to work properly.
-  . A compatible Linux host. The Kubernetes project provides generic instructions for Linux distributions based on Debian and Red Hat, and those distributions without a package manager.
+  - A compatible Linux host. The Kubernetes project provides generic instructions for Linux distributions based on Debian and Red Hat, and those distributions without a package manager.
   . 2 GB or more of RAM per machine (any less will leave little room for your apps).
   . 2 CPUs or more.
   . Full network connectivity between all machines in the cluster (public or private network is fine).
