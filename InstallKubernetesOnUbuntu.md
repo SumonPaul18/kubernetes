@@ -64,7 +64,7 @@ Verify Docker is running:
 
 Repeat on all the other nodes.
 
-###Step 4 - Install Kubernetes
+### Step 4 - Install Kubernetes
 As we are downloading Kubernetes from a non-standard repository, it is essential to ensure that the software is authentic. This is done by adding a subscription key.
 
 Enter the following to add a signing key in you on Ubuntu:
@@ -171,6 +171,3 @@ After following the steps mentioned in this article carefully, you should now ha
 #### In this article, we have explained the installation of the Kubernetes container management system on Ubuntu 20.04. Kubernetes has a lot of functionality and features to offer. The Kubernetes Official Documentation is the best place to learn.
 
 If you have any questions about installing and configuring Kubernetes on Ubuntu, please contact us in the comments.
-
-
-
