@@ -11,6 +11,7 @@ echo -e "${bgreen}Assign IP Addresses and Hostname,TimeZone Asking using Shell S
 hostnamectl
 timedatectl
 timedatectl set-timezone Asia/Dhaka
+timedatectl
 echo
 read -p "$(echo -e "${bgreen}${bold}${blink}Type System Hostname: ${nc}")" hostname
 hostnamectl set-hostname $hostname
