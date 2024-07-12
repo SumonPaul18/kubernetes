@@ -16,13 +16,13 @@
   > Certain ports are open on your machines.
   > Swap disabled. You MUST disable swap for the kubelet to work properly.
   - A compatible Linux host. The Kubernetes project provides generic instructions for Linux distributions based on Debian and Red Hat, and those distributions without a package manager.
-  . 2 GB or more of RAM per machine (any less will leave little room for your apps).
-  . 2 CPUs or more.
-  . Full network connectivity between all machines in the cluster (public or private network is fine).
-  . Unique hostname, MAC address, and product_uuid for every node. See here for more details.
-  . Certain ports are open on your machines. See here for more details.
-  . Swap configuration. The default behavior of a kubelet was to fail to start if swap memory was detected on a node. See Swap memory management for more details.
-  . You MUST disable swap if the kubelet is not properly configured to use swap. For example, sudo swapoff -a will disable swapping temporarily. To make this change persistent across     . reboots, make sure swap is disabled in config files like /etc/fstab, systemd.swap, depending how it was configured on your system.
+  - 2 GB or more of RAM per machine (any less will leave little room for your apps).
+  - 2 CPUs or more.
+  - Full network connectivity between all machines in the cluster (public or private network is fine).
+  - Unique hostname, MAC address, and product_uuid for every node. See here for more details.
+  - Certain ports are open on your machines. See here for more details.
+  - Swap configuration. The default behavior of a kubelet was to fail to start if swap memory was detected on a node. See Swap memory management for more details.
+  - You MUST disable swap if the kubelet is not properly configured to use swap. For example, sudo swapoff -a will disable swapping temporarily. To make this change persistent across     - reboots, make sure swap is disabled in config files like /etc/fstab, systemd.swap, depending how it was configured on your system.
 
 ### Goals
 Install a Docker container and then install Kubernetes with two nodes on Ubuntu 20.04
