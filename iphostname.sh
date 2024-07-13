@@ -24,7 +24,9 @@ read -p "Type DHCP Interface Name: " DHCP_INTERFACE
 read -p "Type static IP Address with CIDR: " IP_ADDRESS
 read -p "Type Gateway4: " GATEWAY
 read -p "Type DNS: " DNS
-echo "$IP_ADDRESS $hostname.paulco.xyz $hostname" >> /etc/hosts
+#ipaddr=$(/sbin/ifconfig | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}') 
+read -p "Type IP Address: " ipaddr
+echo "$ipaddr $hostname.paulco.xyz $hostname" >> /etc/hosts
 hostname -f
 cat <<EOF | sudo tee /etc/netplan/00-installer-config.yaml
 network:
