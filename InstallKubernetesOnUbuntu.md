@@ -24,7 +24,7 @@ Here, we will see how to deploy a multi-node Kubernetes cluster using the
 ### Goals
 Install a Docker container and then install Kubernetes with two nodes on Ubuntu 20.04
   
-  -1. OS Update & Upgrade
+  - 1. OS Update & Upgrade
   - Setting up hostnames
   - Disabling swap
   - Setting up the IPV4 bridge on all nodes
