@@ -36,7 +36,7 @@ Install a Docker container and then install Kubernetes with two nodes on Ubuntu 
   - Joining worker node to a Kubernetes Cluster
 
 #### So, let's start the installation
-
+#
 ## Step (1-7) Following for All Nodes (Master & Worker)
 ### Step 1 - Operating System Update & Upgrading
 Always recommended updating the system packages.
@@ -119,7 +119,7 @@ Enter the following to add a signing key in you on Ubuntu:
     sudo apt-get update
     sudo apt-get install -y kubelet kubeadm kubectl
     sudo apt-mark hold kubelet kubeadm kubectl
-# Enable and start kubelet service
+### Enable and start kubelet service
 ####
     systemctl daemon-reload
     systemctl start kubelet
@@ -129,7 +129,7 @@ Verify the installation with:
 ####
     kubeadm version
 
-#### Step 7 - Kubernetes Deployment
+#### Step 8 - Kubernetes Deployment
 Begin Kubernetes Deployment
 
 
