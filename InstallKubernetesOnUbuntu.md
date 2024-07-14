@@ -169,12 +169,14 @@ Verify To display the network status, use the following command:
 ####
     kubectl get pods --all-namespaces
 
-### Step 11 - Join the Worker Node to Cluster
-As indicated in Step 7, you can enter the kubeadm join command on each worker node to connect it to the cluster.
-
-Switch to the w1 system and enter the command you noted from Step 8:
+### Step 10 - Joining worker node to a Kubernetes Cluster
+On each worker node, use the <b>kubeadm join</b> command on each worker node to connect it to the cluster.
+View the master join token:
 ####
-    kubeadm join --discovery-token abcdef.1234567890abcdef --discovery token-ca-cert-hash sha256:1234..cdef 1.2.3.4:6443
+    kubeadm token create — print-join-command
+<b>Output Like:</b>
+    > kubeadm join 172.30.20.20:6443 — token cdm6fo.dhbrxyleqe5suy6e \
+ — discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
 
 Replace the alphanumeric codes with those from your master server. Repeat for each worker node on the cluster. Wait a few minutes; then you can check the status of the nodes.
 
