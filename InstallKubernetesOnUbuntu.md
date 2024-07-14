@@ -34,6 +34,7 @@ Install a Docker container and then install Kubernetes with two nodes on Ubuntu 
   - Configuring master Node 
   - Configuring Network Plugins
   - Joining worker node to a Kubernetes Cluster
+  - Test Kubernetes Cluster Installation
 
 #### So, let's start the installation
 #
@@ -181,7 +182,7 @@ View the master join token:
 > kubeadm join 172.30.20.20:6443 — token cdm6fo.dhbrxyleqe5suy6e \
 — discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
 #
-## Bellow Step perform Only on Worker Node for Joining with k8s Cluster
+## This Step perform on Worker Node for Joining with k8s Cluster
 ####
 Copy the kubeadm join token & Paste on <b>Worker Node</b>
 ####
@@ -200,8 +201,23 @@ Check cluster status:
 ####
     kubectl cluster-info
 ####
-<b>Quick Tip:</b> For beginners who still have no experience of deploying multiple containers, Minikube is a great way to start.
 
+### Step 11 - Test Kubernetes Cluster Installation 
+To test Kubernetes installation, let’s try to deploy nginx based application and try to access it.
+####
+    kubectl create deployment mynginx --image=nginx --replicas=2
+Check the status of nginx-app deployment
+####
+    kubectl get deployment mynginx
+Expose the deployment as NodePort
+####
+    kubectl expose deployment nginx-app --type=NodePort --port=80 service/mynginx exposed
+Run following commands to view service status
+####
+    kubectl get svc nginx-app
+    kubectl describe svc nginx-app
+
+<b>Quick Tip:</b> For beginners who still have no experience of deploying multiple containers, Minikube is a great way to start.
 # Conclusion
 After following the steps mentioned in this article carefully, you should now have Kubernetes installed on Ubuntu. Kubernetes allows you to launch and manage Docker containers across multiple servers in the pod.
 
