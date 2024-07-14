@@ -31,8 +31,8 @@ Install a Docker container and then install Kubernetes with two nodes on Ubuntu 
   - Setting up the IPV4 bridge on all nodes
   - Installing Docker or a suitable containerization tool
   - Installing Kubernetes components on all nodes
-  - Configuring master and worker nodes
-  - Configuring Kubectl and Calico
+  - Configuring master Node 
+  - Configuring Network Plugins
   - Joining worker node to a Kubernetes Cluster
 
 #### So, let's start the installation
@@ -128,31 +128,34 @@ Enter the following to add a signing key in you on Ubuntu:
 Verify the installation with:
 ####
     kubeadm version
-
-#### Step 8 - Kubernetes Deployment
-Begin Kubernetes Deployment
-
-
-
-### Step 9 - Initialize Kubernetes on Master Node
-Switch to the master server node, and enter the following:
+#
+## Do On Only Master Node    
+### Step 8 - Configuring as a Master Node
+Switch to the master server node, and enter the following:<br>
+<b><i>Note:</b></i> Replace your Endpoint Address as Master Node FQDN (master.paulco.xyz)
 ####
+    sudo kubeadm init --control-plane-endpoint=master.paulco.xyz
     sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
 Once this command finishes, it will display a kubeadm join message at the end. Make a note of the whole entry. This will be used to join the worker nodes to the cluster.
 
-Next, enter the following to create a directory for the cluster:
+Set up kubeconfig as normal ubuntu user:
 ####
     mkdir -p $HOME/.kube
     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
     sudo chown $(id -u):$(id -g) $HOME/.kube/config
+    kubectl get nodes 
 
-### Step 10 - Deploy Pod Network to Cluster
-A Pod Network is a way to allow communication between different nodes in the cluster. This tutorial uses the flannel virtual network.
+### Step 9 - Configuring Network Plugins
+A Pod Network is a way to allow communication between different nodes in the cluster. 
+We have Differents Types Network Plugins:
+
+This tutorial uses the Calico virtual network.
 
 Enter the following:
 ####
-    sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+    sudo kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+    sudo kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
 Allow the process to complete.
 
