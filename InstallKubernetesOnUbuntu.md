@@ -216,6 +216,9 @@ Run following commands to view service status
 ####
     kubectl get svc nginx-app
     kubectl describe svc nginx-app
+Use following curl command to access nginx based application,
+####
+    curl http://<woker-node-ip-addres>:31246
 
 <b>Quick Tip:</b> For beginners who still have no experience of deploying multiple containers, Minikube is a great way to start.
 # Conclusion
