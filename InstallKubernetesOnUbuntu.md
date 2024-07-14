@@ -105,16 +105,23 @@ Verify Docker is running:
 ####
     sudo systemctl start docker
 
-### Step 7 - Install Kubernetes
-As we are downloading Kubernetes from a non-standard repository, it is essential to ensure that the software is authentic. This is done by adding a subscription key.
+### Step 7 - Installing kubeadm, kubelet and kubectl
+install kubelet, kubeadm, and kubectl on each node to create a Kubernetes cluster.
 
 Enter the following to add a signing key in you on Ubuntu:
 ####
-    curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
-
-Then repeat the previous command to install the signing keys.
-
-Repeat for each server node.
+    sudo apt-get update
+    sudo apt-get install -y apt-transport-https ca-certificates curl gpg
+    curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
+    echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
+    sudo apt-get update
+    sudo apt-get install -y kubelet kubeadm kubectl
+    sudo apt-mark hold kubelet kubeadm kubectl
+# Enable and start kubelet service
+####
+    systemctl daemon-reload
+    systemctl start kubelet
+    systemctl enable kubelet.service
 
 ### Step 5 - Add Software Repositories
 Kubernetes is not included in the default repositories. To add them, enter the following:
