@@ -1,4 +1,4 @@
-# How to Install Kubernetes(K8s) and Docker on Ubuntu 22.04
+# How to Install Kubernetes Using Kubeadm on Ubuntu 22.04.xx
 
 #### Kubernetes is an open-source platform for managing containers such as Docker. Is a management system that provides a platform for deployment automation. With Kubernetes, you can freely make use of the hybrid, on-premise, and public cloud infrastructure to run deployment tasks of your project.
 
@@ -7,14 +7,15 @@
 # This guidebook will walk you through How to Install Kubernetes on Ubuntu 22.04.
 
 ### Before you begin
-  > 2 or more Linux servers running Ubuntu 22.04
-  > root privileges
-  > 3.75 GB or more of Ram - for better performance, use 6 GB
-  > 2 CPUs or more
-  > Full network connectivity between all machines in the cluster (public or private network is fine)
-  > Unique hostname, MAC address, and product_uuid for every node.
-  > Certain ports are open on your machines.
-  > Swap disabled. You MUST disable swap for the kubelet to work properly.
+  - 2 or more Linux servers running Ubuntu 22.04
+  - root privileges
+  - 3.75 GB or more of Ram - for better performance, use 6 GB
+  - 2 CPUs or more
+  - Full network connectivity between all machines in the cluster (public or private network is fine)
+  - Unique hostname, MAC address, and product_uuid for every node.
+  - Certain ports are open on your machines.
+  - Swap disabled. You MUST disable swap for the kubelet to work properly.
+  
   - A compatible Linux host. The Kubernetes project provides generic instructions for Linux distributions based on Debian and Red Hat, and those distributions without a package manager.
   - 2 GB or more of RAM per machine (any less will leave little room for your apps).
   - 2 CPUs or more.
