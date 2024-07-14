@@ -129,7 +129,7 @@ Verify the installation with:
 ####
     kubeadm version
 #
-## Do On Only Master Node    
+## Bellow Step perform Only on Master Node    
 ### Step 8 - Configuring as a Master Node
 Switch to the master server node, and enter the following:<br>
 <b><i>Note:</b></i> Replace your Endpoint Address as Master Node FQDN (master.paulco.xyz)
@@ -174,22 +174,26 @@ On each worker node, use the <b>kubeadm join</b> command on each worker node to 
 View the master join token:
 ####
     kubeadm token create — print-join-command
-    <b>Output Like:</b>
-    > kubeadm join 172.30.20.20:6443 — token cdm6fo.dhbrxyleqe5suy6e \
-     — discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
-
-
-Switch to the master server, and enter:
+<b>Output Like:</b>
+> kubeadm join 172.30.20.20:6443 — token cdm6fo.dhbrxyleqe5suy6e \
+— discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
+#
+## Bellow Step perform Only on Worker Node for Joining with k8s Cluster
+####
+Copy the kubeadm join token & Paste on <b>Worker Node</b>
+####
+    kubeadm join 172.30.20.20:6443 — token cdm6fo.dhbrxyleqe5suy6e \
+— discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
+####
+#
+## Verify from Master Node
 ####
     kubectl get nodes
-
+####
+    kubectl get nodes -o wide
 The system should display the worker nodes that you joined to the cluster.
-
-Node	Hostname	IP Address	vCPUs	RAM (GB)	OS
-Master	master.letscloud.io	192.168.51.111	2	3.75	Ubuntu 20.04
-W1	w1.letscloud.io	192.168.52.8	2	3.75	Ubuntu 20.04
-W2	w2.letscloud.io	192.168.58.6	2	3.75	Ubuntu 20.04
-Quick Tip
+####
+<b>Quick Tip</b>
 For beginners who still have no experience of deploying multiple containers, Minikube is a great way to start.
 
 # Conclusion
