@@ -98,6 +98,7 @@ Install Docker with the command:
     su - ${USER}
     sudo systemctl enable docker
     systemctl is-active --quiet docker && echo Docker is running
+    sudo usermod -aG docker $USER
 ####
 Verify Docker is running:
 ####
@@ -122,30 +123,10 @@ Enter the following to add a signing key in you on Ubuntu:
     systemctl daemon-reload
     systemctl start kubelet
     systemctl enable kubelet.service
-
-### Step 5 - Add Software Repositories
-Kubernetes is not included in the default repositories. To add them, enter the following:
-####
-    sudo apt-add-repository "deb http://apt.kubernetes.io/kubernetes-xenial main"
-
-Repeat for each server node.
-
-### Step 6 - Kubernetes Installation Tools
-Kubernetes Admin or Kubeadm is a tool that helps initialize a cluster. Its fast-track setup by using community-sourced best practices. Kubelet is the work package, which runs on every node and starts containers. The tool gives you command-line access to clusters.
-
-Install Kubernetes tools with the command:
-####
-    sudo apt-get install kubeadm kubelet kubectl
-####
-    sudo apt-mark hold kubeadm kubelet kubectl
-
-Allow the process to complete.
-
+    
 Verify the installation with:
 ####
     kubeadm version
-
-Repeat for each server node.
 
 #### Step 7 - Kubernetes Deployment
 Begin Kubernetes Deployment
