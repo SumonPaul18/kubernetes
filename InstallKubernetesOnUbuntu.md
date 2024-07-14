@@ -37,6 +37,7 @@ Install a Docker container and then install Kubernetes with two nodes on Ubuntu 
 
 #### So, let's start the installation
 
+## Step (1-7) Following for All Nodes (Master & Worker)
 ### Step 1 - Operating System Update & Upgrading
 Always recommended updating the system packages.
 
