@@ -1,10 +1,12 @@
 # How to Install Kubernetes Using Kubeadm on Ubuntu 22.04.xx
 
-#### Kubernetes is an open-source platform for managing containers such as Docker. Is a management system that provides a platform for deployment automation. With Kubernetes, you can freely make use of the hybrid, on-premise, and public cloud infrastructure to run deployment tasks of your project.
+#### Kubernetes is an open-source container orchestration tool that helps deploy, scale, and manage containerized applications. Google initially designed Kubernetes and is now maintained by the Cloud Native Computing Foundation. With Kubernetes, you can freely make use of the hybrid, on-premise, and public cloud infrastructure to run deployment tasks of your project.<br>
+
+#### Kubernetes works with Docker, Containerd, and CRI-O currently.
 
 #### And Docker lets you create containers for a pre-configured image and application. Kubernetes provides the next step, allowing you to balance loads between containers and run multiple containers across multiple systems.
 
-# This guidebook will walk you through How to Install Kubernetes on Ubuntu 22.04.
+# This guidebook will walk you through How to Install Kubernetes on Ubuntu 22.04.xx
 
 ### Before you begin
   - 2 or more Linux servers running Ubuntu 22.04
@@ -15,22 +17,17 @@
   - Unique hostname, MAC address, and product_uuid for every node.
   - Certain ports are open on your machines.
   - Swap disabled. You MUST disable swap for the kubelet to work properly.
-  
-  - A compatible Linux host. The Kubernetes project provides generic instructions for Linux distributions based on Debian and Red Hat, and those distributions without a package manager.
-  - 2 GB or more of RAM per machine (any less will leave little room for your apps).
-  - 2 CPUs or more.
-  - Full network connectivity between all machines in the cluster (public or private network is fine).
-  - Unique hostname, MAC address, and product_uuid for every node. See here for more details.
-  - Certain ports are open on your machines. See here for more details.
-  - Swap configuration. The default behavior of a kubelet was to fail to start if swap memory was detected on a node. See Swap memory management for more details.
-    - You MUST disable swap if the kubelet is not properly configured to use swap. For example, sudo swapoff -a will disable swapping temporarily. To make this change persistent across reboots, make sure swap is disabled in config files like /etc/fstab, systemd.swap, depending how it was configured on your system.
-
 ### Goals
 Install a Docker container and then install Kubernetes with two nodes on Ubuntu 20.04
-  > How to install Docker
-  > How to install Kubernetes
-  > How to configure a master and two worker node
-  > How to join a worker node to a Kubernetes cluster
+  
+  - Disabling swap
+  - Setting up hostnames
+  - Setting up the IPV4 bridge on all nodes
+  - Installing Docker or a suitable containerization tool
+  - Installing Kubernetes components on all nodes
+  - Configuring master and worker nodes
+  - Configuring Kubectl and Calico
+  - Joining worker node to a Kubernetes Cluster
 
 So, let's start the installation
 
