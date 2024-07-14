@@ -144,7 +144,11 @@ Set up kubeconfig as normal ubuntu user:
     mkdir -p $HOME/.kube
     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
     sudo chown $(id -u):$(id -g) $HOME/.kube/config
-    kubectl get nodes 
+    
+Verify cluster and node status using kubectl commands
+####
+    kubectl cluster-info
+    kubectl get nodes
 
 ### Step 9 - Configuring Network Plugins
 A Pod Network is a way to allow communication between different nodes in the cluster. 
