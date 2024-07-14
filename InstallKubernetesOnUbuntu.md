@@ -24,8 +24,9 @@ Here, we will see how to deploy a multi-node Kubernetes cluster using the
 ### Goals
 Install a Docker container and then install Kubernetes with two nodes on Ubuntu 20.04
   
-  - 1. OS Update & Upgrade
+  - Operating System Update & Upgrading
   - Setting up hostnames
+  - Setting up FQDN
   - Disabling swap
   - Setting up the IPV4 bridge on all nodes
   - Installing Docker or a suitable containerization tool
@@ -36,18 +37,23 @@ Install a Docker container and then install Kubernetes with two nodes on Ubuntu 
 
 #### So, let's start the installation
 
-### Step 1 - Update Ubuntu
+### Step 1 - Operating System Update & Upgrading
 Always recommended updating the system packages.
 
 So let's go to the command:
 ####
     sudo apt update -y && sudo apt upgrade -y
-### Step 2 - Assign Unique Hostname for Each Server Node
-Decide which server to set as the master node. Then enter the command:
+    
+### Step 2 - Setting up hostnames
+Decide which server to set as the Master Node and Worker Node
 ####
-    sudo hostnamectl set-hostname master-node
+    sudo hostnamectl set-hostname master
+    
+### Step 3 - Setting up FQDN
+FQDN are Fully Qualifide Domain Name like:(master.paulco.xyz)
 ####
-If you have additional worker nodes, use this process to set a unique hostname on each.
+    echo "master-node-ip master.paulco.xyz master" >> /etc/hosts
+    echo "worker-node-ip worker.paulco.xyz worker" >> /etc/hosts
 
 ### Step 2 - Disable Swap
 Disable the swap memory on each Server:
