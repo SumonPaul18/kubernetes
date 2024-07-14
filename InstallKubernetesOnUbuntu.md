@@ -161,7 +161,7 @@ Enter the following:
 
 Allow the process to complete.
 
-Verify that everything is running and communicating:
+Verify To display the network status, use the following command:
 ####
     kubectl get pods --all-namespaces
 
