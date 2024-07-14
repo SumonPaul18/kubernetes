@@ -50,7 +50,7 @@ Decide which server to set as the Master Node and Worker Node
     sudo hostnamectl set-hostname master
     
 ### Step 3 - Setting up FQDN
-FQDN are Fully Qualifide Domain Name like:(master.paulco.xyz)
+FQDN are Fully Qualifide Domain Name like:(master.paulco.xyz)<br>
 <b><i>Note:</b></i>Must be Replace Your IP from below command
 ####
     echo "192.168.0.35 master.paulco.xyz master" >> /etc/hosts
