@@ -46,6 +46,21 @@ Then type:
 ####
     sudo apt upgrade
 
+Start by disabling the swap memory on each server:
+####
+    sudo swapoff –a
+
+### Step 8 - Assign Unique Hostname for Each Server Node
+Decide which server to set as the master node. Then enter the command:
+####
+    sudo hostnamectl set-hostname master-node
+
+Next, set a worker node hostname by entering the following on the worker server:
+####
+    sudo hostnamectl set-hostname w1
+
+If you have additional worker nodes, use this process to set a unique hostname on each.
+
 ### Step 2 - Install Docker
 Kubernetes requires an existing Docker installation.
 
@@ -112,20 +127,7 @@ Repeat for each server node.
 #### Step 7 - Kubernetes Deployment
 Begin Kubernetes Deployment
 
-Start by disabling the swap memory on each server:
-####
-    sudo swapoff –a
 
-### Step 8 - Assign Unique Hostname for Each Server Node
-Decide which server to set as the master node. Then enter the command:
-####
-    sudo hostnamectl set-hostname master-node
-
-Next, set a worker node hostname by entering the following on the worker server:
-####
-    sudo hostnamectl set-hostname w1
-
-If you have additional worker nodes, use this process to set a unique hostname on each.
 
 ### Step 9 - Initialize Kubernetes on Master Node
 Switch to the master server node, and enter the following:
