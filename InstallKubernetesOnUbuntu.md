@@ -168,6 +168,9 @@ Allow the process to complete.
 Verify To display the network status, use the following command:
 ####
     kubectl get pods --all-namespaces
+Check cluster status:
+####
+    kubectl cluster-info
 
 ### Step 10 - Joining worker node to a Kubernetes Cluster
 On each worker node, use the <b>kubeadm join</b> command on each worker node to connect it to the cluster.
@@ -192,6 +195,10 @@ Copy the kubeadm join token & Paste on <b>Worker Node</b>
 ####
     kubectl get nodes -o wide
 The system should display the worker nodes that you joined to the cluster.
+
+Check cluster status:
+####
+    kubectl cluster-info
 ####
 <b>Quick Tip:</b> For beginners who still have no experience of deploying multiple containers, Minikube is a great way to start.
 
