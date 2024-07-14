@@ -1,4 +1,4 @@
-# How to Install Kubernetes Using Kubeadm on Ubuntu 22.04.xx
+## How to Install Kubernetes Using Kubeadm on Ubuntu 22.04.xx
 
 Kubernetes is an open-source container orchestration tool that helps deploy, scale, and manage containerized applications. Google initially designed Kubernetes and is now maintained by the Cloud Native Computing Foundation. With Kubernetes, you can freely make use of the hybrid, on-premise, and public cloud infrastructure to run deployment tasks of your project.<br>
 
@@ -10,7 +10,7 @@ We can run Kubernetes locally using the below methods:<br>
 
 ####
 Here, we will see how to deploy a multi-node Kubernetes cluster using the 
-# This Guidebook Provides Step-by-Step Instructions for Installing Kubernetes on Ubuntu 22.04.xx
+### This Guidebook Provides Step-by-Step Instructions for Installing Kubernetes on Ubuntu 22.04.xx
 
 ### Before you begin
   - 2 or more Linux servers running Ubuntu 22.04
