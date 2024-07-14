@@ -51,48 +51,61 @@ Decide which server to set as the Master Node and Worker Node
     
 ### Step 3 - Setting up FQDN
 FQDN are Fully Qualifide Domain Name like:(master.paulco.xyz)<br>
-<b><i>Note:</b></i>Must be Replace Your IP from below command
+<b><i>Note:</b></i> Must be Replace Your IP from below command
 ####
     echo "192.168.0.35 master.paulco.xyz master" >> /etc/hosts
     echo "192.168.0.36 worker.paulco.xyz worker" >> /etc/hosts
 
-### Step 2 - Disable Swap
+### Step 4 - Disable Swap
 Disable the swap memory on each Server:
 ####
     sudo swapoff –a
     sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
-### Step 2 - 
-
-
-### Step 2 - Install Docker
+### Step 5 - Setting up the IPV4 bridge on all nodes
+####
+    cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+    overlay
+    br_netfilter
+    EOF
+    sudo modprobe overlay
+    sudo modprobe br_netfilter
+####
+    cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+    net.bridge.bridge-nf-call-iptables  = 1
+    net.bridge.bridge-nf-call-ip6tables = 1
+    net.ipv4.ip_forward                 = 1
+    EOF
+    sudo sysctl --system
+### Step 6 - Install Docker
 Kubernetes requires an existing Docker installation.
 
 Install Docker with the command:
 ####
-    sudo apt install docker.io
-
-#### Repeat the process on each server that will act as a node.
-
-Check the installation (and version) by entering the following:
-####
-    docker ––version
-
-### Step 3 - Start and Enable Docker
-Set Docker to launch at boot by entering the following:
-####
+    sudo apt-get update -y
+    sudo apt-get install ca-certificates curl gnupg -y
+    sudo install -m 0755 -d /etc/apt/keyrings
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+    sudo chmod a+r /etc/apt/keyrings/docker.gpg
+    # Add the repository to Apt sources:
+    echo \
+      "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+      "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
+      sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    sudo apt-get update
+    sudo apt-get install docker-ce docker-ce-cli containerd.io -y
+    docker --version
+    sudo usermod -aG docker ${USER}
+    su - ${USER}
     sudo systemctl enable docker
+    systemctl is-active --quiet docker && echo Docker is running
 ####
-    sudo systemctl start docker
-
 Verify Docker is running:
 ####
     sudo systemctl status docker
 ####
     sudo systemctl start docker
 
-Repeat on all the other nodes.
-
-### Step 4 - Install Kubernetes
+### Step 7 - Install Kubernetes
 As we are downloading Kubernetes from a non-standard repository, it is essential to ensure that the software is authentic. This is done by adding a subscription key.
 
 Enter the following to add a signing key in you on Ubuntu:
