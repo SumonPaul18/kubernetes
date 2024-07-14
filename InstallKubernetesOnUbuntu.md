@@ -183,7 +183,7 @@ View the master join token:
 Copy the kubeadm join token & Paste on <b>Worker Node</b>
 ####
     kubeadm join 172.30.20.20:6443 — token cdm6fo.dhbrxyleqe5suy6e \
-— discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
+    — discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
 ####
 #
 ## Verify from Master Node
@@ -193,8 +193,7 @@ Copy the kubeadm join token & Paste on <b>Worker Node</b>
     kubectl get nodes -o wide
 The system should display the worker nodes that you joined to the cluster.
 ####
-<b>Quick Tip</b>
-For beginners who still have no experience of deploying multiple containers, Minikube is a great way to start.
+<b>Quick Tip:</b> For beginners who still have no experience of deploying multiple containers, Minikube is a great way to start.
 
 # Conclusion
 After following the steps mentioned in this article carefully, you should now have Kubernetes installed on Ubuntu. Kubernetes allows you to launch and manage Docker containers across multiple servers in the pod.
