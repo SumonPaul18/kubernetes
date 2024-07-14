@@ -148,6 +148,7 @@ Set up kubeconfig as normal ubuntu user:
 
 ### Step 9 - Configuring Network Plugins
 A Pod Network is a way to allow communication between different nodes in the cluster. 
+
 We have Differents Types Network Plugins:
 
 This tutorial uses the Calico virtual network.
@@ -155,6 +156,7 @@ This tutorial uses the Calico virtual network.
 Enter the following:
 ####
     sudo kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
+####
     sudo kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
 Allow the process to complete.
