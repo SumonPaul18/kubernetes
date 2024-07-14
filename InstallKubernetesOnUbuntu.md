@@ -1,10 +1,10 @@
 # How to Install Kubernetes Using Kubeadm on Ubuntu 22.04.xx
 
-#### Kubernetes is an open-source container orchestration tool that helps deploy, scale, and manage containerized applications. Google initially designed Kubernetes and is now maintained by the Cloud Native Computing Foundation. With Kubernetes, you can freely make use of the hybrid, on-premise, and public cloud infrastructure to run deployment tasks of your project.<br>
+Kubernetes is an open-source container orchestration tool that helps deploy, scale, and manage containerized applications. Google initially designed Kubernetes and is now maintained by the Cloud Native Computing Foundation. With Kubernetes, you can freely make use of the hybrid, on-premise, and public cloud infrastructure to run deployment tasks of your project.<br>
 
-#### Kubernetes works with Docker, Containerd, and CRI-O currently.
+Kubernetes works with Docker, Containerd, and CRI-O currently.<br>
 
-#### And Docker lets you create containers for a pre-configured image and application. Kubernetes provides the next step, allowing you to balance loads between containers and run multiple containers across multiple systems.
+And Docker lets you create containers for a pre-configured image and application. Kubernetes provides the next step, allowing you to balance loads between containers and run multiple containers across multiple systems.
 
 # This guidebook will walk you through How to Install Kubernetes on Ubuntu 22.04.xx
 
