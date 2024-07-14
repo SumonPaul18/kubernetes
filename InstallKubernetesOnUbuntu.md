@@ -51,9 +51,10 @@ Decide which server to set as the Master Node and Worker Node
     
 ### Step 3 - Setting up FQDN
 FQDN are Fully Qualifide Domain Name like:(master.paulco.xyz)
+<b><i>Note:</b></i>Must be Replace Your IP from below command
 ####
-    echo "master-node-ip master.paulco.xyz master" >> /etc/hosts
-    echo "worker-node-ip worker.paulco.xyz worker" >> /etc/hosts
+    echo "192.168.0.35 master.paulco.xyz master" >> /etc/hosts
+    echo "192.168.0.36 worker.paulco.xyz worker" >> /etc/hosts
 
 ### Step 2 - Disable Swap
 Disable the swap memory on each Server:
