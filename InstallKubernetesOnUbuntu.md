@@ -139,7 +139,7 @@ Switch to the master server node, and enter the following:<br>
 ####    
     sudo kubeadm init --control-plane-endpoint=master.paulco.xyz
 ####
-    sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+    sudo kubeadm init --pod-network-cidr=10.10.0.0/16
 
 Once this command finishes, it will display a kubeadm join message at the end. Make a note of the whole entry. This will be used to join the worker nodes to the cluster.
 
