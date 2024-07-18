@@ -132,7 +132,7 @@ Verify the installation with:
 
 <details>
  <summary> If You Get Error: When we run "kubeadm init" </summary>
-####
+
 < [init] Using Kubernetes version: v1.29.3
 < [preflight] Running pre-flight checks
 <	[WARNING Swap]: swap is supported for cgroup v2 only; the NodeSwap feature gate of the kubelet is beta but disabled by default
