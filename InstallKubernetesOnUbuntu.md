@@ -128,6 +128,8 @@ Enter the following to add a signing key in you on Ubuntu:
     systemctl daemon-reload
     systemctl start kubelet
     systemctl enable kubelet.service
+    systemctl enable kubelet
+    systemctl status kubelet
     
 Verify the installation with:
 ####
