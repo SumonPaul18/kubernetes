@@ -63,6 +63,9 @@ Disable the swap memory on each Server:
 ####
     sudo swapoff –a
     sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+OR
+####
+    swapoff -a && sed -i '/swap/d' /etc/fstab
 ### Step 5 - Setting up the IPV4 bridge on all nodes
 ####
     cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
