@@ -134,15 +134,15 @@ Verify the installation with:
  <summary> If You Get Error: When we run "kubeadm init" </summary>
 
 This Error Like This:
-> [init] Using Kubernetes version: v1.29.3
-> [preflight] Running pre-flight checks
->	[WARNING Swap]: swap is supported for cgroup v2 only; the NodeSwap feature gate of the kubelet is beta but disabled by default
->	[WARNING FileExisting-tc]: tc not found in system path
-> error execution phase preflight: [preflight] Some fatal errors occurred:
->	[ERROR CRI]: container runtime is not running: output: time="2024-03-19T04:51:36-04:00" level=fatal msg="validate service connection: validate CRI v1 runtime API for endpoint \"unix:///var/run/containerd/containerd.sock\": rpc error: code = Unimplemented desc = unknown service runtime.v1.RuntimeService"
-> , error: exit status 1
-> [preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...`
-> To see the stack trace of this error execute with --v=5 or higher
+> [init] Using Kubernetes version: v1.29.3 <br>
+> [preflight] Running pre-flight checks <br>
+>	[WARNING Swap]: swap is supported for cgroup v2 only; the NodeSwap feature gate of the kubelet is beta but disabled by default <br>
+>	[WARNING FileExisting-tc]: tc not found in system path <br>
+> error execution phase preflight: [preflight] Some fatal errors occurred: <br>
+>	[ERROR CRI]: container runtime is not running: output: time="2024-03-19T04:51:36-04:00" level=fatal msg="validate service connection: validate CRI v1 runtime API for endpoint \"unix:///var/run/containerd/containerd.sock\": rpc error: code = Unimplemented desc = unknown service runtime.v1.RuntimeService" <br>
+> , error: exit status 1 <br>
+> [preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...` <br>
+> To see the stack trace of this error execute with --v=5 or higher <br>
 
 </details>
 
