@@ -46,7 +46,7 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 docker --version
 sudo usermod -aG docker ${USER}
-su - ${USER}
+#su - ${USER}
 sudo systemctl enable docker
 systemctl is-active --quiet docker && echo Docker is running
 sudo usermod -aG docker $USER
