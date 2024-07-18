@@ -16,7 +16,7 @@ read -p "$(echo -e "${bgreen}${bold}${blink}Type Worker IP Address: ${nc}")" wor
 echo "$worker-ipaddr $worker-hostname.paulco.xyz $worker-hostname" >> /etc/hosts
 
 sudo swapoff –a
-sudo sed -i '/ swap / s/^\(.*\)$/#\1/g' /etc/fstab
+swapoff -a && sed -i '/swap/d' /etc/fstab
 
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
 overlay
@@ -51,14 +51,13 @@ sudo systemctl enable docker
 systemctl is-active --quiet docker && echo Docker is running
 sudo usermod -aG docker $USER
 
-sudo systemctl start docker
 
 sudo apt-get update
 sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
-sudo apt-get install -y kubelet kubeadm kubectl
+sudo apt-get install kubelet kubeadm kubectl -y
 sudo apt-mark hold kubelet kubeadm kubectl
 
 systemctl daemon-reload
