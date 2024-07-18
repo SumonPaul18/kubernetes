@@ -144,6 +144,12 @@ Verify the installation with:
 > [preflight] If you know what you are doing, you can make a check non-fatal with `--ignore-preflight-errors=...` <br>
 > To see the stack trace of this error execute with --v=5 or higher <br>
 
+<b> Solution: </b>
+####
+    rm -f /etc/containerd/config.toml
+    systemctl restart containerd
+####
+Aging Run kubeadm init
 </details>
 
 #
