@@ -187,12 +187,11 @@ A Pod Network is a way to allow communication between different nodes in the clu
 
 We have Differents Types Network Plugins:
 
-This tutorial uses the Calico virtual network.
-
-Enter the following:
+If we use the Calico virtual network:
 ####
     sudo kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
 ####
+If we use the flannel virtual network:
     sudo kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
 Allow the process to complete.
