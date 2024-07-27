@@ -1,5 +1,5 @@
 ## Install-Kubernetes-Kubeadm-on-Ubuntu
-(https://github.com/SumonPaul18/Install-Kubernetes-Kubeadm-on-Ubuntu/blob/main/InstallKubeAdm.png)
+[](https://github.com/SumonPaul18/Install-Kubernetes-Kubeadm-on-Ubuntu/blob/main/InstallKubeAdm.png)
 ### Step 1:
 #### Settings up Static IP and Hostname and FQDN for (Master-Worker) Node
     git clone https://github.com/SumonPaul18/Install-Kubernetes-Kubeadm-on-Ubuntu.git
