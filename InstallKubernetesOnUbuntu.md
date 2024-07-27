@@ -135,6 +135,20 @@ Verify the installation with:
 ####
     kubeadm version
 
+#
+## Bellow Step perform Only on Master Node    
+### Step 8 - Configuring as a Master Node
+Switch to the master server node, and enter the following:<br>
+<b><i>Note:</b></i> Replace your Endpoint Address as Master Node FQDN (master.paulco.xyz)
+####
+    sudo kubeadm init --apiserver-advertise-address=<ControllerVM-PrivateIP> --pod-network-cidr=10.244.0.0/16 
+####    
+    sudo kubeadm init --control-plane-endpoint=master.paulco.xyz
+####
+    sudo kubeadm init --pod-network-cidr=10.10.0.0/16
+
+Once this command finishes, it will display a kubeadm join message at the end. Make a note of the whole entry. This will be used to join the worker nodes to the cluster.
+
 <details>
  <summary> <b> If You Get Error: When we run "kubeadm init" </summary> </b>
 
@@ -157,20 +171,6 @@ Verify the installation with:
 Aging Run kubeadm init
 </details>
 
-#
-## Bellow Step perform Only on Master Node    
-### Step 8 - Configuring as a Master Node
-Switch to the master server node, and enter the following:<br>
-<b><i>Note:</b></i> Replace your Endpoint Address as Master Node FQDN (master.paulco.xyz)
-####
-    sudo kubeadm init --apiserver-advertise-address=<ControllerVM-PrivateIP> --pod-network-cidr=10.244.0.0/16 
-####    
-    sudo kubeadm init --control-plane-endpoint=master.paulco.xyz
-####
-    sudo kubeadm init --pod-network-cidr=10.10.0.0/16
-
-Once this command finishes, it will display a kubeadm join message at the end. Make a note of the whole entry. This will be used to join the worker nodes to the cluster.
-
 Set up kubeconfig as normal ubuntu user:
 ####
     mkdir -p $HOME/.kube
@@ -190,8 +190,8 @@ We have Differents Types Network Plugins:
 If we use the Calico virtual network:
 ####
     sudo kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.0/manifests/tigera-operator.yaml
-####
 If we use the flannel virtual network:
+####
     sudo kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
 
 Allow the process to complete.
