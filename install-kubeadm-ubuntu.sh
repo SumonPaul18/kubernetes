@@ -50,6 +50,8 @@ sudo usermod -aG docker ${USER}
 sudo systemctl enable docker
 systemctl is-active --quiet docker && echo Docker is running
 sudo usermod -aG docker $USER
+containerd config default | sudo tee /etc/containerd/config.toml >/dev/null 2>&1
+sudo sed -i 's/SystemdCgroup \= false/SystemdCgroup \= true/g' /etc/containerd/config.toml
 #
 #
 sudo apt-get update
