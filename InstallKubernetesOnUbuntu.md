@@ -168,9 +168,15 @@ Once this command finishes, it will display a kubeadm join message at the end. M
     rm -f /etc/containerd/config.toml
     systemctl restart containerd
 ####
-Aging Run kubeadm init
+Aging Run kubeadm init Command
 </details>
+#
+<details>
+ <summary> <b> If We Want to Reset Kubeadm init: When Get Error "kubeadm init" </summary> </b>
 
+   ####
+       kubeadm reset
+</details>
 Set up kubeconfig as normal ubuntu user:
 ####
     mkdir -p $HOME/.kube
