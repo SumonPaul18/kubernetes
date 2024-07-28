@@ -149,6 +149,7 @@ Switch to the master server node, and enter the following:<br>
 
 Once this command finishes, it will display a kubeadm join message at the end. Make a note of the whole entry. This will be used to join the worker nodes to the cluster.
 
+#
 <details>
  <summary> <b> If You Get Error: When we run "kubeadm init" </summary> </b>
 
@@ -179,6 +180,7 @@ Aging Run kubeadm init Command
        kubeadm reset
 </details>
 
+#
 Set up kubeconfig as normal ubuntu user:
 ####
     mkdir -p $HOME/.kube
