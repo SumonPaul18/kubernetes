@@ -170,6 +170,7 @@ Once this command finishes, it will display a kubeadm join message at the end. M
 ####
 Aging Run kubeadm init Command
 </details>
+
 #
 <details>
  <summary> <b> If We Want to Reset Kubeadm init: When Get Error "kubeadm init" </summary> </b>
@@ -177,6 +178,7 @@ Aging Run kubeadm init Command
    ####
        kubeadm reset
 </details>
+
 Set up kubeconfig as normal ubuntu user:
 ####
     mkdir -p $HOME/.kube
