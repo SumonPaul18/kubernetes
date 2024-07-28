@@ -190,8 +190,7 @@ Set up kubeconfig as normal ubuntu user:
 Verify cluster and node status using kubectl commands
 ####
     kubectl cluster-info
-
-    
+####
     kubectl get nodes
 
 ### Step 9 - Configuring Network Plugins
