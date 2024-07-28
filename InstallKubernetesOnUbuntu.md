@@ -181,8 +181,6 @@ Aging Run kubeadm init Command
 </details>
 
 #
-
-#
 <details>
  <summary> <b> If We Want to Uninstall Kubernetes on Ubuntu </summary> </b>
 
