@@ -212,7 +212,12 @@ Aging Run kubeadm init Command
 
 #
 
-Set up kubeconfig as normal ubuntu user:
+Exporting Kubeconfig as a Root User:
+####
+    export KUBECONFIG=/etc/kubernetes/admin.conf
+    echo 'export KUBECONFIG=/etc/kubernetes/admin.conf' >> .bashrc
+
+Using Kubeconfig on Regular User, you need to run the following as a regular user:
 ####
     mkdir -p $HOME/.kube
     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
