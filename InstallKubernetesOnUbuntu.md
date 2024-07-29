@@ -127,7 +127,6 @@ Enter the following to add a signing key in you on Ubuntu:
 ####
     systemctl daemon-reload
     systemctl start kubelet
-    systemctl enable kubelet.service
     systemctl enable kubelet
     systemctl status kubelet
     
@@ -141,7 +140,7 @@ Verify the installation with:
 Switch to the master server node, and enter the following:<br>
 <b><i>Note:</b></i> Replace your Endpoint Address as Master Node FQDN (master.paulco.xyz)
 ####
-    sudo kubeadm init --apiserver-advertise-address=<ControllerVM-PrivateIP> --pod-network-cidr=10.244.0.0/16 
+    sudo kubeadm init --apiserver-advertise-address=<MasterNode-PrivateIP> --pod-network-cidr=10.244.0.0/16 
 ####    
     sudo kubeadm init --control-plane-endpoint=master.paulco.xyz
 ####
