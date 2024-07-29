@@ -219,6 +219,7 @@ Exporting Kubeconfig as a Root User:
 
 Using Kubeconfig on Regular User, you need to run the following as a regular user:
 ####
+    exit
     mkdir -p $HOME/.kube
     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
     sudo chown $(id -u):$(id -g) $HOME/.kube/config
