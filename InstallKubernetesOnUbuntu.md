@@ -217,18 +217,19 @@ Exporting Kubeconfig as a Root User:
     export KUBECONFIG=/etc/kubernetes/admin.conf
     echo 'export KUBECONFIG=/etc/kubernetes/admin.conf' >> .bashrc
 
-Using Kubeconfig on Regular User, you need to run the following as a regular user:
+If We using Kubeconfig on Regular User, you need to run the following as a regular user:
 ####
-    exit
     mkdir -p $HOME/.kube
     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
     sudo chown $(id -u):$(id -g) $HOME/.kube/config
     
-Verify cluster and node status using kubectl commands
+Verify Cluster, Nodes and Pods status using kubectl commands
 ####
     kubectl cluster-info
 ####
     kubectl get nodes
+####
+    kubectl get pods -A
 
 ### Step 9 - Configuring Network Plugins
 A Pod Network is a way to allow communication between different nodes in the cluster. 
