@@ -188,7 +188,7 @@ Aging Run kubeadm init Command
        # Kube Admin Reset
        kubeadm reset
        # Remove all packages related to Kubernetes
-       apt remove -y kubeadm kubectl kubelet kubernetes-cni 
+       apt remove -y kubeadm kubectl kubelet kubernetes-cni --allow-change-held-packages
        apt purge -y kube*
        # Remove docker containers/images
        docker image prune -a
