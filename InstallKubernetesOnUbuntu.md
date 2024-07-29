@@ -212,16 +212,19 @@ Aging Run kubeadm init Command
 
 #
 
-Exporting Kubeconfig as a Root User:
-####
-    export KUBECONFIG=/etc/kubernetes/admin.conf
-    echo 'export KUBECONFIG=/etc/kubernetes/admin.conf' >> .bashrc
-
-If We using Kubeconfig on Regular User, you need to run the following as a regular user:
+To start using your cluster, you need to run the following as a regular user:
 ####
     mkdir -p $HOME/.kube
     sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
     sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+####
+    export KUBECONFIG=/etc/kubernetes/admin.conf
+####
+Setup export KUBECONFIG in .bashrc file
+####
+    echo 'export KUBECONFIG=/etc/kubernetes/admin.conf' >> .bashrc
     
 Verify Cluster, Nodes and Pods status using kubectl commands
 ####
