@@ -6,23 +6,26 @@ bold="\033[1m"
 blink="\033[5m"
 echo
 echo -e "${bgreen}Install Kubeadm on Ubuntu For Master-Worker Nodes${nc} "
+echo
+echo -e "${bgreen}System Information:${nc} "
 hostnamectl
 echo
+echo -e "${bgreen}Time/Date Information:${nc} "
 timedatectl
 echo
 timedatectl set-timezone Asia/Dhaka
 echo
+echo -e "${bgreen}Changed Time Zone:${nc} "
 timedatectl
 echo
-read -p "$(echo -e "${bgreen}${bold}${blink}Type System Hostname: ${nc}")" hostname
-hostnamectl set-hostname $hostname
-echo
-hostname -f
 #
 #Install Kubernetes Using Kubeadm on Ubuntu 22.04.xx
 read -p "$(echo -e "${bgreen}${bold}${blink}Type System Hostname: ${nc}")" SYSTEMHOSTNAME
 read -p "$(echo -e "${bgreen}${bold}${blink}Type System IP Address: ${nc}")" SYSTEMIP
+hostnamectl set-hostname $SYSTEMHOSTNAME
 echo "$SYSTEMIP $SYSTEMHOSTNAME.paulco.xyz $SYSTEMHOSTNAME" >> /etc/hosts
+echo
+hostname -f
 #
 sudo apt update -y && sudo apt upgrade -y
 #
