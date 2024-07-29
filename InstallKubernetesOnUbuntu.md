@@ -262,7 +262,7 @@ Check cluster status:
 On each worker node, use the <b>kubeadm join</b> command on each worker node to connect it to the cluster.
 View the master join token:
 ####
-    kubeadm token create — print-join-command
+    kubeadm token create --print-join-command
 <b>Output Like:</b>
 > kubeadm join 172.30.20.20:6443 — token cdm6fo.dhbrxyleqe5suy6e \
 — discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
