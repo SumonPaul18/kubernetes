@@ -1,19 +1,30 @@
 #!/bin/bash
-# Assign IP Addresses ASK using Shell Script
 bgreen='\033[1;32m'
 red='\033[0;31m'
 nc='\033[0m'
 bold="\033[1m"
 blink="\033[5m"
 echo
+echo -e "${bgreen}Install Kubeadm on Ubuntu For Master-Worker Nodes${nc} "
+hostnamectl
 echo
+timedatectl
+echo
+timedatectl set-timezone Asia/Dhaka
+echo
+timedatectl
+echo
+read -p "$(echo -e "${bgreen}${bold}${blink}Type System Hostname: ${nc}")" hostname
+hostnamectl set-hostname $hostname
+echo
+hostname -f
 #
 #Install Kubernetes Using Kubeadm on Ubuntu 22.04.xx
+read -p "$(echo -e "${bgreen}${bold}${blink}Type System Hostname: ${nc}")" SYSTEMHOSTNAME
+read -p "$(echo -e "${bgreen}${bold}${blink}Type System IP Address: ${nc}")" SYSTEMIP
+echo "$SYSTEMIP $SYSTEMHOSTNAME.paulco.xyz $SYSTEMHOSTNAME" >> /etc/hosts
 #
 sudo apt update -y && sudo apt upgrade -y
-read -p "$(echo -e "${bgreen}${bold}${blink}Type Worker Hostname: ${nc}")" worker-hostname
-read -p "$(echo -e "${bgreen}${bold}${blink}Type Worker IP Address: ${nc}")" worker-ipaddr
-echo "$worker-ipaddr $worker-hostname.paulco.xyz $worker-hostname" >> /etc/hosts
 #
 sudo swapoff –a
 swapoff -a && sed -i '/swap/d' /etc/fstab
@@ -60,7 +71,7 @@ sudo apt-get install -y apt-transport-https ca-certificates curl gpg
 curl -fsSL https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key | sudo gpg --dearmor -o /etc/apt/keyrings/kubernetes-apt-keyring.gpg
 echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.30/deb/ /' | sudo tee /etc/apt/sources.list.d/kubernetes.list
 sudo apt-get update
-sudo apt-get install kubelet kubeadm kubectl -y | tee kubeadm-installation-log.txt
+sudo apt-get install kubelet kubeadm kubectl -y
 sudo apt-mark hold kubelet kubeadm kubectl
 #
 systemctl daemon-reload
