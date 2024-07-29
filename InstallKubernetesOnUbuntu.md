@@ -296,11 +296,11 @@ Check the status of nginx-app deployment
     kubectl get deployment mynginx
 Expose the deployment as NodePort
 ####
-    kubectl expose deployment nginx-app --type=NodePort --port=80 service/mynginx exposed
+    kubectl expose deployment mynginx --type=NodePort --port=80 service/mynginx exposed
 Run following commands to view service status
 ####
-    kubectl get svc nginx-app
-    kubectl describe svc nginx-app
+    kubectl get svc mynginx
+    kubectl describe svc mynginx
 Use following curl command to access nginx based application,
 ####
     curl http://<woker-node-ip-addres>:31246
