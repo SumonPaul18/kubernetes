@@ -296,7 +296,7 @@ Check the status of nginx-app deployment
     kubectl get deployment mynginx
 Expose the deployment as NodePort
 ####
-    kubectl expose deployment mynginx --type=NodePort --port=80 service/mynginx exposed
+    kubectl expose deployment mynginx --type=NodePort --port=80 
 Run following commands to view service status
 ####
     kubectl get svc mynginx
