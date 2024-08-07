@@ -188,3 +188,30 @@ Check cluster status:
     kubectl cluster-info
 ####
 
+### Step 11 - Test Kubernetes Cluster Installation 
+To test Kubernetes installation, let’s try to deploy nginx based application and try to access it.
+####
+    kubectl create deployment mynginx --image=nginx --replicas=2
+Check the status of nginx-app deployment
+####
+    kubectl get deployment mynginx
+Expose the deployment as NodePort
+####
+    kubectl expose deployment mynginx --type=NodePort --port=80 
+Run following commands to view service status
+####
+    kubectl get svc mynginx
+    kubectl describe svc mynginx
+Use following curl command to access nginx based application,
+####
+    curl http://<woker-node-ip-addres>:31246
+
+<b>Quick Tip:</b> For beginners who still have no experience of deploying multiple containers, Minikube is a great way to start.
+# Conclusion
+After following the steps mentioned in this article carefully, you should now have Kubernetes installed on Ubuntu. Kubernetes allows you to launch and manage Docker containers across multiple servers in the pod.
+
+#### In this article, we have explained the installation of the Kubernetes container management system on Ubuntu 20.04. Kubernetes has a lot of functionality and features to offer. The Kubernetes Official Documentation is the best place to learn.
+
+If you have any questions about installing and configuring Kubernetes on Ubuntu, please contact us in the comments.
+
+
