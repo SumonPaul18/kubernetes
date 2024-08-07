@@ -20,7 +20,7 @@ hostname -f
 cp /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bak_`date +%Y%m%d%H%M`
 ip a
 read -p "Type static IP Interface Name: " STATIC_INTERFACE
-read -p "Type DHCP Interface Name: " DHCP_INTERFACE
+#read -p "Type DHCP Interface Name: " DHCP_INTERFACE
 read -p "Type Only IP Address: " ipaddr
 read -p "Type static IP Address with CIDR: " IP_ADDRESS
 read -p "Type Gateway4: " GATEWAY
@@ -41,8 +41,9 @@ network:
           via: $GATEWAY
       nameservers:
         addresses: [$DNS]
-    $DHCP_INTERFACE:
-      dhcp4: yes
+    #$DHCP_INTERFACE:
+      #dhcp4: yes
 EOF
+cat /etc/netplan/00-installer-config.yaml
 sudo netplan apply
 ip a
