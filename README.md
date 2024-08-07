@@ -36,7 +36,7 @@ Here, we will see how to deploy a multi-node Kubernetes cluster using the
 
 #
 ## Bellow Step perform Only on Master Node    
-### Step 8 - Configuring as a Master Node
+### Step 3 - Configuring as a Master Node
 Switch to the master server node, and enter the following:<br>
 <b><i>Note:</b></i> Replace your Endpoint Address as Master Node FQDN (master.paulco.xyz)
 ####
@@ -134,7 +134,7 @@ Verify Cluster, Nodes and Pods status using kubectl commands
 ####
     kubectl get pods -A
 
-### Step 9 - Configuring Network Plugins
+### Step 4 - Configuring Network Plugins
 A Pod Network is a way to allow communication between different nodes in the cluster. 
 
 We have Differents Types Network Plugins:
@@ -155,7 +155,7 @@ Check cluster status:
 ####
     kubectl cluster-info
 
-### Step 10 - Joining worker node to a Kubernetes Cluster
+### Step 5 - Joining worker node to a Kubernetes Cluster
 On each worker node, use the <b>kubeadm join</b> command on each worker node to connect it to the cluster.
 View the master join token:
 ####
