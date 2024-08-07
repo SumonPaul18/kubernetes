@@ -188,7 +188,7 @@ Check cluster status:
     kubectl cluster-info
 ####
 
-### Step 11 - Test Kubernetes Cluster Installation 
+### Step 6 - Test Kubernetes Cluster Installation 
 To test Kubernetes installation, let’s try to deploy nginx based application and try to access it.
 ####
     kubectl create deployment mynginx --image=nginx --replicas=2
