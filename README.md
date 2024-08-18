@@ -201,6 +201,7 @@ Expose the deployment as NodePort
 Run following commands to view service status
 ####
     kubectl get svc mynginx
+####
     kubectl describe svc mynginx
 Use following curl command to access nginx based application,
 ####
