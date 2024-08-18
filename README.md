@@ -24,12 +24,14 @@ Here, we will see how to deploy a multi-node Kubernetes cluster using the
 
 ### Step 1:
 #### Settings up Static IP and Hostname and FQDN for (Master-Worker) Node
+    rm -rf Install-Kubernetes-Kubeadm-on-Ubuntu
     git clone https://github.com/SumonPaul18/Install-Kubernetes-Kubeadm-on-Ubuntu.git
     chmod -R +x Install-Kubernetes-Kubeadm-on-Ubuntu
     . Install-Kubernetes-Kubeadm-on-Ubuntu/iphostname.sh
     
 ### Step 2:
 #### Install-Kubernetes-Kubeadm-on-Ubuntu for (Master-Worker) Node
+    rm -rf Install-Kubernetes-Kubeadm-on-Ubuntu
     git clone https://github.com/SumonPaul18/Install-Kubernetes-Kubeadm-on-Ubuntu.git
     chmod -R +x Install-Kubernetes-Kubeadm-on-Ubuntu
     . Install-Kubernetes-Kubeadm-on-Ubuntu/install-kubeadm-ubuntu.sh
