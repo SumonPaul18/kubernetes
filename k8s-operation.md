@@ -5,8 +5,10 @@ Check API Version of Kubernetes
 
 #
 
-Create Pod with Local Image
+Create Pod from Local docker Image
 
+    nano myhttpd.yaml
+####
     apiVersion: v1
     kind: Pod
     metadata:
@@ -21,3 +23,11 @@ Create Pod with Local Image
           imagePullPolicy: Never
           ports:
             - containerPort: 80
+
+
+kubectl apply -f myhttpd.yaml
+
+kubectl get pod
+
+kubectl port-forward myhttpd 8025:80 --address 0.0.0.0
+
