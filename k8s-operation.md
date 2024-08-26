@@ -23,11 +23,10 @@ Create Pod from Local docker Image
           imagePullPolicy: Never
           ports:
             - containerPort: 80
-
-
-kubectl apply -f myhttpd.yaml
-
-kubectl get pod
-
-kubectl port-forward myhttpd 8025:80 --address 0.0.0.0
+####
+    kubectl apply -f myhttpd.yaml
+####
+    kubectl get pod
+####
+    kubectl port-forward myhttpd 8025:80 --address 0.0.0.0
 
