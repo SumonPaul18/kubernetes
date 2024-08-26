@@ -10,20 +10,20 @@
     echo "kubeadm join $ipaddr:6443 --token=$token --discovery-token-ca-cert-hash sha256:$sha_token"
 
 #
-Continuously watching kubernetes all services
+#### Continuously watching kubernetes all services
 
     watch kubectl get all -o wide
 
-List of Kubernetes Nodes:
+#### List of Kubernetes Nodes:
 
     kubectl get nodes
-View cluster events
+#### View cluster events
     kubectl get events
 
-View the kubectl configuration
+#### View the kubectl configuration
     kubectl config view
 
-Accessing Kubernetes Dashboard
+#### Accessing Kubernetes Dashboard
 
 Installing the Kubernetes Dashboard
 
