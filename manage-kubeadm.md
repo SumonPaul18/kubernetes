@@ -23,6 +23,8 @@
 #### View the kubectl configuration
     kubectl config view
 
+#
+
 ### Accessing Kubernetes Dashboard
 
 #### Installing the Kubernetes Dashboard
@@ -68,11 +70,11 @@
 > kubectl proxy --address='0.0.0.0' --port=8001 --accept-hosts='^*$' <br>
 
     kubectl -n kubernetes-dashboard describe service kubernetes-dashboard
-
-#
 #
 
-#### Deploy a sample nginx deployment
+#
+
+#### Deploy a simple Nginx POD
 
     kubectl create deployment nginx-web --image=nginx
 ####
@@ -81,7 +83,7 @@
     kubectl get deployment,pod,svc
 #
 
-#### Create Pod Nginx web server using YAML 
+#### Create Nginx POD using YAML file
 
     nano nginx.yaml
 ####
@@ -178,6 +180,34 @@
 
     kubectl run myshell —rm –it –image busybox –sh
 
+#### Execute command from outside to the inside pods
+
+    kubectl exec pod-name date
+
+#### Execute command from outside to the inside pods
+
+    kubectl exec pod-name -c container-name date
+
+#### Execute pods
+
+    kubectl exec -it pod-name /bin/bash
+
+#### Delete Pods
+
+    kubectl delete pod myportfolio
+
+#### Delete all Pods
+
+    kubectl delete pods –all
+
+#### Delete pods & services using label name
+
+    kubectl delete pods,services -l name=label-name
+
+#### View Description
+
+    kubectl describe pod nginx 
+
 #### Create a Deployment
 
     kubectl create deployment nginx --image nginx:latest --replicas 3
@@ -198,22 +228,6 @@
 
     kubectl run myportfolio --image=myportfolio:latest --image-pull-policy=Never --restart=Never
 
-#### Delete Pods
-
-    kubectl delete pod myportfolio
-
-#### Delete all Pods
-
-    kubectl delete pods –all
-
-#### Delete pods & services using label name
-
-    kubectl delete pods,services -l name=label-name
-
-#### View Description
-
-    kubectl describe pod nginx 
-
 #### Expose a Service
 
     kubectl expose deployment nginx –type NodePort –port 80
@@ -226,24 +240,11 @@
 
     kubectl get pods -o wide
 
-#### Execute command from outside to the inside pods
-
-    kubectl exec pod-name date
-
-#### Execute command from outside to the inside pods
-
-    kubectl exec pod-name -c container-name date
-
-#### Execute pods
-
-    kubectl exec -it pod-name /bin/bash
-
 #### Create a Namespace
 
     kubectl create namespace devops-tool-suite
-
-
-#### Kubernetes Persistent Volumes using HostPath
+#
+### Kubernetes Persistent Volumes using HostPath
 
 #### Check your cluster’s storage classes
 
@@ -300,10 +301,15 @@
         - name: data
           persistentVolumeClaim:
             claimName: nginxpvc
+
+####
+    kubectl create -f nginx-hostpath.yaml
+####
+    kubectl get pv,pvc,pod
         
 #
-
-#### Kubernetes Persistent Volumes using NFS
+#
+### Kubernetes Persistent Volumes using NFS
 
     nano nginx-nfs.yaml
 ####
@@ -351,9 +357,13 @@
           persistentVolumeClaim:
             claimName: mynfspvc
 
+####
+    kubectl create -f nginx-nfs.yaml
+####
+    kubectl get pv,pvc,pod
 #
-
-#### Jenkins Deployment in Kubernetes
+#
+### Jenkins Deployment in Kubernetes
 
     nano jenkins-k8s.yaml
 ####
@@ -391,16 +401,16 @@
 
 #
 
+### Verifying Kubernetes Volume 
 
-#### Manage Kubernetes Storage 
-
+#### Verifying Storage Class List
     kubectl get sc
-####
+#### Verifying Persistent Volume List
     kubectl get pv
-####
+#### Verifying Persistent Volume Claim List
     kubectl get pvc
-####
-    kubectl describe sc sc-name
+#### Describe Specefic Storage Class
+    kubectl describe sc StorageClass-Name
 ####
     kubectl describe pv pv-name
 ####
