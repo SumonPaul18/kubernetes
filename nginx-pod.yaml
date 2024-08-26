@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: apace-pod1
+  name: k8s-nginx
   labels:
-    team: integrations
-    app: todo
+    team: devops
+    app: web
 spec:
   containers:
-    - name: apace-container
-      image: httpd:latest
+    - name: k8s-nginx
+      image: nginx:latest
       ports:
         - containerPort: 80
