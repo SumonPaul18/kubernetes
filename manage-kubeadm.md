@@ -79,7 +79,7 @@
     kubectl expose deployment nginx-web --type NodePort --port=80
 ####
     kubectl get deployment,pod,svc
-
+#
 
 #### Create Pod Nginx web server using YAML 
 
@@ -96,7 +96,7 @@
         ports:
         - containerPort: 80 
 ####
-    kubectl apply -f nginx.yml
+    kubectl apply -f nginx.yaml
 
 #
 
@@ -129,127 +129,129 @@
 
     kubectl port-forward --address 192.168.0.100 my-pod 8080:80
 
-Forwarding a local port to a service with address binding:
+#### Forwarding a local port to a service with address binding:
 
-kubectl port-forward --address <address> service/<service-name> <local-port>:<service-port>
+#### kubectl port-forward --address <address> service/<service-name> <local-port>:<service-port>
 
-Example command:
+#### Example command:
 
     kubectl port-forward --address 192.168.0.100 service/my-service 8080:80
 
-Listen on a random port locally, forwarding to 80 in the pod
+#### Listen on a random port locally, forwarding to 80 in the pod
 
     kubectl port-forward pod/nginx :80
 
-Check port-forwarding services 
+#### Check port-forwarding services 
 
     ps -ef | grep port-forward
 
-Analyze Network Connections
+#### Analyze Network Connections
 
     netstat -antp
 
 #
 
 
-Kubectl Basic Operation in Kubernetes
+#### Kubectl Basic Operation in Kubernetes
 
-Run a Pod
+#### Run a Pod
 
     kubectl run nginx -–image nginx
 
-Port-forwarding the pod
+#### Port-forwarding the pod
     
     kubectl port-forward nginx 8080:80
 
-View the Pod Logs
+#### View the Pod Logs
 
     kubectl logs nginx
 
-View the Pod Logs Continuously
+#### View the Pod Logs Continuously
 
     kubectl logs -f pod-name
 
-Run a Pod with Shell Exection  
+#### Run a Pod with Shell Exection  
 
     kubectl run myshell -it –image busybox –sh
 
-Run a Pod with Shell Exection and auto delete pods
+#### Run a Pod with Shell Exection and auto delete pods
 
     kubectl run myshell —rm –it –image busybox –sh
 
-Create a Deployment
+#### Create a Deployment
 
     kubectl create deployment nginx --image nginx:latest --replicas 3
 
-List of Deployments
+#### List of Deployments
 
     kubectl get deployment
 
-Scale a Deployment
+#### Scale a Deployment
 
     kubectl scale deployment nginx --replicas 5
 
-Delete Deployment
+#### Delete Deployment
 
     kubectl delete deploy myshell
 
-Create a pod using local docker images using image-policy
+#### Create a pod using local docker images using image-policy
 
     kubectl run myportfolio --image=myportfolio:latest --image-pull-policy=Never --restart=Never
 
-Delete Pods
+#### Delete Pods
 
     kubectl delete pod myportfolio
 
-Delete all Pods
+#### Delete all Pods
 
     kubectl delete pods –all
 
-Delete pods & services using label name
+#### Delete pods & services using label name
 
     kubectl delete pods,services -l name=label-name
 
-View Description
+#### View Description
 
     kubectl describe pod nginx 
 
-Expose a Service
+#### Expose a Service
 
     kubectl expose deployment nginx –type NodePort –port 80
 
-View Service Description
+#### View Service Description
 
     kubectl describe svc ngnix
 
-List of pods widely
+#### List of pods widely
 
     kubectl get pods -o wide
 
-Execute command from outside to the inside pods
+#### Execute command from outside to the inside pods
 
     kubectl exec pod-name date
 
-Execute command from outside to the inside pods
+#### Execute command from outside to the inside pods
 
     kubectl exec pod-name -c container-name date
 
-Execute pods
+#### Execute pods
 
     kubectl exec -it pod-name /bin/bash
 
-Create a Namespace
+#### Create a Namespace
 
     kubectl create namespace devops-tool-suite
 
 
-Kubernetes Persistent Volumes using HostPath
+#### Kubernetes Persistent Volumes using HostPath
 
-Check your cluster’s storage classes
+#### Check your cluster’s storage classes
 
     kubectl get storageclass
 
-Create a Persistent Volume
+#### Create a Persistent Volume
+
+    nano nginx-hostpath.yaml
 ####
     apiVersion: v1
     kind: PersistentVolume
@@ -301,7 +303,9 @@ Create a Persistent Volume
         
 #
 
-Kubernetes Persistent Volumes using NFS
+#### Kubernetes Persistent Volumes using NFS
+
+    nano nginx-nfs.yaml
 ####
     apiVersion: v1
     kind: PersistentVolume
@@ -313,7 +317,7 @@ Kubernetes Persistent Volumes using NFS
       accessModes:
         - ReadWriteOnce
       nfs:
-        server: 192.168.0.89
+        server: 192.168.0.96
         path: /nfsstorage/jenkins_home
       persistentVolumeReclaimPolicy: Retain
     
@@ -349,7 +353,9 @@ Kubernetes Persistent Volumes using NFS
 
 #
 
-Jenkins Deployment in Kubernetes
+#### Jenkins Deployment in Kubernetes
+
+    nano jenkins-k8s.yaml
 ####
     apiVersion: apps/v1
     kind: Deployment
@@ -386,7 +392,7 @@ Jenkins Deployment in Kubernetes
 #
 
 
-Manage Kubernetes Storage 
+#### Manage Kubernetes Storage 
 
     kubectl get sc
 ####
@@ -408,7 +414,9 @@ Manage Kubernetes Storage
 
 #
 
-Run Nginx Pod using NFS Data Persistent 
+#### Run Nginx Pod using NFS Data Persistent 
+
+    
 ####
     apiVersion: v1 
     kind: Pod 
@@ -431,9 +439,10 @@ Run Nginx Pod using NFS Data Persistent
 
 #
 
-Create yml file using image-pull-policy=Never
-####
+#### Create yml file using image-pull-policy=Never
 
+    nano pod-localimage.yaml
+####
     apiVersion: v1
     kind: Pod
     metadata:
