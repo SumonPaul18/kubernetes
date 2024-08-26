@@ -18,8 +18,8 @@
     kbectl get pvc
 #### Verifying to PODS in K8s Master Node
     kbectl get pods
-#### Create PV-PVC with NFS Server
-    nano nfs-pv-pvc.yaml
+#### Create PV-PVC-POD with NFS Server
+    nano nfs-pv-pvc-pod.yaml
 ####
     apiVersion: v1
     kind: PersistentVolume
@@ -64,5 +64,10 @@
         nfs:
           server: 192.168.0.96
           path: /nfs-share/kubernetes/html
+
+####
+    kubectl create -f nfs-pv-pvc-pod.yaml
+####
+    kubectl get pv,pvc,pod
 
 
