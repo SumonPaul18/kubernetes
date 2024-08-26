@@ -2,7 +2,7 @@
 
     kubeadm token create --print-join-command
 
-Here is a bash script that automate this task
+#### Here is a bash script that automate this task
 
     read -p 'master ip address : ' ipaddr
     sha_token = "$(openssl x509 -pubkey -in /etc/kubernetes/pki/ca.crt | openssl rsa -pubin -outform der 2>/dev/null | openssl dgst -sha256 -hex | sed 's/^.* //')"
