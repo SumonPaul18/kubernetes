@@ -23,43 +23,45 @@
 #### View the kubectl configuration
     kubectl config view
 
-#### Accessing Kubernetes Dashboard
+### Accessing Kubernetes Dashboard
 
-Installing the Kubernetes Dashboard
+#### Installing the Kubernetes Dashboard
 
     kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.7.0/aio/deploy/recommended.yaml 
 
-List of Namespaces
+#### List of Namespaces
 
     kubectl get services --all-namespaces
 
-Check all the resources
+#### Check all the resources
 
     kubectl get all -n kubernetes-dashboard
 
-Accessing the Kubernetes Dashboard from Outside
+#### Accessing the Kubernetes Dashboard from Outside
 
-Easy Ways
+#### Easy Ways
 
-Port Forwarding for kubernetes-dashboard
+#### Port Forwarding for kubernetes-dashboard
 
     kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 10443:443 --address 0.0.0.0
 
-https://192.168.0.89:10443
+#### Browsing Kubernetes-Dashboard
 
-Another Ways
+#### https://192.168.0.89:10443
 
-We will have to change the type of service from ClusterIp to NodePort. So, give the following command to edit the service and make the following changes.
+#### Another Ways
+
+<b>We will have to change the type of service from ClusterIp to NodePort. So, give the following command to edit the service and make the following changes.</b>
 
     kubectl edit service/kubernetes-dashboard -n kubernetes-dashboard
 
-After: You can give the IP of your wish if 32321 is occupied
+<b>After: You can give the IP of your wish if 32321 is occupied</b>
 
-Now, check if the service was changed successfully by giving the following command:
+<b>Now, check if the service was changed successfully by giving the following command:</b>
 
     kubectl get svc
 
-It will open the Kubernetes dashboard in the web browser.
+<b>It will open the Kubernetes dashboard in the web browser.</b>
 
 > kubectl proxy --address='0.0.0.0' --disable-filter=true <br>
 > kubectl proxy --address='0.0.0.0' --accept-hosts='^*$' <br>
@@ -70,8 +72,7 @@ It will open the Kubernetes dashboard in the web browser.
 #
 #
 
-
-Deploy a sample nginx deployment
+#### Deploy a sample nginx deployment
 
     kubectl create deployment nginx-web --image=nginx
 ####
@@ -80,9 +81,9 @@ Deploy a sample nginx deployment
     kubectl get deployment,pod,svc
 
 
-Create Pod Nginx web server using YML 
+#### Create Pod Nginx web server using YAML 
 
-    nano nginx.yml
+    nano nginx.yaml
 ####
     apiVersion: v1 
     kind: Pod 
@@ -99,33 +100,32 @@ Create Pod Nginx web server using YML
 
 #
 
+#### Kubectl Port-Forwarding Syntax
 
-Kubectl Port-Forwarding Syntax
-
-Port-Forward Syntax
+<b>Port-Forward Syntax</B>
 
     kubectl port-forward POD_NAME LOCAL_PORT:REMOTE_POD_PORT
 
-Command Description 
+<b>Command Description</b> 
 > POD_NAME: Give our pod name. <br>
 > LOCAL_PORT: Give a port which we access from the internet. <br>
 > REMOTE_POD_PORT: Give our pods default port. <br>
 
-Example:
+<b>Example:</b>
 
     kubectl port-forward nginx-pod 8085:80 --address 0.0.0.0
 
-Kubectl port-forward in background
+#### Kubectl port-forward in background
 
     kubectl port-forward nginx-pod 8085:80 &
 ####
     kubectl port-forward nginx-pod 8085:80 --address 0.0.0.0 &
 
-Port-Forwarding a local port to a pod with address binding:
+#### Port-Forwarding a local port to a pod with address binding:
 
-kubectl port-forward --address <address> <pod-name> <local-port>:<pod-port>
+#### kubectl port-forward --address <address> <pod-name> <local-port>:<pod-port>
 
-Example command:
+#### Example command:
 
     kubectl port-forward --address 192.168.0.100 my-pod 8080:80
 
