@@ -398,35 +398,36 @@
               - name: jenkins-home
                 persistentVolumeClaim:
                  claimName: pvcnfs
-
+####
+    kubectl create -f jenkins-k8s.yaml
+####
+    kubectl get pod
 #
-
+#
 ### Verifying Kubernetes Volume 
 
 #### Verifying Storage Class List
     kubectl get sc
+#### Describe Specefic Storage Class
+    kubectl describe sc StorageClass-Name
 #### Verifying Persistent Volume List
     kubectl get pv
 #### Verifying Persistent Volume Claim List
     kubectl get pvc
-#### Describe Specefic Storage Class
-    kubectl describe sc StorageClass-Name
-####
+#### Describe Specefic Persistent Volume
     kubectl describe pv pv-name
-####
+#### Describe Specefic Persistent Volume Claim
     kubectl describe pvc pvc-name
-####
+#### Delete Specefic Storage Class
     kubectl delete sc sc-name
-####
+#### Delete Specefic PVC
     kubectl delete pvc pvc-name
-####
+#### Delete Specefic PV
     kubectl delete pv pv-name
-
 #
-
-#### Run Nginx Pod using NFS Data Persistent 
-
-    
+#
+### Run Nginx Pod using NFS Data Persistent 
+   nano nginx-nfs.yaml
 ####
     apiVersion: v1 
     kind: Pod 
@@ -444,12 +445,11 @@
       volumes:
         - name: nginxstorage
           nfs:
-            server: 192.168.0.89
-            path: /nfsstorage
-
+            server: 192.168.0.96
+            path: /nfs-share/kubernetes
 #
-
-#### Create yml file using image-pull-policy=Never
+#
+### Create yml file using image-pull-policy=Never
 
     nano pod-localimage.yaml
 ####
@@ -470,8 +470,8 @@
       volumes:
         - name: nginxstorage
           nfs:
-            server: 192.168.0.89
-            path: /nfsstorage/myportfolio
+            server: 192.168.0.96
+            path: /nfs-share/kubernetes
         
 #
 
