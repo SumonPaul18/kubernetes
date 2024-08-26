@@ -8,6 +8,9 @@
 ### From K8s Master Node
 - Ready NFS Client
 - Verify to access NFS Server from K8s all Node
+#### In My Case:
+- <b>NFS Server IP: </b> 192.168.0.96
+- <b>Share Path:</b> /nfs-share/kubernetes/html
 
 #### Verifying to PV in K8s Master Node
     kbectl get pv
@@ -15,6 +18,51 @@
     kbectl get pvc
 #### Verifying to PODS in K8s Master Node
     kbectl get pods
-
+#### Create PV-PVC with NFS Server
+    nano nfs-pv-pvc.yaml
+####
+    apiVersion: v1
+    kind: PersistentVolume
+    metadata:
+      name: nfspv
+    spec:
+      capacity:
+        storage: 2Gi
+      accessModes:
+        - ReadWriteOnce
+      nfs:
+        server: 192.168.0.96
+        path: /nfs-share/kubernetes
+      persistentVolumeReclaimPolicy: Retain
+    
+    ---
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      name: nfspvc
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 2Gi
+    ---
+    #Attach PVCs to Pods
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: k8snginx
+    spec:
+      containers:
+      - name: k8snginx
+        image: nginx
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: nfs-volume
+      volumes:
+      - name: nfs-volume
+        nfs:
+          server: 192.168.0.96
+          path: /nfs-share/kubernetes/html
 
 
