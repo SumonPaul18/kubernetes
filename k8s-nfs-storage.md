@@ -1,4 +1,4 @@
-## How to Use NFS Stoarge with Kubernetes
+## How to Connect NFS Server with Kubernetes
 
 ### Requirements
 - Ready NFS Server
@@ -9,8 +9,8 @@
 - Ready NFS Client
 - Verify to access NFS Server from K8s all Node
 #### In My Case:
-- <b>NFS Server IP: </b> 192.168.0.96
-- <b>Share Path:</b> /nfs-share/kubernetes/html
+- <b>My NFS Server IP: </b> 192.168.0.96
+- <b>NFS Share Path:</b> /nfs-share/kubernetes
 
 #### Verifying to PV in K8s Master Node
     kbectl get pv
