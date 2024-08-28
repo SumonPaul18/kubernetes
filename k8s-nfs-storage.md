@@ -71,6 +71,8 @@
     kubectl create -f nfs-pv-pvc-pod.yaml
 ####
     kubectl get pv,pvc,pod
+####
+    kubectl port-forward k8snginx 8025:80 --address 0.0.0.0
 #
 ### Way-2
 #### Create PV-PVC-POD with NFS Server
@@ -129,4 +131,6 @@
     kubectl create -f nfs-pv-pvc-pod.yaml
 ####
     kubectl get pv,pvc,pod
+####
+    kubectl port-forward nginx-pv-pod 8025:80 --address 0.0.0.0
 #
