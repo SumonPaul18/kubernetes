@@ -149,7 +149,7 @@ Verify Cluster, Nodes and Pods status using kubectl commands
     kubectl get nodes
 ####
     kubectl get pods -A
-
+#
 ### Step 4 - Configuring Network Plugins
 A Pod Network is a way to allow communication between different nodes in the cluster. 
 
@@ -170,9 +170,7 @@ Verify To display the network status, use the following command:
 Check cluster status:
 ####
     kubectl cluster-info
-
-</details>
-
+#
 ### Step 5 - Joining worker node to a Kubernetes Cluster
 On each worker node, use the <b>kubeadm join</b> command on each worker node to connect it to the cluster.
 View the master join token:
@@ -185,6 +183,20 @@ View the master join token:
 Verify all tokens:
 
     kubeadm token list
+#
+## This Step perform on Worker Node for Joining with k8s Cluster
+####
+Copy the kubeadm join token & Paste on <b>Worker Node</b>
+####
+    kubeadm join 172.30.20.20:6443 — token cdm6fo.dhbrxyleqe5suy6e \
+    — discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
+####
+#
+
+</details>
+
+### Step 5 - Joining worker node to a Kubernetes Cluster
+
 #
 ## This Step perform on Worker Node for Joining with k8s Cluster
 ####
