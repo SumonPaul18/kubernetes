@@ -38,7 +38,7 @@ Here, we will see how to deploy a multi-node Kubernetes cluster using the
 
 #
 ## Bellow Step Going on Master Node    
-### Step 2:
+### Step 4:
 #### Configure as Kubeadm Master Node (Master)
 ~~~
 rm -rf install-kubeadm
