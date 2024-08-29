@@ -39,6 +39,11 @@ Here, we will see how to deploy a multi-node Kubernetes cluster using the
 #
 ## Bellow Step perform Only on Master Node    
 ### Step 3 - Configuring as a Master Node
+
+
+<details>
+ <summary> <b> Go to be Manually Installation </summary> </b>
+   
 Switch to the master server node, and enter the following:<br>
 <b><i>Note:</b></i> Replace your Endpoint Address as Master Node FQDN (master.paulco.xyz)
 ####
@@ -156,6 +161,8 @@ Verify To display the network status, use the following command:
 Check cluster status:
 ####
     kubectl cluster-info
+
+</details>
 
 ### Step 5 - Joining worker node to a Kubernetes Cluster
 On each worker node, use the <b>kubeadm join</b> command on each worker node to connect it to the cluster.
