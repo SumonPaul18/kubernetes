@@ -41,5 +41,4 @@ kubectl get pods --all-namespaces
 
 echo -e "${bgreen} Joining worker node to a Kubernetes Cluster ${nc} "
 #Joining worker node to a Kubernetes Cluster
-kubeadm token create — print-join-command
-
+kubeadm token create — print-join-command | tee kubeadm-token.txt
