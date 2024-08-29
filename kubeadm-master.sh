@@ -31,6 +31,7 @@ echo 'export KUBECONFIG=/etc/kubernetes/admin.conf' >> .bashrc
 #Verify Cluster, Nodes and Pods status using kubectl commands
 kubectl cluster-info
 kubectl get nodes
+kubectl get pod
 
 #Configuring Network Plugins
 sudo kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
@@ -38,6 +39,7 @@ sudo kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/down
 #Verify To display the network status
 kubectl get pods --all-namespaces
 
+echo -e "${bgreen} Joining worker node to a Kubernetes Cluster ${nc} "
 #Joining worker node to a Kubernetes Cluster
 kubeadm token create — print-join-command
 
