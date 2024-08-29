@@ -195,12 +195,14 @@ Copy the kubeadm join token & Paste on <b>Worker Node</b>
 
 </details>
 
-### Step 5 - Joining worker node with Kubernetes Cluster
+#
+
+### Step 4 - Joining worker node with Kubernetes Cluster
 ~~~
 Comming Code...!
 ~~~
 #
-## This Step perform on Worker Node for Joining with k8s Cluster
+### This Step perform on Worker Node for Joining with k8s Cluster
 ####
 Copy the kubeadm join token & Paste on <b>Worker Node</b>
 ####
@@ -220,7 +222,7 @@ Check cluster status:
     kubectl cluster-info
 ####
 
-### Step 6 - Test Kubernetes Cluster (From Master Node)
+### Step 5 - Test Kubernetes Cluster (From Master Node)
 To test Kubernetes installation, let’s try to deploy nginx based application and try to access it.
 ####
     kubectl create deployment mynginx --image=nginx --replicas=2
