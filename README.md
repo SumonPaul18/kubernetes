@@ -50,7 +50,7 @@ chmod -R +x install-kubeadm
 #
 
 <details>
- <summary> <b> Go to be Manually Installation </summary> </b>
+ <summary> <h3> Go to be Manually Installation </summary> </h3>
    
 ### Step 3 - Configuring as a Master Node
 Switch to the master server node, and enter the following command:<br>
