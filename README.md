@@ -38,7 +38,7 @@ Here, we will see how to deploy a multi-node Kubernetes cluster using the
 
 #
 ## Bellow Step Going on Master Node    
-### Step 4:
+### Step 3:
 #### Configure as Kubeadm Master Node (Master)
 ~~~
 rm -rf install-kubeadm
@@ -52,7 +52,7 @@ chmod -R +x install-kubeadm
 <details>
  <summary> <b> Go to be Manually Installation </summary> </b>
    
-### Step 3 - Configuring as a Master Node
+### Step 2 - Configuring as a Master Node
 Switch to the master server node, and enter the following command:<br>
 <b><i>Note:</b></i> Replace your Endpoint Address as Master Node FQDN (master.paulco.xyz)
 ####
@@ -150,7 +150,7 @@ Verify Cluster, Nodes and Pods status using kubectl commands
 ####
     kubectl get pods -A
 #
-### Step 4 - Configuring Network Plugins
+### Step 3 - Configuring Network Plugins
 A Pod Network is a way to allow communication between different nodes in the cluster. 
 
 We have Differents Types Network Plugins:
@@ -171,7 +171,7 @@ Check cluster status:
 ####
     kubectl cluster-info
 #
-### Step 5 - Joining worker node to a Kubernetes Cluster
+### Step 4 - Joining worker node to a Kubernetes Cluster
 On each worker node, use the <b>kubeadm join</b> command on each worker node to connect it to the cluster.
 View the master join token:
 ####
@@ -184,7 +184,7 @@ Verify all tokens:
 
     kubeadm token list
 #
-## This Step perform on Worker Node for Joining with k8s Cluster
+### This Step perform on Worker Node for Joining with k8s Cluster
 ####
 Copy the kubeadm join token & Paste on <b>Worker Node</b>
 ####
@@ -195,8 +195,10 @@ Copy the kubeadm join token & Paste on <b>Worker Node</b>
 
 </details>
 
-### Step 5 - Joining worker node to a Kubernetes Cluster
-
+### Step 5 - Joining worker node with Kubernetes Cluster
+~~~
+Comming Code...!
+~~~
 #
 ## This Step perform on Worker Node for Joining with k8s Cluster
 ####
