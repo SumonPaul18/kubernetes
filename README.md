@@ -37,14 +37,23 @@ Here, we will see how to deploy a multi-node Kubernetes cluster using the
     . install-kubeadm/install-kubeadm-ubuntu.sh
 
 #
-## Bellow Step perform Only on Master Node    
-### Step 3 - Configuring as a Master Node
+## Bellow Step Going on Master Node    
+### Step 2:
+#### Configure as Kubeadm Master Node (Master)
+~~~
+rm -rf install-kubeadm
+git clone https://github.com/SumonPaul18/install-kubeadm.git
+chmod -R +x install-kubeadm
+. install-kubeadm/kubeadm-master.sh
+~~~
 
+#
 
 <details>
  <summary> <b> Go to be Manually Installation </summary> </b>
    
-Switch to the master server node, and enter the following:<br>
+### Step 3 - Configuring as a Master Node
+Switch to the master server node, and enter the following command:<br>
 <b><i>Note:</b></i> Replace your Endpoint Address as Master Node FQDN (master.paulco.xyz)
 ####
     sudo kubeadm init --apiserver-advertise-address=<MasterNode-PrivateIP> --pod-network-cidr=10.244.0.0/16 
