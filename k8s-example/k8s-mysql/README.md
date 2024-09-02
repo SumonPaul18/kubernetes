@@ -25,7 +25,7 @@ Now prompted, enter the password we defined in the Kubernetes secret.
 Enter the SQL command to show the database.
 
 ~~~
-show database
+show databases
 ~~~
 
 #
