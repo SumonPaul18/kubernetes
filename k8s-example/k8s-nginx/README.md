@@ -17,6 +17,6 @@ kubectl get pod
 kubectl delete deploy nginx-deployment 
 kubectl delete pvc nginx-nfs-pvc
 kubectl delete pv nginx-nfs-pv
-ubectl delete svc nginx-svc
+kubectl delete svc nginx-svc
 ~~~
 #
