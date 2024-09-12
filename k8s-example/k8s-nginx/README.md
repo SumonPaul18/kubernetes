@@ -3,12 +3,12 @@
 ~~~
 rm -rf install-kubeadm
 git clone https://github.com/SumonPaul18/install-kubeadm.git
-cd install-kubeadm/k8s-example/k8s-mysql
-kubectl apply -f mysql-deploy.yaml
+cd install-kubeadm/k8s-example/k8s-nginx
+kubectl apply -f nginx-deploy-nfs-svc.yaml
 kubectl get deploy,pv,pvc,pod
 ~~~
 
-### Access Your MySQL Instance
+### Access The Nginx Instance
 ~~~
 kubectl get pod
 ~~~
