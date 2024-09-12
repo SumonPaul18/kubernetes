@@ -57,6 +57,7 @@ spec:
       - name: nginx-nfs-volume
         persistentVolumeClaim:
           claimName: nginx-nfs-pvc
+---
 apiVersion: v1
 kind: Service
 metadata:
