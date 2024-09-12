@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:lates
+        image: nginx:latest
         ports:
         - containerPort: 80
         volumeMounts:
