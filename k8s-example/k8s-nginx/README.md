@@ -5,28 +5,18 @@ rm -rf install-kubeadm
 git clone https://github.com/SumonPaul18/install-kubeadm.git
 cd install-kubeadm/k8s-example/k8s-nginx
 kubectl apply -f nginx-deploy-nfs-svc.yaml
-kubectl get deploy,pv,pvc,pod
+kubectl get deploy,pv,pvc,pod,svc
 ~~~
 
 ### Access The Nginx Instance
 ~~~
 kubectl get pod
 ~~~
-Get a shell for the pod by executing the following command:
+G#### Delete all to Jenkins-Pod
 ~~~
-kubectl exec --stdin --tty [pod_name] -- /bin/bash
-~~~
-Type the following command to access the MySQL shell:
-~~~
-mysql -p
-~~~
-Now prompted, enter the password we defined in the Kubernetes secret.
-
-Enter the SQL command to show the database.
-
-~~~
-SHOW DATABASE
-~~~
+kubectl delete deploy nginx-deployment 
+kubectl delete pvc nginx-nfs-pvc
+kubectl delete pv nginx-nfs-pv
+ubectl delete svc nginx-svc
 
 #
-
