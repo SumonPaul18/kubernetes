@@ -12,7 +12,7 @@ kubectl get deploy,pv,pvc,pod,svc
 ~~~
 kubectl get pod
 ~~~
-G#### Delete all to Jenkins-Pod
+#### Delete all to Nginx-Deploy
 ~~~
 kubectl delete deploy nginx-deployment 
 kubectl delete pvc nginx-nfs-pvc
