@@ -1,127 +1,106 @@
+# Install Minikube Kubernetes on Ubuntu
 
+## Installation Steps
 
-## Install Minikube Kubernetes on Ubuntu
-
-
-#### Installation Steps
-
-Step 1. Installing Docker
-
-Step 2. Update Your System
-
+#### Step 1. Update Your System
+~~~
 apt update & sudo apt upgrade -y
-
-#### Reboot the system
-
+~~~
+Reboot the system
+~~~
 reboot
-
-#Install Docker
-
+~~~
+#### Step 2. Installing Docker
+#### Use the following command to adding latest docker binary filies
+~~~
 apt install ca-certificates curl gnupg wget apt-transport-https -y
-
 install -m 0755 -d /etc/apt/keyrings
-
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-
 chmod a+r /etc/apt/keyrings/docker.gpg
 echo \
   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
-
 tee /etc/apt/sources.list.d/docker.list > /dev/null
-
 sudo apt update
-
-#Install docker by running the following command.
-
+~~~
+#### Install docker by running the following command.
+~~~
 apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-
-#Add your local user to docker group
-
+~~~
+#### Add your local user to docker group
+~~~
 sudo usermod -aG docker $USER
-
 newgrp docker
-
-#Step 3. Installing Minikube
-#Use the following curl command to download latest minikube binary
-
+~~~
+#### Step 3. Installing Minikube
+#### Use the following curl command to download latest minikube binary filies
+~~~
 curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-
-#Once the binary is downloaded, use the following command to install Minikube
-
+~~~
+#### Once the binary is downloaded, use the following command to install Minikube
+~~~
 install minikube-linux-amd64 /usr/local/bin/minikube
-
-#Verifying Minikube installation
-
+~~~
+#### Verifying Minikube installation
+~~~
 minikube version
+~~~
+#### Output As Like bellow:
+> minikube version: v1.32.0
+> commit: 8220a6eb95f0a4d75f7f2d7b14cef975f050512d
 
-#Output As Like bellow:
-minikube version: v1.32.0
-commit: 8220a6eb95f0a4d75f7f2d7b14cef975f050512d
-
-
+#### Verify kubectl Version:
+~~~
 kubectl version --client
+~~~
 
-#kubectl version --client --output=yaml
-
-
-#Step 4. Installing kubectl utility
-
-#curl -LO https://storage.googleapis.com/kubernetes-release/release/"curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt"/bin/linux/amd64/kubectl
-
+#### Step 4. Installing kubectl utility
+~~~
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-
-#Validate the binary (optional)
-#Download the kubectl checksum file:
-
 chmod +x kubectl
-
 mv kubectl /usr/local/bin/
-
-#Verify the kubectl version
-
+~~~
+#### Verify the kubectl version
+~~~
 kubectl version
-
-#kubectl version -o yaml
-
-#Step 5. Starting Minikube
-#When you start minikube 1st time then declear your required driver its could be docker, containerd, virtualbox etc. 
-
+~~~
+#### Step 5. Starting Minikube
+#### When you start minikube 1st time then declear your required driver its could be docker, containerd, virtualbox etc. 
+~~~
 minikube start –driver=docker
-
-#In case Minikube cannot start because there is error regarding the Docker driver. Possible error:
-
+~~~
+#### In case Minikube cannot start because there is error regarding the Docker driver. Possible error:
+~~~
 minikube start --driver=docker --force
-
-#Step 6. Verifying Installation
-#Use the following command to verify Minikube:
-
+~~~
+#### Step 6. Verifying Installation
+#### Use the following command to verify Minikube:
+~~~
 minikube status
+~~~
+#### Output As like As
 
-#Output As like As
+> minikube
+> type: Control Plane
+> host: Running
+> kubelet: Running
+> apiserver: Running
+> kubeconfig: Configured
 
-minikube
-type: Control Plane
-host: Running
-kubelet: Running
-apiserver: Running
-kubeconfig: Configured
-
-
-#Use the following command to verify Kubernetes:
-
+#### Use the following command to verify Kubernetes:
+~~~
 kubectl cluster-info
-
+~~~
 #Output like as:
 
-Kubernetes control plane is running at https://192.168.49.2:8443
-CoreDNS is running at https://192.168.49.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+> Kubernetes control plane is running at https://192.168.49.2:8443
+> CoreDNS is running at https://192.168.49.2:8443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
-++++++++++++++++++++++++++++++++++
+#
 
-++++++++++++++++++++++++++++++++++
-+ Manage Minikube kubernetes     +
-++++++++++++++++++++++++++++++++++
+#
+## Manage Minikube kubernetes
+
 #Managing Minikube Cluster
 #To stop and start the minikube cluster
 
