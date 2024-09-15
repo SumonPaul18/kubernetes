@@ -22,24 +22,24 @@ Here, we will see how to deploy a multi-node Kubernetes cluster using the
   - Unique hostname, MAC address, and product_uuid for every node.
   - Certain ports are open on your machines.
 
-### Step 1:
-## Bellow Step Going on Master-Worker Node
+## Step 1:
+### Bellow Step Going on Master-Worker Node
 #### Settings up Static IP and Hostname and FQDN for (Master-Worker) Node
     rm -rf install-kubeadm
     git clone https://github.com/SumonPaul18/install-kubeadm.git
     chmod -R +x install-kubeadm
     . install-kubeadm/iphostname.sh
     
-### Step 2:
-## Bellow Step Going on Master-Worker Node
+## Step 2:
+### Bellow Step Going on Master-Worker Node
 #### Install-Kubernetes-Kubeadm-on-Ubuntu for (Master-Worker) Node
     rm -rf install-kubeadm
     git clone https://github.com/SumonPaul18/install-kubeadm.git
     chmod -R +x install-kubeadm
     . install-kubeadm/install-kubeadm-ubuntu.sh
 
-### Step 3:
-## Bellow Step Going on Master Node    
+## Step 3:
+### Bellow Step Going on Master Node    
 
 <details>
  <summary> <b> Go to for Manually Installation </summary> </b>
@@ -189,6 +189,7 @@ Copy the kubeadm join token & Paste on <b>Worker Node</b>
 
 #
 ## Automated Installation
+#### Configure as Kubeadm Master Node (Master)
 ~~~
 rm -rf install-kubeadm
 git clone https://github.com/SumonPaul18/install-kubeadm.git
@@ -196,18 +197,15 @@ chmod -R +x install-kubeadm
 . install-kubeadm/kubeadm-master.sh
 ~~~
 #
-### Step 4 - Joining worker node with Kubernetes Cluster
+## Step 4
+### This Step perform on Worker Node for Joining with k8s Cluster
+#### Joining worker node with Kubernetes Cluster
+Copy the kubeadm join token & Paste on <b>Worker Node</b>
 ~~~
-Comming Code...!
+ kubeadm join 172.30.20.20:6443 — token cdm6fo.dhbrxyleqe5suy6e \
+    — discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
 ~~~
 #
-### This Step perform on Worker Node for Joining with k8s Cluster
-####
-Copy the kubeadm join token & Paste on <b>Worker Node</b>
-####
-    kubeadm join 172.30.20.20:6443 — token cdm6fo.dhbrxyleqe5suy6e \
-    — discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
-####
 #
 ## Verify from Master Node
 ####
@@ -221,7 +219,8 @@ Check cluster status:
     kubectl cluster-info
 ####
 
-### Step 5 - Test Kubernetes Cluster (From Master Node)
+## Step 5 
+### Test Kubernetes Cluster (From Master Node)
 To test Kubernetes installation, let’s try to deploy nginx based application and try to access it.
 ####
     kubectl create deployment mynginx --image=nginx --replicas=2
