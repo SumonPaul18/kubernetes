@@ -42,7 +42,7 @@ Here, we will see how to deploy a multi-node Kubernetes cluster using the
 ## Bellow Step Going on Master Node    
 
 <details>
- <summary> <b> Go to be Manually Installation </summary> </b>
+ <summary> <b> Go to for Manually Installation </summary> </b>
    
 ### Step 2 - Configuring as a Master Node
 Switch to the master server node, and enter the following command:<br>
@@ -188,6 +188,7 @@ Copy the kubeadm join token & Paste on <b>Worker Node</b>
 </details>
 
 #
+## Automated Installation
 #### Configure as Kubeadm Master Node (Master)
 ~~~
 rm -rf install-kubeadm
