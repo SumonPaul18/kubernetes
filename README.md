@@ -205,20 +205,20 @@ Copy the kubeadm join token & Paste on <b>Worker Node</b>
  kubeadm join 172.30.20.20:6443 — token cdm6fo.dhbrxyleqe5suy6e \
     — discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
 ~~~
-#
-#
 ## Verify from Master Node
-####
-    kubectl get nodes
-####
-    kubectl get nodes -o wide
+~~~
+kubectl get nodes
+~~~
+~~~
+kubectl get nodes -o wide
+~~~
 The system should display the worker nodes that you joined to the cluster.
 
 Check cluster status:
-####
-    kubectl cluster-info
-####
-
+~~~
+kubectl cluster-info
+~~~
+#
 ## Step 5 
 ### Test Kubernetes Cluster (From Master Node)
 To test Kubernetes installation, let’s try to deploy nginx based application and try to access it.
