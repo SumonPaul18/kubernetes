@@ -6,8 +6,8 @@ Kubernetes is an open-source container orchestration tool that helps deploy, sca
 Kubernetes works with Docker, Containerd, and CRI-O currently.<br>
 ####
 We can run Kubernetes locally using the below methods:<br>
-  - <b>Minikube:</b> A single-node Kubernetes cluster for development and testing
-  - <b>Kubeadm:</b>  A multi-node Kubernetes cluster
+  ### 1. [Minikube](): A single-node Kubernetes cluster for development and testing
+  ### 2. [Kubeadm](https://github.com/SumonPaul18/install-kubeadm/blob/main/README.md):  A multi-node Kubernetes cluster
 
 ####
 Here, we will see how to deploy a multi-node Kubernetes cluster using the 
