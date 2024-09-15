@@ -11,7 +11,7 @@ We can run Kubernetes locally using the below methods:<br>
 
 ####
 Here, we will see how to deploy a multi-node Kubernetes cluster using the 
-### This Guidebook Provides Step-by-Step Instructions for Installing Kubernetes on Ubuntu 22.04.xx
+### Follwing Steps are for Installing Kubernetes Kubeadm on Ubuntu 22.04.xx
 
 ### Before you begin
   - 2 or more Linux servers running Ubuntu 22.04
@@ -39,16 +39,7 @@ Here, we will see how to deploy a multi-node Kubernetes cluster using the
 #
 ## Bellow Step Going on Master Node    
 ### Step 3:
-#### Configure as Kubeadm Master Node (Master)
-~~~
-rm -rf install-kubeadm
-git clone https://github.com/SumonPaul18/install-kubeadm.git
-chmod -R +x install-kubeadm
-. install-kubeadm/kubeadm-master.sh
-~~~
-
 #
-
 <details>
  <summary> <b> Go to be Manually Installation </summary> </b>
    
@@ -196,7 +187,14 @@ Copy the kubeadm join token & Paste on <b>Worker Node</b>
 </details>
 
 #
-
+#### Configure as Kubeadm Master Node (Master)
+~~~
+rm -rf install-kubeadm
+git clone https://github.com/SumonPaul18/install-kubeadm.git
+chmod -R +x install-kubeadm
+. install-kubeadm/kubeadm-master.sh
+~~~
+#
 ### Step 4 - Joining worker node with Kubernetes Cluster
 ~~~
 Comming Code...!
