@@ -189,7 +189,6 @@ Copy the kubeadm join token & Paste on <b>Worker Node</b>
 
 #
 ## Automated Installation
-#### Configure as Kubeadm Master Node (Master)
 ~~~
 rm -rf install-kubeadm
 git clone https://github.com/SumonPaul18/install-kubeadm.git
