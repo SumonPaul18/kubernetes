@@ -2,13 +2,16 @@
 ~~~
 kubectl run nginx --image=nginx -o yaml --dry-run=client > nginx.yaml
 ~~~
+~~~
 ls
+~~~
 ~~~
 nano nginx.yaml
 ~~~
 kubectl apply -f nginx.yaml
 ~~~
 kubectl get pod -o wide
+~~~
 kubectl get node
 nano nginx.yaml
 kubectl delete pod nginx
