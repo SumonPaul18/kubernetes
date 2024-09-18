@@ -111,6 +111,13 @@ kubectl taint nodes node1 key1=value1:NoSchedule-
 ~~~
 kubectl taint node worker dc-location:NoSchedule-
 ~~~
+#### We Can use three types of taint effect
+  1. NoSchedule — The pod will not get scheduled to the node without a matching toleration.
+
+  2. NoExecute — This will immediately evict all the pods without the matching toleration from the node.
+
+  3. PerferNoSchedule — This is a softer version of NoSchedule where the controller will not try to schedule a pod with the tainted node. However, it is not a strict requirement.
+
 #
 #### Using Affinity on Nodes & Pods
 #### Verifying Labels on Nodes
