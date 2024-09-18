@@ -1,3 +1,4 @@
+# Using NodeSelector, Taint & Tolerations, NodeAffinity on K8s Example
 #### Verifying How Many Nodes are in K8s Claster
 ~~~
 kubectl get node
