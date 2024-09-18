@@ -18,7 +18,7 @@ kubectl apply -f nginx.yaml
 ~~~
 kubectl get pod -o wide
 ~~~
-#### We will see that the nginx pod runing on default Node.
+<b> We will see that the nginx pod runing on default Node.</b>
 #
 #### Now, We will try run pod on seleceted Node
 ~~~
