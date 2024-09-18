@@ -8,6 +8,7 @@ ls
 ~~~
 nano nginx.yaml
 ~~~
+~~~
 kubectl apply -f nginx.yaml
 ~~~
 kubectl get pod -o wide
