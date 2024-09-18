@@ -1,3 +1,7 @@
+#### Verifying How Many Nodes are in K8s Claster
+~~~
+kubectl get node
+~~~
 #### Generate nginx pod yaml file
 ~~~
 kubectl run nginx --image=nginx -o yaml --dry-run=client > nginx.yaml
@@ -14,9 +18,7 @@ kubectl apply -f nginx.yaml
 ~~~
 kubectl get pod -o wide
 ~~~
-~~~
-kubectl get node
-~~~
+#### We will see that the nginx pod runing on default node.
 ~~~
 nano nginx.yaml
 ~~~
