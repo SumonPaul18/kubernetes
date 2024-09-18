@@ -14,3 +14,4 @@
 #### 11. [Translate a Docker Compose File to Kubernetes Resources](https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/)
 #### 12. [How to expose the Kubernetes Application](https://medium.com/weles-ai/how-to-expose-the-kubernetes-application-68cb30ea15c7)
 #### 13. [Kubernetes 101: Deploying a web application and database](https://www.endpointdev.com/blog/2022/01/kubernetes-101/)
+#### 14. [Taints & Tolerations With Examples](https://blog.kubecost.com/blog/kubernetes-taints/)
