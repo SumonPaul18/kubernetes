@@ -62,7 +62,8 @@ We will see that the nginx pod runing on selected Node.
 ~~~
 kubectl describe nodes | grep -i taint
 ~~~
-#### Set a Taint on Selected Node
+#### Add a Taint to Selected Node using kubectl taint
+kubectl taint nodes <node name> <taint key>=<taint value>:<taint effect>
 ~~~
 kubectl taint node worker dc-location=dhaka:NoSchedule
 ~~~
@@ -100,6 +101,15 @@ kubectl get pod -o wide
 We will see that the nginx pod runing on selected Node.
 ~~~
 kubectl delete pod tolerations-pod.yaml
+~~~
+#### Remove the previously added taint to the worker node.
+We can remove the taint by specifying the taint key and the taint effect with a minus(-) to signify the removal. The basic syntax of the command is:
+
+kubectl taint nodes <node name> <taint key>:<taint effect>-
+
+kubectl taint nodes node1 key1=value1:NoSchedule-
+~~~
+kubectl taint node worker dc-location:NoSchedule-
 ~~~
 #
 #### Using Affinity on Nodes & Pods
