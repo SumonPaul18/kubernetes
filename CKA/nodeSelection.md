@@ -161,6 +161,7 @@ kubectl run tolerations-affinity-pod --image=nginx -o yaml --dry-run=client > to
 ~~~
 nano tolerations-affinity-pod.yaml
 ~~~
+~~~
 apiVersion: v1
 kind: Pod
 metadata:
@@ -185,6 +186,7 @@ spec:
             operator: In
             values:
             - large
+~~~
 ~~~
 kubectl apply tolerations-affinity-pod.yaml
 ~~~
