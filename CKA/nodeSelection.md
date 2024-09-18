@@ -69,11 +69,97 @@ kubectl taint node worker dc-location=dhaka:NoSchedule
 kubectl describe node worker | grep -i taint
 ~~~
 ~~~
-kubectl run my-app-dhaka --image=nginx -o yaml --dry-run=client > my-app-dhaka.yaml
+kubectl run tolerations-pod --image=nginx -o yaml --dry-run=client > tolerations-pod.yaml
 ~~~
 ~~~
-nano my-app-dhaka.yaml
+nano tolerations-pod.yaml
 ~~~
+~~~
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: tolerations-pod
+  name: tolerations-pod
+spec:
+  containers:
+  - image: nginx
+    name: tolerations-pod
+  tolerations:
+  - key: dc-location
+    value: dhaka
+    effect: NoSchedule
+~~~
+~~~
+kubectl apply -f tolerations-pod.yaml
+~~~
+~~~
+kubectl get pod -o wide
+~~~
+We will see that the nginx pod runing on selected Node.
+~~~
+kubectl delete pod tolerations-pod.yaml
+~~~
+#
+#### Using Affinity on Nodes & Pods
+#### Verifying Labels on Nodes
+~~~
+kubectl describe node worker
+~~~
+#### Set a Affinity on Selected Node
+~~~
+kubectl label nodes worker size=large
+~~~
+~~~
+kubectl run affinity-pod --image=nginx -o yaml --dry-run=client > affinity-pod.yaml
+~~~
+~~~
+nano affinity-pod.yaml
+~~~
+~~~
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: affinity-pod
+  name: affinity-pod
+spec:
+  containers:
+  - image: nginx
+    name: affinity-pod
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: size
+            operator: In
+            values:
+            - large
+~~~
+~~~
+kubectl apply -f affinity-pod.yaml
+~~~
+~~~
+kubectl get pod -o wide
+~~~
+~~~
+kubectl delete pod affinity-pod.yaml
+~~~
+#
+#### Using tolerations & Affinity on Nodes & Pods
+#### Verifying Taint & Labels on Nodes
+~~~
+kubectl describe nodes | grep -i taint
+~~~
+~~~
+kubectl describe node worker
+~~~
+~~~
+kubectl run tolerations-affinity-pod --image=nginx -o yaml --dry-run=client > tolerations-affinity-pod.yaml
+~~~
+~~~
+nano tolerations-affinity-pod.yaml
 ~~~
 apiVersion: v1
 kind: Pod
@@ -100,35 +186,7 @@ spec:
             values:
             - large
 ~~~
-~~~
-kubectl apply -f my-app-dhaka.yaml
-~~~
-~~~
-nano my-app-dhaka.yaml
-~~~
-~~~
-kubectl apply -f my-app-dhaka.yaml
-~~~
-~~~
-kubectl get pod -o wide
-~~~
-~~~
-kubectl delete pod my-app-dhaka
-~~~
-~~~
-nano my-app-dhaka.yaml
-~~~
-~~~
-kubectl label nodes worker size=large
-~~~
-~~~
-nano my-app-dhaka.yaml
-~~~
-~~~
-kubectl apply my-app-dhaka.yaml
-~~~
-~~~
-kubectl apply -f my-app-dhaka.yaml
+kubectl apply tolerations-affinity-pod.yaml
 ~~~
 ~~~
 kubectl get pod -o wide
@@ -140,16 +198,8 @@ kubectl describe nodes worker
 kubectl describe nodes master
 ~~~
 ~~~
-kubectl get pod -o wide
+kubectl delete pod tolerations-affinity-pod.yaml
 ~~~
-~~~
-kubectl delete pod my-app-dhaka
-~~~
-~~~
-kubectl delete pod nginx
-~~~
-~~~
-kubectl get pod
-~~~
+
 
 
