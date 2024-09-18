@@ -20,6 +20,21 @@ kubectl get node
 ~~~
 nano nginx.yaml
 ~~~
+#### Adding nodeName Attribute in nginx.yaml
+Here, we can Specefied where run the pods. 
+~~~
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    run: nginx
+  name: nginx
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+  nodeName: worker
+~~~
 ~~~
 kubectl delete pod nginx
 ~~~
