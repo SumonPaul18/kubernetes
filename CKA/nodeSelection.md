@@ -2,9 +2,7 @@
 ~~~
 kubectl run nginx --image=nginx -o yaml --dry-run=client > nginx.yaml
 ~~~
-~~~
 ls
-~~~
 ~~~
 nano nginx.yaml
 ~~~
