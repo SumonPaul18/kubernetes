@@ -1,32 +1,26 @@
-# How to Deploy Flask on Kubernetes
+# How to Deploy Flask Application on Kubernetes
 
 ~~~
 rm -rf install-kubeadm
 git clone https://github.com/SumonPaul18/install-kubeadm.git
-cd install-kubeadm/k8s-example/k8s-mysql
-kubectl apply -f mysql-deploy.yaml
-kubectl get deploy,pv,pvc,pod
+cd install-kubeadm/k8s-example/k8s-flask-app
+kubectl apply -f flask.yaml
+kubectl get pod,deploy,pv,pvc,svc
 ~~~
 
-### Access Your Flask Instance
+### Verifying the Flask Deploy
 ~~~
 kubectl get pod
 ~~~
-Get a shell for the pod by executing the following command:
+#### Delete the Flask Deploy
 ~~~
-kubectl exec --stdin --tty [pod_name] -- /bin/bash
+kubectl delete deploy test-flask-app
 ~~~
-Type the following command to access the MySQL shell:
+#### Delete the Flask Deploy Svc
 ~~~
-mysql -p
+kubectl delete svc test-flask-svc
 ~~~
-Now prompted, enter the password we defined in the Kubernetes secret.
-
-Enter the SQL command to show the database.
-
-~~~
-SHOW DATABASE
-~~~
+#### 
 
 #
 
