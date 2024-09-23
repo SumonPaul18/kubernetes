@@ -1,5 +1,34 @@
 # Certified Kubernetes Administrator (CKA) - V1.27
 
+## Create a Nginx pod name nginxpod and schedule on controlpanel node
+
+~~~
+nano nginxpod.yaml
+~~~
+~~~
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+  name: nginxpod
+    run: nginxpod
+spec:
+  nodeName: master
+  containers:
+  - image: nginx
+    name: nginxpod
+  restartPolicy: Always
+~~~
+Apply the pod
+~~~
+kubectl apply -f nginxpod.yaml
+~~~
+## Expose the existing nginxpod port 80
+~~~
+kubectl expose pod nginxpod --name=nginxsvc --port=80
+~~~
+
+#
 ### Reference:
 #### 1. [freecodecamp.org](https://www.freecodecamp.org/news/certified-kubernetes-administrator-study-guide-cka/)
 #### 2. [arkalim.notion.site](https://arkalim.notion.site/Kubernetes-c64b2976b0364cc69864490edef33717)
