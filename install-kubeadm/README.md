@@ -25,18 +25,18 @@ Here, we will see how to deploy a multi-node Kubernetes cluster using the
 ## Step 1:
 ### Bellow Step Going on Master-Worker Node
 #### Settings up Static IP and Hostname and FQDN for (Master-Worker) Node
-    rm -rf install-kubeadm
-    git clone https://github.com/SumonPaul18/install-kubeadm.git
-    chmod -R +x install-kubeadm
-    . install-kubeadm/iphostname.sh
+    rm -rf kubernetes
+    git clone https://github.com/SumonPaul18/kubernetes.git
+    chmod -R +x kubernetes/install-kubeadm
+    . kubernetes/install-kubeadm/iphostname.sh
     
 ## Step 2:
 ### Bellow Step Going on Master-Worker Node
 #### Install-Kubernetes-Kubeadm-on-Ubuntu for (Master-Worker) Node
-    rm -rf install-kubeadm
-    git clone https://github.com/SumonPaul18/install-kubeadm.git
-    chmod -R +x install-kubeadm
-    . install-kubeadm/install-kubeadm-ubuntu.sh
+    rm -rf kubernetes
+    git clone https://github.com/SumonPaul18/kubernetes.git
+    chmod -R +x kubernetes/install-kubeadm
+    . kubernetes/install-kubeadm/install-kubeadm-allnode.sh
 
 ## Step 3:
 ### Bellow Step Going on Master Node    
