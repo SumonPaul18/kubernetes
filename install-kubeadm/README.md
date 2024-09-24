@@ -1,5 +1,5 @@
 # Install Kubernetes Kubeadm on Ubuntu
-![kube](https://github.com/SumonPaul18/Install-Kubernetes-Kubeadm-on-Ubuntu/blob/main/InstallKubeAdm.png)
+![kube](https://github.com/SumonPaul18/kubernetes/blob/main/install-kubeadm/InstallKubeAdm.png)
 
 Kubernetes is an open-source container orchestration tool that helps deploy, scale, and manage containerized applications. Google initially designed Kubernetes and is now maintained by the Cloud Native Computing Foundation. With Kubernetes, you can freely make use of the hybrid, on-premise, and public cloud infrastructure to run deployment tasks of your project.<br>
 
