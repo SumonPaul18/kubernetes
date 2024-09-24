@@ -7,7 +7,7 @@ Kubernetes works with Docker, Containerd, and CRI-O currently.<br>
 ####
 We can run Kubernetes locally using the below methods:<br>
   ### 1. [Minikube](https://github.com/SumonPaul18/install-kubeadm/blob/main/install-minikube.md): A single-node Kubernetes cluster for development and testing
-  ### 2. [Kubeadm](https://github.com/SumonPaul18/kubernetes/edit/main/install-kubeadm/README.md):  A multi-node Kubernetes cluster
+  ### 2. [Kubeadm](https://github.com/SumonPaul18/kubernetes/tree/main/install-kubeadm):  A multi-node Kubernetes cluster
 
 ####
 Here, we will see how to deploy a multi-node Kubernetes cluster using the 
