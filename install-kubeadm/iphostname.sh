@@ -7,26 +7,27 @@ bold="\033[1m"
 blink="\033[5m"
 echo
 echo
-echo -e "${bgreen}Assign IP Addresses and Hostname,TimeZone Asking using Shell Script ${nc} "
+echo -e "${bgreen}Setup Static IP, Hostname, TimeZone, FQDN ${nc} "
 hostnamectl
 timedatectl
 timedatectl set-timezone Asia/Dhaka
 timedatectl
 echo
 read -p "$(echo -e "${bgreen}${bold}${blink}Type System Hostname: ${nc}")" hostname
+read -p "$(echo -e "${bgreen}${bold}${blink}Type Domain Name [Paulco.xyz]: ${nc}")" domain_name
 hostnamectl set-hostname $hostname
 hostname -f
-# Creates a backup
+# Copy orginal file as a backup
 cp /etc/netplan/00-installer-config.yaml /etc/netplan/00-installer-config.yaml.bak_`date +%Y%m%d%H%M`
 ip a
 read -p "Type static IP Interface Name: " STATIC_INTERFACE
 #read -p "Type DHCP Interface Name: " DHCP_INTERFACE
-read -p "Type Only IP Address: " ipaddr
-read -p "Type static IP Address with CIDR: " IP_ADDRESS
-read -p "Type Gateway4: " GATEWAY
-read -p "Type DNS: " DNS
+read -p "Type Only IP Address [192.168.0.2]: " ipaddr
+read -p "Type IP Address with CIDR [192.168.0.2/24]: " IP_ADDRESS
+read -p "Type Gateway4[192.168.0.1]: " GATEWAY
+read -p "Type DNS[8.8.8.8]: " DNS
 #ipaddr=$(/sbin/ifconfig | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}') 
-echo "$ipaddr $hostname.paulco.xyz $hostname" >> /etc/hosts
+echo "$ipaddr $hostname.$domain_name $hostname" >> /etc/hosts
 hostname -f
 cat <<EOF | sudo tee /etc/netplan/00-installer-config.yaml
 network:
