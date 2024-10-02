@@ -2,7 +2,7 @@
 
 Cluster Information:
 
-Get cluster information: ```kubectl cluster-info```
+Get cluster information: ~~~ kubectl cluster-info ~~~
 
 Node Operations:
 Kubectl get nodes: List all the nodes
