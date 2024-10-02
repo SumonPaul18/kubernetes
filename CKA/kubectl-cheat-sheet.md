@@ -1,6 +1,9 @@
-*List of Kubernetes commands:*
+# kubectl Cheat Sheet
+
 Cluster Information:
-kubectl cluster-info: Get cluster information.
+
+Get cluster information: ```kubectl cluster-info```
+
 Node Operations:
 Kubectl get nodes: List all the nodes
 Kubectl describe node <node name>: Describe a specific node
