@@ -1,7 +1,5 @@
-Sure! Here's the improved list of Kubernetes commands formatted for GitHub Markdown:
 
-```markdown
-# Kubernetes Commands
+# kubectl Cheat Sheet
 
 ## Cluster Information
 - `kubectl cluster-info`: Get cluster information.
@@ -131,6 +129,4 @@ Sure! Here's the improved list of Kubernetes commands formatted for GitHub Markd
 ## DaemonSet Operations
 - `kubectl get daemonsets`: List all DaemonSets in the cluster.
 - `kubectl describe daemonset <daemonset-name>`: Describe a specific DaemonSet.
-```
 
-Feel free to copy and paste this into your GitHub repository! If you need any more help, just let me know. 😊
