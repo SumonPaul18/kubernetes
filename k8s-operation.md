@@ -1,9 +1,5 @@
 # Kubernets Operation
-Check API Version of Kubernetes
 
-    kubectl api-resources | grep pods
-
-#
 
 Create Pod from Local docker Image
 
