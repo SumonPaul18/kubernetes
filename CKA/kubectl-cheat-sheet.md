@@ -1,8 +1,5 @@
 # Kubectl Cheat Sheet
 
-```markdown
-# Kubernetes Commands
-
 ## Cluster Information
 Get cluster information:
 ```sh
