@@ -199,7 +199,7 @@ chmod -R +x kubernetes/install-kubeadm
 ## Step 4
 ### This Step perform on Worker Node for Joining with k8s Cluster
 #### When Compelete Step 3 then we can get a kubeadm join commnad like bellow 
-Copy the kubeadm join token & Paste on <b>Worker Node</b>
+Copy the <b>kubeadm join token</b> & Paste on <b>Worker Node</b>
 ~~~
  kubeadm join 172.30.20.20:6443 — token cdm6fo.dhbrxyleqe5suy6e \
     — discovery-token-ca-cert-hash sha256:1fc51686afd16c46102c018acb71ef9537c1226e331840e7d401630b96298e7d
