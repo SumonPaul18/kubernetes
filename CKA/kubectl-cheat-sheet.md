@@ -1,280 +1,454 @@
 # Kubectl Cheat Sheet
 
+```markdown
+# Kubernetes Commands
+
 ## Cluster Information
 Get cluster information:
-- `kubectl cluster-info`
+```sh
+kubectl cluster-info
+```
 
 ## Node Operations
 List all the nodes:
-- `kubectl get nodes`
+```sh
+kubectl get nodes
+```
 
 Describe a specific node:
-- `kubectl describe node <node-name>`
+```sh
+kubectl describe node <node-name>
+```
 
 Drain a node for maintenance:
-- `kubectl drain <node>`
+```sh
+kubectl drain <node>
+```
 
 Add labels to a node:
-- `kubectl label nodes <node-name> <label-key>=<label-value>`
+```sh
+kubectl label nodes <node-name> <label-key>=<label-value>
+```
 
 Mark a node as unschedulable:
-- `kubectl cordon <node>`
+```sh
+kubectl cordon <node>
+```
 
 Mark a node as schedulable again after it has been drained:
-- `kubectl uncordon <node>`
+```sh
+kubectl uncordon <node>
+```
 
 Show metrics for a given node:
-- `kubectl top <node>`
+```sh
+kubectl top <node>
+```
 
 ## Namespace Operations
 Describe all namespaces:
-- `kubectl describe namespace`
+```sh
+kubectl describe namespace
+```
 
 Create a specific namespace:
-- `kubectl create namespace <namespace-name>`
+```sh
+kubectl create namespace <namespace-name>
+```
 
 List all namespaces:
-- `kubectl get namespace`
+```sh
+kubectl get namespace
+```
 
 Shortened version of `kubectl get namespace`:
-- `kubectl get ns`
+```sh
+kubectl get ns
+```
 
 Describe a specific namespace:
-- `kubectl describe namespace <namespace-name>`
+```sh
+kubectl describe namespace <namespace-name>
+```
 
 Switch to a different namespace:
-- `kubectl config set-context --current --namespace=<namespace-name>`
+```sh
+kubectl config set-context --current --namespace=<namespace-name>
+```
 
 Delete a namespace:
-- `kubectl delete namespace <namespace-name>`
+```sh
+kubectl delete namespace <namespace-name>
+```
 
 Edit and update the namespace definition:
-- `kubectl edit namespace <namespace-name>`
+```sh
+kubectl edit namespace <namespace-name>
+```
 
 ## Resource Operations
 Create or update a resource from a YAML file:
-- `kubectl apply -f <resource-definition.yaml>`
+```sh
+kubectl apply -f <resource-definition.yaml>
+```
 
 Create an object imperatively:
-- `kubectl create`
+```sh
+kubectl create
+```
 
 Create a resource by using the URL:
-- `kubectl apply -f https://url-to-resource-definition.yaml`
+```sh
+kubectl apply -f https://url-to-resource-definition.yaml
+```
 
 ## Viewing and Finding Resources
 List all resources of a specific type:
-- `kubectl get <resource-type>`
+```sh
+kubectl get <resource-type>
+```
 
 List all resources with additional details:
-- `kubectl get <resource-type> -o wide`
+```sh
+kubectl get <resource-type> -o wide
+```
 
 Describe a specific resource:
-- `kubectl describe <resource-type> <resource-name>`
+```sh
+kubectl describe <resource-type> <resource-name>
+```
 
 List all resources with a specific label:
-- `kubectl get <resource-type> -l <label-key>=<label-value>`
+```sh
+kubectl get <resource-type> -l <label-key>=<label-value>
+```
 
 List all resources in all namespaces:
-- `kubectl get <resource-type> --all-namespaces`
+```sh
+kubectl get <resource-type> --all-namespaces
+```
 
 List all resources sorted by a specific field:
-- `kubectl get <resource-type> --sort-by=<field>`
+```sh
+kubectl get <resource-type> --sort-by=<field>
+```
 
 List resources with a specific label selector:
-- `kubectl get <resource-type> -l <label-selector>`
+```sh
+kubectl get <resource-type> -l <label-selector>
+```
 
 List resources with a specific field selector:
-- `kubectl get <resource-type> --field-selector=<field-selector>`
+```sh
+kubectl get <resource-type> --field-selector=<field-selector>
+```
 
 List all resources in a specific namespace:
-- `kubectl get <resource-type> -n <namespace>`
+```sh
+kubectl get <resource-type> -n <namespace>
+```
 
 ## Deleting Resources
 Delete a resource:
-- `kubectl delete <resource-type> <resource-name>`
+```sh
+kubectl delete <resource-type> <resource-name>
+```
 
 Delete multiple resources:
-- `kubectl delete <resource-type1> <resource-name1> <resource-type2> <resource-name2>`
+```sh
+kubectl delete <resource-type1> <resource-name1> <resource-type2> <resource-name2>
+```
 
 Delete all resources of a specific type:
-- `kubectl delete <resource-type> --all`
+```sh
+kubectl delete <resource-type> --all
+```
 
 Delete the resource defined in a YAML file:
-- `kubectl delete -f <resource-definition.yaml>`
+```sh
+kubectl delete -f <resource-definition.yaml>
+```
 
 Delete the resource by using the URL:
-- `kubectl delete -f https://url-to-resource-definition.yaml`
+```sh
+kubectl delete -f https://url-to-resource-definition.yaml
+```
 
 Delete all resources in a specific namespace:
-- `kubectl delete <resource-type> --all -n <namespace>`
+```sh
+kubectl delete <resource-type> --all -n <namespace>
+```
 
 ## Pod Operations
 List all pods in the cluster:
-- `kubectl get pods`
+```sh
+kubectl get pods
+```
 
 Describe a specific pod:
-- `kubectl describe pod <pod-name>`
+```sh
+kubectl describe pod <pod-name>
+```
 
 View the logs of a specific pod:
-- `kubectl logs <pod-name>`
+```sh
+kubectl logs <pod-name>
+```
 
 Execute a command in a specific pod:
-- `kubectl exec -it <pod-name> -- <command>`
+```sh
+kubectl exec -it <pod-name> -- <command>
+```
 
 ## Service Operations
 List all services in the cluster:
-- `kubectl get services`
+```sh
+kubectl get services
+```
 
 Describe a specific service:
-- `kubectl describe service <service-name>`
+```sh
+kubectl describe service <service-name>
+```
 
 ## Deployment Operations
 List all deployments in the cluster:
-- `kubectl get deployments`
+```sh
+kubectl get deployments
+```
 
 Describe a specific deployment:
-- `kubectl describe deployment <deployment-name>`
+```sh
+kubectl describe deployment <deployment-name>
+```
 
 Scale a deployment:
-- `kubectl scale deployment <deployment-name> --replicas=<replica-count>`
+```sh
+kubectl scale deployment <deployment-name> --replicas=<replica-count>
+```
 
 View rollout history of a deployment or replicaset:
-- `kubectl rollout history <resource-type> <resource-name>`
+```sh
+kubectl rollout history <resource-type> <resource-name>
+```
 
 Rollback a deployment or replicaset to a previous revision:
-- `kubectl rollout undo <resource-type> <resource-name>`
+```sh
+kubectl rollout undo <resource-type> <resource-name>
+```
 
 View rollout status of a deployment or replicaset:
-- `kubectl rollout status <resource-type> <resource-name>`
+```sh
+kubectl rollout status <resource-type> <resource-name>
+```
 
 Temporarily pause the rollout of a deployment or replicaset:
-- `kubectl rollout pause <resource-type> <resource-name>`
+```sh
+kubectl rollout pause <resource-type> <resource-name>
+```
 
 Resume a paused rollout of a deployment or replicaset:
-- `kubectl rollout resume <resource-type> <resource-name>`
+```sh
+kubectl rollout resume <resource-type> <resource-name>
+```
 
 ## Configuration and Context
 List all available contexts:
-- `kubectl config get-contexts`
+```sh
+kubectl config get-contexts
+```
 
 Switch to a different context:
-- `kubectl config use-context <context-name>`
+```sh
+kubectl config use-context <context-name>
+```
 
 ## Secret Operations
 Create a secret imperatively:
-- `kubectl create secret`
+```sh
+kubectl create secret
+```
 
 List all secrets in the cluster:
-- `kubectl get secrets`
+```sh
+kubectl get secrets
+```
 
 Describe a specific secret:
-- `kubectl describe secret <secret-name>`
+```sh
+kubectl describe secret <secret-name>
+```
 
 ## ConfigMap Operations
 Create a ConfigMap imperatively:
-- `kubectl create configmap`
+```sh
+kubectl create configmap
+```
 
 List all ConfigMaps in the cluster:
-- `kubectl get configmaps`
+```sh
+kubectl get configmaps
+```
 
 Describe a specific ConfigMap:
-- `kubectl describe configmap <configmap-name>`
+```sh
+kubectl describe configmap <configmap-name>
+```
 
 ## Persistent Volume (PV) and Persistent Volume Claim (PVC) Operations
 List all Persistent Volumes in the cluster:
-- `kubectl get pv`
+```sh
+kubectl get pv
+```
 
 Describe a specific Persistent Volume:
-- `kubectl describe pv <pv-name>`
+```sh
+kubectl describe pv <pv-name>
+```
 
 List all Persistent Volume Claims in the cluster:
-- `kubectl get pvc`
+```sh
+kubectl get pvc
+```
 
 Describe a specific Persistent Volume Claim:
-- `kubectl describe pvc <pvc-name>`
+```sh
+kubectl describe pvc <pvc-name>
+```
 
 ## Role-Based Access Control (RBAC) Operations
 Create a role imperatively:
-- `kubectl create role`
+```sh
+kubectl create role
+```
 
 List all roles in the cluster:
-- `kubectl get roles`
+```sh
+kubectl get roles
+```
 
 Describe a specific role:
-- `kubectl describe role <role-name>`
+```sh
+kubectl describe role <role-name>
+```
 
 Create a role binding imperatively:
-- `kubectl create rolebinding`
+```sh
+kubectl create rolebinding
+```
 
 List all role bindings in the cluster:
-- `kubectl get rolebindings`
+```sh
+kubectl get rolebindings
+```
 
 Describe a specific role binding:
-- `kubectl describe rolebinding <rolebinding-name>`
+```sh
+kubectl describe rolebinding <rolebinding-name>
+```
 
 ## Ingress Operations
 List all ingresses in the cluster:
-- `kubectl get ingress`
+```sh
+kubectl get ingress
+```
 
 Describe a specific ingress:
-- `kubectl describe ingress <ingress-name>`
+```sh
+kubectl describe ingress <ingress-name>
+```
 
 ## Job and CronJob Operations
 List all jobs in the cluster:
-- `kubectl get jobs`
+```sh
+kubectl get jobs
+```
 
 Describe a specific job:
-- `kubectl describe job <job-name>`
+```sh
+kubectl describe job <job-name>
+```
 
 List all cron jobs in the cluster:
-- `kubectl get cronjobs`
+```sh
+kubectl get cronjobs
+```
 
 Describe a specific cron job:
-- `kubectl describe cronjob <cronjob-name>`
+```sh
+kubectl describe cronjob <cronjob-name>
+```
 
 ## Network Policy Operations
 List all network policies in the cluster:
-- `kubectl get networkpolicies`
+```sh
+kubectl get networkpolicies
+```
 
 Describe a specific network policy:
-- `kubectl describe networkpolicy <networkpolicy-name>`
+```sh
+kubectl describe networkpolicy <networkpolicy-name>
+```
 
 ## Namespace Resource Quota Operations
 List all resource quotas in a namespace:
-- `kubectl get resourcequotas`
+```sh
+kubectl get resourcequotas
+```
 
 Describe a specific resource quota in a namespace:
-- `kubectl describe resourcequota <resourcequota-name>`
+```sh
+kubectl describe resourcequota <resourcequota-name>
+```
 
 ## Horizontal Pod Autoscaler (HPA) Operations
 List all horizontal pod autoscalers in the cluster:
-- `kubectl get hpa`
+```sh
+kubectl get hpa
+```
 
 Describe a specific horizontal pod autoscaler:
-- `kubectl describe hpa <hpa-name>`
+```sh
+kubectl describe hpa <hpa-name>
+```
 
 ## Event Operations
 List all events in the cluster:
-- `kubectl get events`
+```sh
+kubectl get events
+```
 
 Describe a specific event:
-- `kubectl describe event <event-name>`
+```sh
+kubectl describe event <event-name>
+```
 
 ## StatefulSet Operations
 List all StatefulSets in the cluster:
-- `kubectl get statefulsets`
+```sh
+kubectl get statefulsets
+```
 
 Describe a specific StatefulSet:
-- `kubectl describe statefulset <statefulset-name>`
+```sh
+kubectl describe statefulset <statefulset-name>
+```
 
 Scale a StatefulSet:
-- `kubectl scale statefulset <statefulset-name> --replicas=<replica-count>`
+```sh
+kubectl scale statefulset <statefulset-name> --replicas=<replica-count>
+```
 
 ## DaemonSet Operations
 List all DaemonSets in the cluster:
-- `kubectl get daemonsets`
+```sh
+kubectl get daemonsets
+```
 
 Describe a specific DaemonSet:
-- `kubectl describe daemonset <daemonset-name>`
+```sh
+kubectl describe daemonset <daemonset-name>
+```
+```
 
 Feel free to copy and use this in your GitHub repository! If you need any more adjustments, just let me know. 😊
