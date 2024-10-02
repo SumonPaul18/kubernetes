@@ -10,6 +10,11 @@
     echo "kubeadm join $ipaddr:6443 --token=$token --discovery-token-ca-cert-hash sha256:$sha_token"
 
 #
+#### Check API Version of Kubernetes
+
+    kubectl api-resources | grep pods
+
+
 #### Continuously watching kubernetes all services
 
     watch kubectl get all -o wide
