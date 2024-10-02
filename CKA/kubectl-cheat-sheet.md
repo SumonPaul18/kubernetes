@@ -449,6 +449,4 @@ Describe a specific DaemonSet:
 ```sh
 kubectl describe daemonset <daemonset-name>
 ```
-```
-
-Feel free to copy and use this in your GitHub repository! If you need any more adjustments, just let me know. 😊
+### Feel free to copy and use this in your GitHub repository! If you need any more adjustments, just let me know. 😊
