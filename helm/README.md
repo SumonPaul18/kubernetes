@@ -1,4 +1,7 @@
 ---
+Installing Helm
+---
+---
 
 #### Section 1: Introduction and Helm Basics
 
