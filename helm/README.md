@@ -1,19 +1,19 @@
 ---
-# Installing Helm
+
+
+---
+
+### What is Helm?
+
+Helm is often referred to as the package manager for Kubernetes. It enables you to define, install, and manage even the most complex Kubernetes applications. Helm uses a packaging format called charts, which include all the resources needed to run an application, service, or a complete cloud-native stack inside Kubernetes.
+
+### Installing Helm
 From Script
 ```
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
 ```
-
----
-
-#### Section 1: Introduction and Helm Basics
-
-##### What is Helm?
-
-Helm is often referred to as the package manager for Kubernetes. It enables you to define, install, and manage even the most complex Kubernetes applications. Helm uses a packaging format called charts, which include all the resources needed to run an application, service, or a complete cloud-native stack inside Kubernetes.
 
 ##### How to Install helm in Ubuntu
 
