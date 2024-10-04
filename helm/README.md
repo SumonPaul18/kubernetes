@@ -1,8 +1,6 @@
 ---
 # HELM
 
----
-
 ### What is Helm?
 
 Helm is often referred to as the package manager for Kubernetes. It enables you to define, install, and manage even the most complex Kubernetes applications. Helm uses a packaging format called charts, which include all the resources needed to run an application, service, or a complete cloud-native stack inside Kubernetes.
