@@ -12,7 +12,7 @@ curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scrip
 chmod 700 get_helm.sh
 ./get_helm.sh
 ```
-[Reference:](https://helm.sh/docs/intro/install/) 
+[<b>Reference:</b> Helm Installation Guides From HELM Official Docs](https://helm.sh/docs/intro/install/) 
 
 
 ##### Important Helm Commands
