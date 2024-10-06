@@ -34,6 +34,10 @@ data:
 
 এখন, আপনার পড স্পেসিফিকেশনে এই ConfigMap ব্যবহার করুন:
 
+```
+nano pod-configmap.yaml
+```
+
 ```yaml
 apiVersion: v1
 kind: Pod
