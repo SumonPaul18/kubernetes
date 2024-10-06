@@ -187,7 +187,7 @@ configMapGenerator:
 
 ### Secret এবং base64 encode এর ব্যবহারঃ
 
-অবশ্যই! আমি আপনাকে Kubernetes Secret তৈরি এবং base64 এনকোডিং সম্পর্কে বিস্তারিতভাবে ব্যাখ্যা করছি।
+Kubernetes Secret তৈরি এবং base64 এনকোডিং সম্পর্কে বিস্তারিত ব্যাখ্যা।
 
 ### Kubernetes Secret তৈরি করা
 
