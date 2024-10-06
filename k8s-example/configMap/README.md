@@ -278,14 +278,11 @@ echo 'cGFzc3dvcmQ=' | base64 --decode
 
 এর আউটপুট হবে: `password`
 
-এইভাবে, আপনি Kubernetes Secret তৈরি এবং base64 এনকোডিং ও ডিকোডিং করতে পারেন¹(https://kubernetes.io/docs/concepts/configuration/secret/)²(https://www.cloudytuts.com/tutorials/kubernetes/how-to-base64-encode-kubernetes-secrets/)³(https://spacelift.io/blog/kubernetes-secrets). আপনার যদি আরও কোনো প্রশ্ন থাকে বা অন্য কিছু জানতে চান, জানাতে পারেন!
+এইভাবে, আপনি Kubernetes Secret তৈরি এবং base64 এনকোডিং ও ডিকোডিং করতে পারেন।
 
-¹(https://kubernetes.io/docs/concepts/configuration/secret/): [Kubernetes Secrets Documentation](https://kubernetes.io/docs/concepts/configuration/secret/)
-²(https://www.cloudytuts.com/tutorials/kubernetes/how-to-base64-encode-kubernetes-secrets/): [How to Base64 Encode Kubernetes Secrets - CloudyTuts](https://www.cloudytuts.com/tutorials/kubernetes/how-to-base64-encode-kubernetes-secrets/)
-³(https://spacelift.io/blog/kubernetes-secrets): [Kubernetes Secrets – How to Create, Use, and Manage - Spacelift](https://spacelift.io/blog/kubernetes-secrets)
-
-Source: Conversation with Copilot, 10/6/2024
-(1) Secrets - Kubernetes. https://kubernetes.io/docs/concepts/configuration/secret/.
-(2) How to Base64 Encode Kubernetes Secrets - CloudyTuts. https://www.cloudytuts.com/tutorials/kubernetes/how-to-base64-encode-kubernetes-secrets/.
-(3) Kubernetes Secrets – How to Create, Use, and Manage - Spacelift. https://spacelift.io/blog/kubernetes-secrets.
+আপনার যদি আরও কোনো প্রশ্ন থাকে বা অন্য কিছু জানতে চান, জানাতে পারেন!
+Refenence:
+- [Kubernetes Secrets Documentation](https://kubernetes.io/docs/concepts/configuration/secret/)
+- [How to Base64 Encode Kubernetes Secrets - CloudyTuts](https://www.cloudytuts.com/tutorials/kubernetes/how-to-base64-encode-kubernetes-secrets/)
+- [Kubernetes Secrets – How to Create, Use, and Manage - Spacelift](https://spacelift.io/blog/kubernetes-secrets)
 
