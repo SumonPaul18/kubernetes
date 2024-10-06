@@ -281,6 +281,7 @@ echo 'cGFzc3dvcmQ=' | base64 --decode
 এইভাবে, আপনি Kubernetes Secret তৈরি এবং base64 এনকোডিং ও ডিকোডিং করতে পারেন।
 
 আপনার যদি আরও কোনো প্রশ্ন থাকে বা অন্য কিছু জানতে চান, জানাতে পারেন!
+
 Refenence:
 - [Kubernetes Secrets Documentation](https://kubernetes.io/docs/concepts/configuration/secret/)
 - [How to Base64 Encode Kubernetes Secrets - CloudyTuts](https://www.cloudytuts.com/tutorials/kubernetes/how-to-base64-encode-kubernetes-secrets/)
