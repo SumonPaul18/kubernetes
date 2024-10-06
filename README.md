@@ -6,7 +6,6 @@ Welcome to the Kubernetes Documentation Repository! This repository contains com
 
 ## Table of Contents
 - Introduction
-- Roadmap
 - Definitions
 - Installation Guide
   - Install Kubernetes using Kubeadm
@@ -25,13 +24,6 @@ Welcome to the Kubernetes Documentation Repository! This repository contains com
 ## Introduction
 Kubernetes, also known as K8s, is an open-source system for automating the deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery.
 
-## Roadmap
-Our roadmap outlines the key milestones and features planned for this repository:
-1. **Q4 2024**: Initial release with basic installation and usage documentation.
-2. **Q1 2025**: Add advanced configuration and troubleshooting guides.
-3. **Q2 2025**: Include best practices and security guidelines.
-4. **Q3 2025**: Expand with tutorials and real-world use cases.
-
 ## Definitions
 - **Pod**: The smallest and simplest Kubernetes object. A Pod represents a set of running containers on your cluster.
 - **Node**: A worker machine in Kubernetes, which can be a VM or a physical machine.
@@ -47,42 +39,6 @@ Step-by-step guide to install Kubernetes on Ubuntu.
 
 ## Usage Guide
 ### Deploying an Application
-1. **Create a Deployment**:
-    ```yaml
-    apiVersion: apps/v1
-    kind: Deployment
-    metadata:
-      name: nginx-deployment
-    spec:
-      replicas: 3
-      selector:
-        matchLabels:
-          app: nginx
-      template:
-        metadata:
-          labels:
-            app: nginx
-        spec:
-          containers:
-          - name: nginx
-            image: nginx:1.14.2
-            ports:
-            - containerPort: 80
-    ```
-    Apply the deployment:
-    ```sh
-    kubectl apply -f deployment.yaml
-    ```
-
-2. **Expose the Deployment**:
-    ```sh
-    kubectl expose deployment nginx-deployment --type=LoadBalancer --name=nginx-service
-    ```
-
-3. **Access the Application**:
-    ```sh
-    minikube service nginx-service
-    ```
 
 ### Using ConfigMaps
 How to use ConfigMaps to manage configuration data.
