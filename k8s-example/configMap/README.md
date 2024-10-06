@@ -60,10 +60,11 @@ spec:
           key: database_port
 ```
 
-এই উদাহরণে, `database-config` নামের ConfigMap থেকে `DATABASE_HOST` এবং `DATABASE_PORT` পরিবেশ ভেরিয়েবল হিসেবে পডে ইনজেক্ট করা হয়েছে। এটি আপনাকে সহজেই ডাটাবেসের কনফিগারেশন পরিবর্তন করতে দেয়, কোড পরিবর্তন না করেই¹(https://kubernetes.io/docs/concepts/configuration/configmap/)²(https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/).
+এই উদাহরণে, `database-config` নামের ConfigMap থেকে `DATABASE_HOST` এবং `DATABASE_PORT` পরিবেশ ভেরিয়েবল হিসেবে পডে ইনজেক্ট করা হয়েছে। এটি আপনাকে সহজেই ডাটাবেসের কনফিগারেশন পরিবর্তন করতে দেয়, কোড পরিবর্তন না করেই। 
+আপনার যদি আরও কিছু জানতে চান,
 
-আপনার যদি আরও কোনো প্রশ্ন থাকে বা অন্য কিছু জানতে চান, জানাতে পারেন!
 ¹(https://kubernetes.io/docs/concepts/configuration/configmap/): [Kubernetes ConfigMap Documentation](https://kubernetes.io/docs/concepts/configuration/configmap/)
+
 ²(https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/): [Configure a Pod to Use a ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)
 
 Source: Conversation with Copilot, 10/6/2024
