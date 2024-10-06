@@ -107,7 +107,6 @@ We welcome contributions! Please read our CONTRIBUTING.md for guidelines on how 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ---
-
 Feel free to explore the documentation and contribute to make it even better!
 
-!Kubernetes Cluster
+---
