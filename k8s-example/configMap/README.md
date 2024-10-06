@@ -2,6 +2,7 @@
 
 ### 1. ConfigMap কি?
 **ConfigMap** হলো Kubernetes-এর একটি API অবজেক্ট যা কনফিগারেশন ডেটা সংরক্ষণ করতে ব্যবহৃত হয়। এটি মূলত কী-ভ্যালু আকারে ডেটা সংরক্ষণ করে। ConfigMap ব্যবহার করে আপনি আপনার অ্যাপ্লিকেশনের কনফিগারেশন ডেটা পডে ইনজেক্ট করতে পারেন, যা Environment Variable, Command-Line Argument, বা Volume Configuration ফাইল হিসেবে ব্যবহার করা যেতে পারে। 
+
 Reference: 
 - [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/)
 - [Pod-Configmap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)
