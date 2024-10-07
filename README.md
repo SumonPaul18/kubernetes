@@ -33,7 +33,7 @@ Kubernetes, also known as K8s, is an open-source system for automating the deplo
 - **Service**: An abstraction which defines a logical set of Pods and a policy by which to access them.
 
 ## Installation Guide
-### Install Kubernetes using Minikube
+### [Install Kubernetes using Minikube](https://github.com/SumonPaul18/kubernetes/tree/main/install-kubeadm)
 
 
 ### Install Kubernetes using KubeAdm
