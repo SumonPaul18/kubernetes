@@ -10,8 +10,8 @@ Welcome to the Kubernetes Documentation Repository! This repository contains com
 - Introduction
 - Definitions
 - Installation Guide
-  - Install Kubernetes using Kubeadm
-  - Install Kubernetes on Ubuntu
+  - Install Kubernetes using Minikube
+  - Install Kubernetes using KubeAdm
 - Usage Guide
   - Deploying an Application
   - Using ConfigMaps
@@ -33,11 +33,11 @@ Kubernetes, also known as K8s, is an open-source system for automating the deplo
 - **Service**: An abstraction which defines a logical set of Pods and a policy by which to access them.
 
 ## Installation Guide
-### Install Kubernetes using Kubeadm
-Detailed steps on how to install Kubernetes using Kubeadm.
+### Install Kubernetes using Minikube
 
-### Install Kubernetes on Ubuntu
-Step-by-step guide to install Kubernetes on Ubuntu.
+
+### Install Kubernetes using KubeAdm
+
 
 ## Usage Guide
 ### Deploying an Application
