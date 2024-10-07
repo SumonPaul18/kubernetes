@@ -2,7 +2,9 @@
 
 Welcome to the Kubernetes Documentation Repository! This repository contains comprehensive documentation on how to install, configure, and use Kubernetes. Whether you are a beginner or an experienced user, you'll find valuable information here.
 
-!Kubernetes Logo
+<div align="center">
+	<img src="https://github.com/SumonPaul18/kubernetes/blob/main/images/Kubernetes.png?raw=true">
+</div>
 
 ## Table of Contents
 - Introduction
