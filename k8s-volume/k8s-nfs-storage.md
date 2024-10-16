@@ -19,61 +19,6 @@
 #### Verifying to PODS in K8s Master Node
     kbectl get pods
 #
-### Way-1
-#### Create PV-PVC-POD with NFS Server
-    nano nfs-pv-pvc-pod.yaml
-####
-    apiVersion: v1
-    kind: PersistentVolume
-    metadata:
-      name: nfspv
-    spec:
-      capacity:
-        storage: 2Gi
-      accessModes:
-        - ReadWriteOnce
-      nfs:
-        server: 192.168.0.96
-        path: /nfs-share/kubernetes
-      persistentVolumeReclaimPolicy: Retain
-    
-    ---
-    apiVersion: v1
-    kind: PersistentVolumeClaim
-    metadata:
-      name: nfspvc
-    spec:
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: 2Gi
-    ---
-    #Attach PVCs to Pods
-    apiVersion: v1
-    kind: Pod
-    metadata:
-      name: k8snginx
-    spec:
-      containers:
-      - name: k8snginx
-        image: nginx
-        volumeMounts:
-        - mountPath: /usr/share/nginx/html
-          name: nfs-volume
-      volumes:
-      - name: nfs-volume
-        nfs:
-          server: 192.168.0.96
-          path: /nfs-share/kubernetes/html
-
-####
-    kubectl create -f nfs-pv-pvc-pod.yaml
-####
-    kubectl get pv,pvc,pod
-####
-    kubectl port-forward k8snginx 8025:80 --address 0.0.0.0
-#
 ### Way-2
 #### Create PV-PVC-POD with NFS Server
     nano nfs-pv-pvc-pod.yaml
