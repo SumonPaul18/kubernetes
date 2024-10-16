@@ -19,7 +19,6 @@
 #### Verifying to PODS in K8s Master Node
     kbectl get pods
 #
-### Way-2
 #### Create PV-PVC-POD with NFS Server
     nano nfs-pv-pvc-pod.yaml
 ####
