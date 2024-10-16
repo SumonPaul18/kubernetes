@@ -6,7 +6,7 @@
 Helm is often referred to as the package manager for Kubernetes. It enables you to define, install, and manage even the most complex Kubernetes applications. Helm uses a packaging format called charts, which include all the resources needed to run an application, service, or a complete cloud-native stack inside Kubernetes.
 
 ### Installing Helm
-From Script
+Section 1: Installation
 ```
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
@@ -61,7 +61,7 @@ Edit `values.yaml` to include:
 replicaCount: 1
 
 image:
-  repository: trainwithshubham/node-app-test-new
+  repository: sumonpaul/mynginx
   tag: latest
   pullPolicy: IfNotPresent
 
@@ -126,7 +126,7 @@ Use these commands to package and deploy the chart:
 helm package node-app-chart
 
 # Deploy the chart
-helm install my-node-app ./node-app-chart
+helm install mynginx ./mynginx
 ```
 
 #### Section 9: List the Deployment
