@@ -27,6 +27,12 @@ kubectl apply -f nginx-deploy.yaml
 kubectl get deployment
 ```
 ---
+## Scaling a Deployment
+### To change the number of replicas for a deployment using an imperative command in Kubernetes, you can use the kubectl scale command.
+```
+kubectl scale deployment/nginx-deploy --replicas=5
+```
+---
 ### You can change the image of a running `deployment` or pod using the `kubectl` set image command.
 #### Update Pod Image
 ```
