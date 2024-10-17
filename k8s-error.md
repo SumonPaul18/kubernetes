@@ -30,10 +30,10 @@ systemctl stop kubelet
 systemctl stop docker
 ```
 ```
-iptables — flush
+iptables --flush
 ```
 ```
-iptables -tnat — flush
+iptables -tnat --flush
 ```
 ```
 systemctl start kubelet
@@ -43,8 +43,3 @@ systemctl start docker
 ```
 This is the complete solution.
 #
-
-
-
-
-
