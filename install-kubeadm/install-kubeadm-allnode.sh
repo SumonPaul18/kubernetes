@@ -30,7 +30,7 @@ hostname -f
 #
 sudo apt update -y && sudo apt upgrade -y
 #
-sudo swapoff –a
+sudo swapoff -a
 swapoff -a && sed -i '/swap/d' /etc/fstab
 #
 cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
