@@ -18,6 +18,7 @@ echo
 echo -e "${bgreen}Changed Time Zone:${nc} "
 timedatectl
 echo
+ip a
 #
 #Install Kubernetes Using Kubeadm on Ubuntu 22.04.xx
 read -p "$(echo -e "${bgreen}${bold}${blink}Type System Hostname: ${nc}")" SYSTEMHOSTNAME
