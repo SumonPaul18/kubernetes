@@ -19,7 +19,8 @@ echo
 echo
 #read -p "$(echo -e "${bgreen}${bold}${blink}TYPE POD-NETWORK-CIDR Ex-(10.244.0.0/16): ${nc}")" PODCIDR
 #sudo kubeadm init --apiserver-advertise-address=$MASTERIP --pod-network-cidr=$PODCIDR | tee kubeadm-init-log.txt
-sudo kubeadm init
+#sudo kubeadm init
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16 | tee kubeadm-init-log.txt
 #To start using your cluster, you need to run the following as a regular user:
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
