@@ -30,8 +30,8 @@ helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/
 helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
   --create-namespace \
   --namespace nfs-provisioner \
-  --set nfs.server=node004.b9tcluster.local \
-  --set nfs.path=/data
+  --set nfs.server=nfs.paulco.xyz \
+  --set nfs.path=/nfs-share/kubernetes
 ```
 
 #### Reference:
