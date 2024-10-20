@@ -6,14 +6,24 @@ showmount -e [NFS Server IP/FQDN]
 ```
 showmount -e 192.168.0.96
 ```
-Way-01
+#### Verify Helm Installation and Others
+```
+helm version
+```
+```
+helm repo list
+```
+```
+helm list
+```
+#### Way-01
 ```
 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
 helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
     --set nfs.server=192.168.0.96 \
     --set nfs.path=/nfs-share/kubernetes
 ```
-Way-02
+#### Way-02
 ```
 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
 
@@ -23,7 +33,7 @@ helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs
     --set storageClass.onDelete=retain \
     --set storageClass.pathPattern='/${.PVC.namespace}-${.PVC.name}' 
 ```
-Way-03
+#### Way-03
 ```
 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner
 
@@ -33,6 +43,18 @@ helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs
   --set nfs.server=nfs.paulco.xyz \
   --set nfs.path=/nfs-share/kubernetes
 ```
+#### Verify NFS Provisioner
+```
+kubectl get sc
+```
+```
+kubectl get pv,pvc
+```
+#### Uninstallation NFS Provisioner
+```
+helm uninstall nfs-subdir-external-provisioner
+```
+
 
 #### Reference:
 - [NFS Provisioner Plugins for Kubernetes](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner.git)
