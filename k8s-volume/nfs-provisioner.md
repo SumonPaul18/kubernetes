@@ -50,6 +50,54 @@ kubectl get sc
 ```
 kubectl get pv,pvc
 ```
+#### Dynamic PVC Volume Create Testing:
+```
+nano dyna-nfsvol-nginx.yaml
+```
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx
+  name: nfs-nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      volumes:
+        - name: nfs-nginx
+          persistentVolumeClaim:
+            claimName: nfs-pvc
+      containers:
+        - image: nginx
+          name: nginx
+          volumeMounts:
+            - name: nfs-nginx
+              mountPath: /usr/share/nginx/html
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: nfs-client
+  resources:
+    requests:
+      storage: 1Gi
+```
+#### Apply the Deployment:
+```
+kubectl apply -f dyna-nfsvol-nginx.yaml
+
 #### Uninstallation NFS Provisioner
 ```
 helm uninstall nfs-subdir-external-provisioner
