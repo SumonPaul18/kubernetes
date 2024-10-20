@@ -97,7 +97,7 @@ spec:
 #### Apply the Deployment:
 ```
 kubectl apply -f dyna-nfsvol-nginx.yaml
-
+```
 #### Uninstallation NFS Provisioner
 ```
 helm uninstall nfs-subdir-external-provisioner
