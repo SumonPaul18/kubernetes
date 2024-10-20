@@ -1,5 +1,11 @@
+# How to Setup Dynamic NFS Provisioning in a Kubernetes Cluster
 
+#### Show NFS Server Share:
+showmount -e [NFS Server IP/FQDN]
 
+```
+showmount -e 192.168.0.96
+```
 ```
 helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
 helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner \
