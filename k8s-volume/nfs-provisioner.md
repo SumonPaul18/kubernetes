@@ -26,3 +26,4 @@ helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs
 
 #### Reference:
 - [NFS Provisioner Plugins for Kubernetes](https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner.git)
+- [Dynamic-NFS-Provisioning](https://hbayraktar.medium.com/how-to-setup-dynamic-nfs-provisioning-in-a-kubernetes-cluster-cbf433b7de29)
