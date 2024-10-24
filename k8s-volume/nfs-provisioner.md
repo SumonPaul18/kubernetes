@@ -2,7 +2,7 @@
 
 **Table of Contents**
 
-**Steps 1: Prepare the NFS Server**
+Steps 1: Prepare the NFS Server
 
 Steps 2: Install and Configure NFS Client Provisioner
 
