@@ -29,7 +29,7 @@ Steps 3: Create Persistent Volume Claims (PVCs)
 3. **Local Persistent Volumes:** ডেটা রেপ্লিকেশন এবং ব্যাকআপ চ্যালেঞ্জিং হতে পারে.
 
 **Real Life Production Environment এ ব্যবহৃত Volume:**
-- **Ceph এবং NFS** সাধারণত ব্যবহৃত হয়, কারণ এগুলো স্কেলেবিলিটি এবং রিলায়েবিলিটি প্রদান করে¹(https://kubernetes.io/docs/concepts/storage/volumes/).
+- **Ceph এবং NFS** সাধারণত ব্যবহৃত হয়, কারণ এগুলো স্কেলেবিলিটি এবং রিলায়েবিলিটি প্রদান করে.
 
 **Kubernetes Cluster এ NFS Volume ব্যবহার করার পদ্ধতি:**
 
