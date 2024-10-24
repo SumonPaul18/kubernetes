@@ -1,9 +1,12 @@
 # How to Setup Dynamic NFS Provisioning in a Kubernetes Cluster
 
-Table of Contents
+**Table of Contents**
 Steps 1: Prepare the NFS Server
+
 Steps 2: Install and Configure NFS Client Provisioner
+
 Steps 3: Master & Worker Nodes Install nfs-common
+
 Steps 3: Create Persistent Volume Claims (PVCs)
 
 #### Show NFS Server Share:
