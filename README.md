@@ -1,4 +1,4 @@
-# Kubernetes Documentation Repository
+# Kubernetes Documentation
 
 Welcome to the Kubernetes Documentation Repository! This repository contains comprehensive documentation on how to install, configure, and use Kubernetes. Whether you are a beginner or an experienced user, you'll find valuable information here.
 
