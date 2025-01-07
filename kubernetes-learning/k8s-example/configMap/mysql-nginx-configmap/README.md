@@ -213,3 +213,237 @@ kubectl apply -f webapp-service.yaml
 ### উপসংহার
 
 এই ধাপগুলি অনুসরণ করে, আপনি ConfigMap ব্যবহার করে একটি সম্পূর্ণ অ্যাপ্লিকেশন Kubernetes এ ডিপ্লয় করতে পারবেন। এই প্রক্রিয়াটি আপনাকে কনফিগারেশন ডেটা অ্যাপ্লিকেশন কোড থেকে আলাদা রাখতে এবং বিভিন্ন পরিবেশে সহজে পরিচালনা করতে সাহায্য করবে।
+
+---
+
+নিশ্চিতভাবে! এখানে আমি দুটি উদাহরণ দিচ্ছি: একটি Secret ব্যবহার না করে এবং একটি Secret ব্যবহার করে।
+
+### Secret ব্যবহার না করে
+
+#### MySQL Deployment YAML ফাইল (`mysql-deployment.yaml`)
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:5.7
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: "rootpassword"
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
+```
+
+#### MySQL Service YAML ফাইল (`mysql-service.yaml`)
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql
+```
+
+#### phpMyAdmin Deployment YAML ফাইল (`phpmyadmin-deployment.yaml`)
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+      - name: phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        ports:
+        - containerPort: 80
+        env:
+        - name: PMA_HOST
+          value: mysql
+        - name: PMA_PORT
+          value: "3306"
+        - name: MYSQL_ROOT_PASSWORD
+          value: "rootpassword"
+```
+
+#### phpMyAdmin Service YAML ফাইল (`phpmyadmin-service.yaml`)
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpmyadmin
+spec:
+  selector:
+    app: phpmyadmin
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+```
+
+### Secret ব্যবহার করে
+
+#### Secret YAML ফাইল (`mysql-secret.yaml`)
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secrets
+type: Opaque
+data:
+  root-password: c3VwZXItc2VjcmV0LXBhc3N3b3Jk  # "super-secret-password" এর base64 এনকোডেড মান
+```
+
+#### MySQL Deployment YAML ফাইল (`mysql-deployment.yaml`)
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - image: mysql:5.7
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secrets
+              key: root-password
+        ports:
+        - containerPort: 3306
+          name: mysql
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
+```
+
+#### MySQL Service YAML ফাইল (`mysql-service.yaml`)
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql
+```
+
+#### phpMyAdmin Deployment YAML ফাইল (`phpmyadmin-deployment.yaml`)
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phpmyadmin
+  template:
+    metadata:
+      labels:
+        app: phpmyadmin
+    spec:
+      containers:
+      - name: phpmyadmin
+        image: phpmyadmin/phpmyadmin
+        ports:
+        - containerPort: 80
+        env:
+        - name: PMA_HOST
+          value: mysql
+        - name: PMA_PORT
+          value: "3306"
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secrets
+              key: root-password
+```
+
+#### phpMyAdmin Service YAML ফাইল (`phpmyadmin-service.yaml`)
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpmyadmin
+spec:
+  selector:
+    app: phpmyadmin
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+```
+
+এই ফাইলগুলি তৈরি করার পরে, নিম্নলিখিত কমান্ডগুলি চালান:
+
+```sh
+kubectl apply -f mysql-secret.yaml
+kubectl apply -f mysql-deployment.yaml
+kubectl apply -f mysql-service.yaml
+kubectl apply -f phpmyadmin-deployment.yaml
+kubectl apply -f phpmyadmin-service.yaml
+```
+
+এই ধাপগুলি অনুসরণ করে আপনি MySQL ডাটাবেস এবং phpMyAdmin ডিপ্লয় করতে পারবেন, এবং Secret ব্যবহার করে ডাটাবেস পাসওয়ার্ড সুরক্ষিত রাখতে পারবেন। যদি আপনার আরও প্রশ্ন থাকে বা সাহায্য প্রয়োজন হয়, নির্দ্বিধায় জিজ্ঞাসা করুন!
