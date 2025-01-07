@@ -31,7 +31,10 @@ spec:
         name: mysql
         env:
         - name: MYSQL_ROOT_PASSWORD
-          value: "rootpassword"
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: MYSQL_ROOT_PASSWORD
         ports:
         - containerPort: 3306
           name: mysql
@@ -93,14 +96,6 @@ spec:
     - ReadWriteOnce
 ```
 
-এই ফাইলগুলি তৈরি করার পরে, নিম্নলিখিত কমান্ডগুলি চালান:
-
-```sh
-kubectl apply -f mysql-pv.yaml
-kubectl apply -f mysql-deployment.yaml
-kubectl apply -f mysql-service.yaml
-```
-
 ### ধাপ ২: ConfigMap তৈরি করা
 
 এখন, অ্যাপ্লিকেশনের জন্য প্রয়োজনীয় কনফিগারেশন ডেটা সংরক্ষণ করতে একটি ConfigMap তৈরি করুন।
@@ -115,19 +110,13 @@ nano app-configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: phpmyadmin-config
+  name: app-configmap
 data:
   PMA_HOST: mysql
   PMA_PORT: "3306"
   MYSQL_DATABASE: "mydatabase"
   MYSQL_USER: "root"
   MYSQL_PASSWORD: "rootpassword"
-```
-
-এই ConfigMap তৈরি করতে, নিম্নলিখিত কমান্ডটি চালান:
-
-```sh
-kubectl apply -f app-configmap.yaml
 ```
 
 ### ধাপ ৩: ওয়েব অ্যাপ্লিকেশন ডিপ্লয় করা
@@ -162,12 +151,12 @@ spec:
         - name: DATABASE_URL
           valueFrom:
             configMapKeyRef:
-              name: app-config
+              name: app-configmap
               key: database_url
         - name: DATABASE_NAME
           valueFrom:
             configMapKeyRef:
-              name: app-config
+              name: app-configmap
               key: database_name
         - name: DATABASE_USER
           valueFrom:
@@ -177,7 +166,7 @@ spec:
         - name: DATABASE_PASSWORD
           valueFrom:
             configMapKeyRef:
-              name: app-config
+              name: app-configmap
               key: database_password
         ports:
         - containerPort: 80
@@ -204,77 +193,11 @@ spec:
   type: LoadBalancer
 ```
 
-এই ফাইলগুলি তৈরি করার পরে, নিম্নলিখিত কমান্ডগুলি চালান:
-
-```sh
-kubectl apply -f webapp-deployment.yaml
-kubectl apply -f webapp-service.yaml
-```
-
-### উপসংহার
-
-এই ধাপগুলি অনুসরণ করে, আপনি ConfigMap ব্যবহার করে একটি সম্পূর্ণ অ্যাপ্লিকেশন Kubernetes এ ডিপ্লয় করতে পারবেন। এই প্রক্রিয়াটি আপনাকে কনফিগারেশন ডেটা অ্যাপ্লিকেশন কোড থেকে আলাদা রাখতে এবং বিভিন্ন পরিবেশে সহজে পরিচালনা করতে সাহায্য করবে।
-
----
-
-নিশ্চিতভাবে! এখানে আমি দুটি উদাহরণ দিচ্ছি: একটি Secret ব্যবহার না করে এবং একটি Secret ব্যবহার করে।
-
-### Secret ব্যবহার না করে
-
-#### MySQL Deployment YAML ফাইল (`mysql-deployment.yaml`)
-
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mysql
-spec:
-  selector:
-    matchLabels:
-      app: mysql
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: mysql
-    spec:
-      containers:
-      - image: mysql:5.7
-        name: mysql
-        env:
-        - name: MYSQL_ROOT_PASSWORD
-          valueFrom:
-            configMapKeyRef:
-              name: mysql-config
-              key: MYSQL_ROOT_PASSWORD
-        ports:
-        - containerPort: 3306
-          name: mysql
-        volumeMounts:
-        - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
-      volumes:
-      - name: mysql-persistent-storage
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
-```
-
-#### MySQL Service YAML ফাইল (`mysql-service.yaml`)
-
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: mysql
-spec:
-  ports:
-  - port: 3306
-  selector:
-    app: mysql
-```
-
 #### phpMyAdmin Deployment YAML ফাইল (`phpmyadmin-deployment.yaml`)
+
+```
+nano phpmyadmin-deployment.yaml
+```
 
 ```yaml
 apiVersion: apps/v1
@@ -300,46 +223,73 @@ spec:
         - name: PMA_HOST
           valueFrom:
             configMapKeyRef:
-              name: phpmyadmin-config
+              name: app-configmap
               key: PMA_HOST
         - name: PMA_PORT
           valueFrom:
             configMapKeyRef:
-              name: phpmyadmin-config
+              name: app-configmap
               key: PMA_PORT
         - name: MYSQL_DATABASE
           valueFrom:
             configMapKeyRef:
-              name: phpmyadmin-config
+              name: app-configmap
               key: MYSQL_DATABASE
         - name: MYSQL_USER
           valueFrom:
             configMapKeyRef:
-              name: phpmyadmin-config
+              name: app-configmap
               key: MYSQL_USER
         - name: MYSQL_PASSWORD
           valueFrom:
             configMapKeyRef:
-              name: phpmyadmin-config
+              name: app-configmap
               key: MYSQL_PASSWORD
 ```
 
 #### phpMyAdmin Service YAML ফাইল (`phpmyadmin-service.yaml`)
 
+```
+nano phpmyadmin-service.yaml
+```
+
 ```yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: phpmyadmin
+  name: phpmyadmin-service
 spec:
   selector:
     app: phpmyadmin
   ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 80
-  type: LoadBalancer
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
 ```
+
+এই ফাইলগুলি তৈরি করার পরে, নিম্নলিখিত কমান্ডগুলি চালান:
+
+```sh
+kubectl apply -f mysql-pv.yaml
+kubectl apply -f mysql-deployment.yaml
+kubectl apply -f mysql-service.yaml
+kubectl apply -f app-configmap.yaml
+kubectl apply -f webapp-deployment.yaml
+kubectl apply -f webapp-service.yaml
+kubectl apply -f phpmyadmin-deployment.yaml
+kubectl apply -f phpmyadmin-service.yaml
+```
+
+```
+kubectl get deploy
+```
+
+### উপসংহার
+
+এই ধাপগুলি অনুসরণ করে, আপনি ConfigMap ব্যবহার করে একটি সম্পূর্ণ অ্যাপ্লিকেশন Kubernetes এ ডিপ্লয় করতে পারবেন। এই প্রক্রিয়াটি আপনাকে কনফিগারেশন ডেটা অ্যাপ্লিকেশন কোড থেকে আলাদা রাখতে এবং বিভিন্ন পরিবেশে সহজে পরিচালনা করতে সাহায্য করবে।
+
+---
 
 ### Secret ব্যবহার করে
 
