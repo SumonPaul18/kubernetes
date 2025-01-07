@@ -115,12 +115,13 @@ nano app-configmap.yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: app-config
+  name: phpmyadmin-config
 data:
-  database_url: "mysql"
-  database_name: "mydatabase"
-  database_user: "root"
-  database_password: "rootpassword"
+  PMA_HOST: mysql
+  PMA_PORT: "3306"
+  MYSQL_DATABASE: "mydatabase"
+  MYSQL_USER: "root"
+  MYSQL_PASSWORD: "rootpassword"
 ```
 
 এই ConfigMap তৈরি করতে, নিম্নলিখিত কমান্ডটি চালান:
