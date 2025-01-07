@@ -295,11 +295,30 @@ spec:
         - containerPort: 80
         env:
         - name: PMA_HOST
-          value: mysql
+          valueFrom:
+            configMapKeyRef:
+              name: phpmyadmin-config
+              key: PMA_HOST
         - name: PMA_PORT
-          value: "3306"
-        - name: MYSQL_ROOT_PASSWORD
-          value: "rootpassword"
+          valueFrom:
+            configMapKeyRef:
+              name: phpmyadmin-config
+              key: PMA_PORT
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: phpmyadmin-config
+              key: MYSQL_DATABASE
+        - name: MYSQL_USER
+          valueFrom:
+            configMapKeyRef:
+              name: phpmyadmin-config
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: phpmyadmin-config
+              key: MYSQL_PASSWORD
 ```
 
 #### phpMyAdmin Service YAML ফাইল (`phpmyadmin-service.yaml`)
