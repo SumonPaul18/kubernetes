@@ -112,11 +112,12 @@ kind: ConfigMap
 metadata:
   name: app-configmap
 data:
-  PMA_HOST: mysql
-  PMA_PORT: "3306"
-  MYSQL_DATABASE: "mydatabase"
+  MYSQL_ROOT_PASSWORD: "configmap"
+  MYSQL_DATABASE: "configmap-db"
   MYSQL_USER: "root"
-  MYSQL_PASSWORD: "rootpassword"
+  MYSQL_PASSWORD: "configmap"
+  PMA_HOST: "mysql"
+  PMA_PORT: "3306"
 ```
 
 ### ধাপ ৩: ওয়েব অ্যাপ্লিকেশন ডিপ্লয় করা
