@@ -162,7 +162,7 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: your-webapp-image
+        image: nginx
         env:
         - name: DATABASE_URL
           valueFrom:
