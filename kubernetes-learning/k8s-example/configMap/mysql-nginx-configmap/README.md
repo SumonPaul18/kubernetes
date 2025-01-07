@@ -35,6 +35,21 @@ spec:
             configMapKeyRef:
               name: app-configmap
               key: MYSQL_ROOT_PASSWORD
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: MYSQL_DATABASE
+        - name: MYSQL_USER
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: MYSQL_PASSWORD
         ports:
         - containerPort: 3306
           name: mysql
