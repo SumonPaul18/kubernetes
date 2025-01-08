@@ -113,14 +113,21 @@ nano mysql-pv.yaml
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: mysql-pv
+  name: nfs-pv-configmap
 spec:
   capacity:
     storage: 1Gi
+  volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
-  hostPath:
-    path: "/mnt/data"
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /nfs-share/configmap/mysql
+    server: 192.168.0.96
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
