@@ -174,22 +174,22 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: app-configmap
-              key: database_url
+              key: PMA_HOST
         - name: DATABASE_NAME
           valueFrom:
             configMapKeyRef:
               name: app-configmap
-              key: database_name
+              key: MYSQL_DATABASE
         - name: DATABASE_USER
           valueFrom:
             configMapKeyRef:
               name: app-config
-              key: database_user
+              key: MYSQL_USER
         - name: DATABASE_PASSWORD
           valueFrom:
             configMapKeyRef:
               name: app-configmap
-              key: database_password
+              key: MYSQL_PASSWORD
         ports:
         - containerPort: 80
 ```
@@ -210,7 +210,7 @@ spec:
     app: webapp
   ports:
   - protocol: TCP
-    port: 80
+    port: 8085
     targetPort: 80
   type: LoadBalancer
 ```
@@ -240,7 +240,7 @@ spec:
       - name: phpmyadmin
         image: phpmyadmin/phpmyadmin
         ports:
-        - containerPort: 80
+        - containerPort: 8086
         env:
         - name: PMA_HOST
           valueFrom:
@@ -285,8 +285,8 @@ spec:
     app: phpmyadmin
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 8086
+      targetPort: 8086
   type: NodePort
 ```
 
