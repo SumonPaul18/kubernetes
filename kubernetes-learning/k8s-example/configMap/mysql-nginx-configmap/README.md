@@ -310,6 +310,25 @@ kubectl apply -f phpmyadmin-service.yaml
 ```
 kubectl get deploy
 ```
+```
+kubectl get pod
+```
+```
+kubectl get pv,pvc
+```
+```
+kubectl get configmap
+```
+```
+kubectl get svc
+```
+
+### Delete all 
+```
+kubectl delete deploy webapp phpmyadmin mysql
+kubectl delete svc webapp phpmyadmin-service mysql
+kubectl delete configmap app-configmap
+```
 
 ### উপসংহার
 
