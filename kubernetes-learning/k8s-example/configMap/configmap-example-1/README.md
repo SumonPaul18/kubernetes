@@ -225,6 +225,18 @@ kubectl get services -n web-app
 ### ৩। ফাইলগুলো ডিলেট করা
 যদি আপনি ডেপ্লয়মেন্ট এবং অন্যান্য রিসোর্সগুলো ডিলেট করতে চান, নিচের কমান্ডগুলো ব্যবহার করুন:
 
+একটি নেমস্পেসের মধ্যে থাকা সব রিসোর্স একসাথে ডিলেট করার জন্য আপনি নিচের কমান্ডটি ব্যবহার করতে পারেন:
+
+উদাহরণস্বরূপ, যদি আপনার নেমস্পেসের নাম `web-app` হয়, তাহলে কমান্ডটি হবে:
+
+```bash
+kubectl delete all --all -n web-app
+```
+
+এই কমান্ডটি `web-app` নেমস্পেসের মধ্যে থাকা সব পড, সার্ভিস, ডেপ্লয়মেন্ট ইত্যাদি ডিলেট করবে[1](https://www.cloudytuts.com/tutorials/kubernetes/how-to-delete-kubernetes-resources/)[2](https://stackable.tech/en/deleting-custom-resources-in-a-kubernetes-namespace/)।
+[1](https://www.cloudytuts.com/tutorials/kubernetes/how-to-delete-kubernetes-resources/): [CloudyTuts - How to Delete Kubernetes Resources](https://www.cloudytuts.com/tutorials/kubernetes/how-to-delete-kubernetes-resources/)
+[2](https://stackable.tech/en/deleting-custom-resources-in-a-kubernetes-namespace/): [Stackable - Deleting Custom Resources in a Kubernetes Namespace](https://stackable.tech/en/deleting-custom-resources-in-a-kubernetes-namespace/)
+
 ```bash
 kubectl delete -f phpmyadmin-deployment.yaml
 kubectl delete -f nginx-deployment.yaml
