@@ -185,7 +185,7 @@ spec:
         - name: DATABASE_USER
           valueFrom:
             configMapKeyRef:
-              name: app-config
+              name: app-configmap
               key: MYSQL_USER
         - name: DATABASE_PASSWORD
           valueFrom:
