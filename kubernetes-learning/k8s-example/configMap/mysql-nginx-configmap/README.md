@@ -134,6 +134,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: mysql-pv-claim
 spec:
+  storageClassName: nfs
   resources:
     requests:
       storage: 1Gi
