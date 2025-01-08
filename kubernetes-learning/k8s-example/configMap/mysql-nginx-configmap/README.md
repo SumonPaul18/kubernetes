@@ -18,7 +18,7 @@ metadata:
 data:
   MYSQL_ROOT_PASSWORD: "configmap"
   MYSQL_DATABASE: "configmap-db"
-  MYSQL_USER: "root"
+  MYSQL_USER: "admin"
   MYSQL_PASSWORD: "configmap"
   PMA_HOST: "mysql"
   PMA_PORT: "3306"
@@ -82,7 +82,7 @@ spec:
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
-          claimName: mysql-pv-claim
+          claimName: configmap-pvc-claim
 ```
 ### ধাপ ৩: MySQL এর জন্য সার্ভিস তৈরি করা 
 #### MySQL Service YAML ফাইল (`mysql-service.yaml`)
@@ -103,17 +103,18 @@ spec:
     app: mysql
 ```
 ### ধাপ ৪: MySQL এর জন্য Persistent Volume তৈরি করা
-#### Persistent Volume এবং Persistent Volume Claim YAML ফাইল (`mysql-pv.yaml`)
+### আমি এখানে PV হিসাবে NFS Storage ব্যবহার করেছি। 
+#### Persistent Volume এবং Persistent Volume Claim YAML ফাইল (`mysql-pv-pvc.yaml`)
 
 ```
-nano mysql-pv.yaml
+nano mysql-pv-pvc.yaml
 ```
 
 ```yaml
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: nfs-pv-configmap
+  name: configmap-nfs-pv
 spec:
   capacity:
     storage: 1Gi
@@ -132,14 +133,14 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: mysql-pv-claim
+  name: configmap-pvc-claim
 spec:
   storageClassName: nfs
+  accessModes:
+    - ReadWriteMany
   resources:
     requests:
       storage: 1Gi
-  accessModes:
-    - ReadWriteOnce
 ```
 
 ### ধাপ ৫: ওয়েব অ্যাপ্লিকেশন ডিপ্লয় করা
@@ -281,20 +282,22 @@ apiVersion: v1
 kind: Service
 metadata:
   name: phpmyadmin-service
+  labels:
+    app: phpmyadmin
 spec:
   selector:
     app: phpmyadmin
   ports:
     - protocol: TCP
       port: 8086
-      targetPort: 8086
-  type: NodePort
+      targetPort: 80
+  type: LoadBalancer
 ```
 
 এই ফাইলগুলি তৈরি করার পরে, নিম্নলিখিত কমান্ডগুলি চালান:
 
 ```sh
-kubectl apply -f mysql-pv.yaml
+kubectl apply -f mysql-pv-pvc.yaml
 kubectl apply -f mysql-deployment.yaml
 kubectl apply -f mysql-service.yaml
 kubectl apply -f app-configmap.yaml
