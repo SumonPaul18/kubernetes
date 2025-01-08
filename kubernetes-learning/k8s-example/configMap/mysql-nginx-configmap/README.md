@@ -242,7 +242,7 @@ spec:
       - name: phpmyadmin
         image: phpmyadmin/phpmyadmin
         ports:
-        - containerPort: 8086
+        - containerPort: 80
         env:
         - name: PMA_HOST
           valueFrom:
