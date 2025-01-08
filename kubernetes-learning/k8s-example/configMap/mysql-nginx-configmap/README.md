@@ -329,6 +329,11 @@ kubectl delete deploy webapp phpmyadmin mysql
 kubectl delete svc webapp phpmyadmin-service mysql
 kubectl delete configmap app-configmap
 ```
+### Delete PV,PVC
+```
+kubectl delete pvc configmap-pvc-claim
+kubectl delete pv configmap-nfs-pv
+```
 
 ### উপসংহার
 
