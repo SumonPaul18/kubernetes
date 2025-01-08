@@ -1,4 +1,15 @@
-এখানে K8s ConfigMap ব্যবহারের একটি বাস্তব উদাহরণ দেওয়া হলো যেখানে একটি নেমস্পেসের মধ্যে MySQL, Nginx, এবং phpMyAdmin ডেপ্লয় করা হয়েছে এবং NFS persistent volume ব্যবহার করা হয়েছে।
+# How to Use ConfigMap & Secret on Kubernetes
+
+~~~
+rm -rf kubernetes
+git clone https://github.com/SumonPaul18/kubernetes.git
+cd kubernetes/k8s-example/configMap/configmap-example-1
+kubectl apply -f .
+kubectl get deploy,pv,pvc,pod
+~~~
+---
+# Details:
+## এখানে K8s ConfigMap ব্যবহারের একটি বাস্তব উদাহরণ দেওয়া হলো যেখানে একটি নেমস্পেসের মধ্যে MySQL, Nginx, এবং phpMyAdmin ডেপ্লয় করা হয়েছে এবং NFS persistent volume ব্যবহার করা হয়েছে।
 
 ### ধাপ ১: Namespace তৈরি করা
 ```yaml
