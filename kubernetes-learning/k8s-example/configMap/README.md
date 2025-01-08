@@ -35,13 +35,13 @@ kubectl apply -f configmap.yaml
 kubectl get configmap
 ```
 
-#### kubectl কমান্ড ব্যবহার করে
+### 4. kubectl কমান্ড ব্যবহার করে
 আপনি সরাসরি কমান্ড লাইন থেকে ConfigMap তৈরি করতে পারেন:
 ```
 kubectl create configmap example-config --from-literal=database_url=mongodb://localhost:27017 --from-literal=log_level=debug
 ```
 
-### 3. ConfigMap ব্যবহার নিয়ে একটি বাস্তব ভিত্তিক উদাহরণ
+### 5. ConfigMap ব্যবহার নিয়ে একটি বাস্তব ভিত্তিক উদাহরণ
 ধরা যাক, আপনি একটি অ্যাপ্লিকেশন তৈরি করছেন যা একটি ডাটাবেসের সাথে সংযোগ স্থাপন করে। আপনি চান যে ডাটাবেসের হোস্টনেম এবং পোর্ট নম্বর কনফিগারেশন ফাইলে সংরক্ষিত থাকবে, যাতে আপনি সহজেই এই তথ্য পরিবর্তন করতে পারেন।
 
 প্রথমে, একটি ConfigMap তৈরি করুন যা এই কনফিগারেশন ডেটা সংরক্ষণ করবে:
@@ -97,7 +97,7 @@ Reference:
 
 - [Configure a Pod to Use a ConfigMap](https://kubernetes.io/docs/tasks/configure-pod-container/configure-pod-configmap/)
 
-#
+---
 
 ###  ConfigMap ছাড়া আর কি অন্য কোনো উপায় আছে?
 
@@ -212,7 +212,7 @@ configMapGenerator:
 
 এই পদ্ধতিগুলো আপনাকে Kubernetes-এ কনফিগারেশন ডেটা পরিচালনা করতে সাহায্য করবে। আপনার যদি আরও কোনো প্রশ্ন থাকে বা অন্য কিছু জানতে চান, জানাতে পারেন!
 
-# 
+---
 
 ### Secret এবং base64 encode এর ব্যবহারঃ
 
