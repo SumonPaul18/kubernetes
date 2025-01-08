@@ -306,6 +306,10 @@ kubectl apply -f webapp-service.yaml
 kubectl apply -f phpmyadmin-deployment.yaml
 kubectl apply -f phpmyadmin-service.yaml
 ```
+### অথবা
+```
+kubectl apply -f .
+```
 
 ```
 kubectl get deploy
