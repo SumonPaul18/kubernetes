@@ -1,8 +1,31 @@
 ## ConfigMap ব্যবহার করে একটি সাধারণ ওয়েব অ্যাপ্লিকেশন এবং একটি ডাটাবেস (MySQL) Kubernetes এ ডিপ্লয় করার প্রক্রিয়া ধাপে ধাপে  নিচে দেওয়া হল।
 
-### ধাপ ১: MySQL ডাটাবেস ডিপ্লয় করা
+### ধাপ ১: ConfigMap তৈরি করা
 
-প্রথমে, MySQL ডাটাবেসের জন্য একটি ডিপ্লয়মেন্ট এবং সার্ভিস তৈরি করুন।
+এখন, অ্যাপ্লিকেশনের জন্য প্রয়োজনীয় কনফিগারেশন ডেটা সংরক্ষণ করতে একটি ConfigMap তৈরি করুন।
+
+#### ConfigMap YAML ফাইল (`app-configmap.yaml`)
+
+```
+nano app-configmap.yaml
+```
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-configmap
+data:
+  MYSQL_ROOT_PASSWORD: "configmap"
+  MYSQL_DATABASE: "configmap-db"
+  MYSQL_USER: "root"
+  MYSQL_PASSWORD: "configmap"
+  PMA_HOST: "mysql"
+  PMA_PORT: "3306"
+```
+### ধাপ ২: MySQL ডাটাবেস ডিপ্লয় করা
+
+MySQL ডাটাবেসের জন্য একটি ডিপ্লয়মেন্ট এবং সার্ভিস তৈরি করুন।
 
 #### MySQL Deployment YAML ফাইল (`mysql-deployment.yaml`)
 
@@ -61,7 +84,7 @@ spec:
         persistentVolumeClaim:
           claimName: mysql-pv-claim
 ```
-
+### ধাপ ৩: MySQL এর জন্য সার্ভিস তৈরি করা 
 #### MySQL Service YAML ফাইল (`mysql-service.yaml`)
 
 ```
@@ -79,7 +102,7 @@ spec:
   selector:
     app: mysql
 ```
-
+### ধাপ ৪: MySQL এর জন্য Persistent Volume তৈরি করা
 #### Persistent Volume এবং Persistent Volume Claim YAML ফাইল (`mysql-pv.yaml`)
 
 ```
@@ -111,31 +134,7 @@ spec:
     - ReadWriteOnce
 ```
 
-### ধাপ ২: ConfigMap তৈরি করা
-
-এখন, অ্যাপ্লিকেশনের জন্য প্রয়োজনীয় কনফিগারেশন ডেটা সংরক্ষণ করতে একটি ConfigMap তৈরি করুন।
-
-#### ConfigMap YAML ফাইল (`app-configmap.yaml`)
-
-```
-nano app-configmap.yaml
-```
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: app-configmap
-data:
-  MYSQL_ROOT_PASSWORD: "configmap"
-  MYSQL_DATABASE: "configmap-db"
-  MYSQL_USER: "root"
-  MYSQL_PASSWORD: "configmap"
-  PMA_HOST: "mysql"
-  PMA_PORT: "3306"
-```
-
-### ধাপ ৩: ওয়েব অ্যাপ্লিকেশন ডিপ্লয় করা
+### ধাপ ৫: ওয়েব অ্যাপ্লিকেশন ডিপ্লয় করা
 
 এখন, ওয়েব অ্যাপ্লিকেশন ডিপ্লয় করুন যা ConfigMap থেকে কনফিগারেশন ডেটা ব্যবহার করবে।
 
@@ -187,7 +186,7 @@ spec:
         ports:
         - containerPort: 80
 ```
-
+### ধাপ ৬: ওয়েব অ্যাপ্লিকেশনের সার্ভিস তৈরি করা
 #### Web Application Service YAML ফাইল (`webapp-service.yaml`)
 
 ```
@@ -208,7 +207,7 @@ spec:
     targetPort: 80
   type: LoadBalancer
 ```
-
+### ধাপ ৭: phpMyAdmin ডিপ্লয় করা
 #### phpMyAdmin Deployment YAML ফাইল (`phpmyadmin-deployment.yaml`)
 
 ```
@@ -262,7 +261,7 @@ spec:
               name: app-configmap
               key: MYSQL_PASSWORD
 ```
-
+### ধাপ ৮: phpMyAdmin এর জন্য সার্ভিস তৈরি করা
 #### phpMyAdmin Service YAML ফাইল (`phpmyadmin-service.yaml`)
 
 ```
