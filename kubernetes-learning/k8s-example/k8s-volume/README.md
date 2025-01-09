@@ -188,6 +188,155 @@ spec:
 ```
 kubectl apply -f secret.yaml
 ```
+নিশ্চিতভাবে! এখানে আরও কিছু উদাহরণ দেওয়া হলো যা Kubernetes Volumes এর বিভিন্ন ধরনের ব্যবহার দেখায়:
+
+### ১. awsElasticBlockStore উদাহরণ
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: aws-ebs-example
+spec:
+  containers:
+  - name: test-container
+    image: busybox
+    command: [ "sh", "-c", "sleep 3600" ]
+    volumeMounts:
+    - mountPath: /test-ebs
+      name: test-volume
+  volumes:
+  - name: test-volume
+    awsElasticBlockStore:
+      volumeID: <volume-id>
+      fsType: ext4
+```
+**ব্যবহার**: AWS EBS ভলিউম মাউন্ট করার জন্য।
+
+### ২. azureDisk উদাহরণ
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: azure-disk-example
+spec:
+  containers:
+  - name: test-container
+    image: busybox
+    command: [ "sh", "-c", "sleep 3600" ]
+    volumeMounts:
+    - mountPath: /test-azuredisk
+      name: test-volume
+  volumes:
+  - name: test-volume
+    azureDisk:
+      diskName: <disk-name>
+      diskURI: <disk-uri>
+      cachingMode: ReadWrite
+      fsType: ext4
+```
+**ব্যবহার**: Azure Disk ভলিউম মাউন্ট করার জন্য।
+
+### ৩. gcePersistentDisk উদাহরণ
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gce-pd-example
+spec:
+  containers:
+  - name: test-container
+    image: busybox
+    command: [ "sh", "-c", "sleep 3600" ]
+    volumeMounts:
+    - mountPath: /test-gcepd
+      name: test-volume
+  volumes:
+  - name: test-volume
+    gcePersistentDisk:
+      pdName: <pd-name>
+      fsType: ext4
+```
+**ব্যবহার**: Google Cloud Persistent Disk মাউন্ট করার জন্য।
+
+### ৪. csi উদাহরণ
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: csi-example
+spec:
+  containers:
+  - name: test-container
+    image: busybox
+    command: [ "sh", "-c", "sleep 3600" ]
+    volumeMounts:
+    - mountPath: /test-csi
+      name: test-volume
+  volumes:
+  - name: test-volume
+    csi:
+      driver: csi-driver.example.com
+      volumeHandle: <volume-handle>
+      fsType: ext4
+```
+**ব্যবহার**: CSI ড্রাইভার ব্যবহার করে স্টোরেজ মাউন্ট করার জন্য।
+
+### ৫. projected উদাহরণ
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: projected-example
+spec:
+  containers:
+  - name: test-container
+    image: busybox
+    command: [ "sh", "-c", "sleep 3600" ]
+    volumeMounts:
+    - mountPath: /test-projected
+      name: test-volume
+  volumes:
+  - name: test-volume
+    projected:
+      sources:
+      - configMap:
+          name: my-config
+      - secret:
+          name: my-secret
+```
+**ব্যবহার**: একাধিক Volume এর ডেটা একত্রিত করে মাউন্ট করার জন্য।
+
+### ৬. cephFS উদাহরণ
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cephfs-example
+spec:
+  containers:
+  - name: test-container
+    image: busybox
+    command: [ "sh", "-c", "sleep 3600" ]
+    volumeMounts:
+    - mountPath: /test-cephfs
+      name: test-volume
+  volumes:
+  - name: test-volume
+    cephfs:
+      monitors:
+      - <monitor-ip>
+      user: <username>
+      secretRef:
+        name: ceph-secret
+      readOnly: false
+```
+**ব্যবহার**: Ceph ফাইল সিস্টেম মাউন্ট করার জন্য।
+
+এই উদাহরণগুলো Kubernetes Volumes এর বিভিন্ন ধরনের ব্যবহার দেখায়। আপনি আপনার প্রয়োজন অনুযায়ী এগুলো ব্যবহার করতে পারেন। কোনো প্রশ্ন থাকলে জানাবেন! 😊
+
+[1](https://kubernetes.io/docs/concepts/storage/volumes/): [Volumes - Kubernetes](https://kubernetes.io/docs/concepts/storage/volumes/)
+[2](https://www.golinuxcloud.com/kubernetes-volumes/): [Beginners guide on Kubernetes volumes with examples](https://www.golinuxcloud.com/kubernetes-volumes/)
+[3](https://bluexp.netapp.com/blog/cvo-blg-5-types-of-kubernetes-volumes-and-how-to-work-with-them): [5 Types of Kubernetes Volumes and How to Work with Them](https://bluexp.netapp.com/blog/cvo-blg-5-types-of-kubernetes-volumes-and-how-to-work-with-them)
 
 ### রান করা
 ```sh
