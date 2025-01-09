@@ -90,6 +90,9 @@ spec:
       server: nfs-server.example.com
       path: /path/to/share
 ```
+```
+kubectl apply -f nfs-vol.yaml
+```
 
 ### 4. persistentVolumeClaim উদাহরণ
 ```
@@ -112,6 +115,9 @@ spec:
   - name: test-volume
     persistentVolumeClaim:
       claimName: my-pvc
+```
+```
+kubectl apply -f pvc.yaml
 ```
 
 ### 5. configMap উদাহরণ
@@ -136,6 +142,9 @@ spec:
     configMap:
       name: my-config
 ```
+```
+kubectl apply -f configmap.yaml
+```
 
 ### 6. secret উদাহরণ
 ```
@@ -159,9 +168,9 @@ spec:
     secret:
       secretName: my-secret
 ```
-
-### ফাইলের নাম
-প্রতিটি উদাহরণের জন্য YAML ফাইল তৈরি করুন, যেমন `emptydir-example.yaml`, `hostpath-example.yaml`, ইত্যাদি।
+```
+kubectl apply -f secret.yaml
+```
 
 ### রান করা
 ```sh
