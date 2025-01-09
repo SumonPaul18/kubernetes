@@ -6,6 +6,23 @@ Kubernetes এ Volume হলো একটি ডিরেক্টরি যা 
 ## Volume এর ধরন
 Kubernetes এ বিভিন্ন ধরনের Volume রয়েছে, যেমন:
 
+```markdown
+| Volume Type          | Storage Provider                                      |
+|----------------------|-------------------------------------------------------|
+| emptyDir             | Localhost                                             |
+| hostPath             | Localhost                                             |
+| glusterfs            | GlusterFS cluster                                     |
+| downwardAPI          | Kubernetes Pod information                            |
+| nfs                  | NFS server                                            |
+| awsElasticBlockStore | Amazon Web Service Amazon Elastic Block Store         |
+| gcePersistentDisk    | Google Compute Engine persistent disk                 |
+| azureDisk            | Azure disk storage                                    |
+| projected            | Kubernetes resources; currently supports secret, downwardAPI, and configMap |
+| secret               | Kubernetes Secret resource                            |
+| vSphereVolume        | vSphere VMDK volume                                   |
+| gitRepo              | Git repository                                        |
+```
+
 1. **emptyDir**: পড তৈরি হওয়ার সময় একটি খালি ডিরেক্টরি তৈরি হয়।
 2. **hostPath**: হোস্ট মেশিনের একটি নির্দিষ্ট ফাইল বা ডিরেক্টরি মাউন্ট করে।
 3. **nfs**: একটি NFS (Network File System) শেয়ার মাউন্ট করে।
@@ -235,24 +252,3 @@ Volume Health Monitoring নিশ্চিত করতে Kubernetes এ ব�
 [3](https://slickfinch.com/kubernetes-volumemounts-and-volumes-how-when-to-use-them/): [Kubernetes VolumeMounts and Volumes: How & When To Use Them](https://slickfinch.com/kubernetes-volumemounts-and-volumes-how-when-to-use-them/)
 
 ---
-
-Sure! Here's the Markdown table with borders added:
-
-```markdown
-| Volume Type          | Storage Provider                                      |
-|----------------------|-------------------------------------------------------|
-| emptyDir             | Localhost                                             |
-| hostPath             | Localhost                                             |
-| glusterfs            | GlusterFS cluster                                     |
-| downwardAPI          | Kubernetes Pod information                            |
-| nfs                  | NFS server                                            |
-| awsElasticBlockStore | Amazon Web Service Amazon Elastic Block Store         |
-| gcePersistentDisk    | Google Compute Engine persistent disk                 |
-| azureDisk            | Azure disk storage                                    |
-| projected            | Kubernetes resources; currently supports secret, downwardAPI, and configMap |
-| secret               | Kubernetes Secret resource                            |
-| vSphereVolume        | vSphere VMDK volume                                   |
-| gitRepo              | Git repository                                        |
-```
-
-You can copy and paste this into your README.md file. Let me know if there's anything else you need!
