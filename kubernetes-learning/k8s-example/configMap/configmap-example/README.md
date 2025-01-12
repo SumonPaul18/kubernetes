@@ -19,7 +19,7 @@ kubectl get deploy,pv,pvc,pod,svc,configmap
 #### ConfigMap YAML ফাইল (`app-configmap.yaml`)
 
 ```
-nano app-configmap.yaml
+nano configmap.yaml
 ```
 
 ```yaml
@@ -312,7 +312,7 @@ spec:
 kubectl apply -f mysql-pv-pvc.yaml
 kubectl apply -f mysql-deployment.yaml
 kubectl apply -f mysql-service.yaml
-kubectl apply -f app-configmap.yaml
+kubectl apply -f configmap.yaml
 kubectl apply -f webapp-deployment.yaml
 kubectl apply -f webapp-service.yaml
 kubectl apply -f phpmyadmin-deployment.yaml

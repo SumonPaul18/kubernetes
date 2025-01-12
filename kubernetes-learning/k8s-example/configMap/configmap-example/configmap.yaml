@@ -1,9 +1,11 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: app-config
+  name: app-configmap
 data:
-  database_url: "mysql"
-  database_name: "mydatabase"
-  database_user: "root"
-  database_password: "rootpassword"
+  MYSQL_ROOT_PASSWORD: "configmap"
+  MYSQL_DATABASE: "configmap-db"
+  MYSQL_USER: "admin"
+  MYSQL_PASSWORD: "configmap"
+  PMA_HOST: "mysql"
+  PMA_PORT: "3306"

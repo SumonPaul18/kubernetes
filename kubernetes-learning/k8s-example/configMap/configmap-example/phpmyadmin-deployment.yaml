@@ -19,11 +19,27 @@ spec:
         - containerPort: 80
         env:
         - name: PMA_HOST
-          value: mysql
-        - name: PMA_PORT
-          value: "3306"
-        - name: MYSQL_ROOT_PASSWORD
           valueFrom:
-            secretKeyRef:
-              name: mysql-secrets
-              key: root-password
+            configMapKeyRef:
+              name: app-configmap
+              key: PMA_HOST
+        - name: PMA_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: PMA_PORT
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: MYSQL_DATABASE
+        - name: MYSQL_USER
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: app-configmap
+              key: MYSQL_PASSWORD

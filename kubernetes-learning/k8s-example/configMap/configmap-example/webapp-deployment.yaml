@@ -14,27 +14,27 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: your-webapp-image
+        image: nginx
         env:
         - name: DATABASE_URL
           valueFrom:
             configMapKeyRef:
-              name: app-config
-              key: database_url
+              name: app-configmap
+              key: PMA_HOST
         - name: DATABASE_NAME
           valueFrom:
             configMapKeyRef:
-              name: app-config
-              key: database_name
+              name: app-configmap
+              key: MYSQL_DATABASE
         - name: DATABASE_USER
           valueFrom:
             configMapKeyRef:
-              name: app-config
-              key: database_user
+              name: app-configmap
+              key: MYSQL_USER
         - name: DATABASE_PASSWORD
           valueFrom:
             configMapKeyRef:
-              name: app-config
-              key: database_password
+              name: app-configmap
+              key: MYSQL_PASSWORD
         ports:
         - containerPort: 80
