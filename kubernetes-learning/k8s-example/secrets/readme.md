@@ -1,5 +1,17 @@
 ## Secrets ব্যবহার করে একটি সাধারণ ওয়েব অ্যাপ্লিকেশন এবং একটি ডাটাবেস (MySQL) Kubernetes এ ডিপ্লয় করার প্রক্রিয়া ধাপে ধাপে  নিচে দেওয়া হল।
 
+# How to Use Secrets on Kubernetes
+
+~~~
+rm -rf kubernetes
+git clone https://github.com/SumonPaul18/kubernetes.git
+cd kubernetes/k8s-example/secrets/secrets-example
+kubectl apply -f .
+kubectl get deploy,pv,pvc,pod,svc,secret
+~~~
+---
+# Details:
+
 Kubernetes Secrets হলো একটি API অবজেক্ট যা সংবেদনশীল ডেটা যেমন পাসওয়ার্ড, টোকেন, বা কী সংরক্ষণ করতে ব্যবহৃত হয়। Secrets তৈরি করার জন্য আপনাকে প্রথমে আপনার ডেটা base64 এনকোড করতে হবে।
 
 ### ধাপ ১: Base64 এনকোডিং করা।
