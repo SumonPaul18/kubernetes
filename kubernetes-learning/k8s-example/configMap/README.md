@@ -218,9 +218,9 @@ configMapGenerator:
 
 Kubernetes Secret তৈরি এবং base64 এনকোডিং সম্পর্কে বিস্তারিত ব্যাখ্যা।
 
-### Kubernetes Secret তৈরি করা
+### Kubernetes Secrets তৈরি করা
 
-Kubernetes Secret হলো একটি API অবজেক্ট যা সংবেদনশীল ডেটা যেমন পাসওয়ার্ড, টোকেন, বা কী সংরক্ষণ করতে ব্যবহৃত হয়। Secret তৈরি করার জন্য আপনাকে প্রথমে আপনার ডেটা base64 এনকোড করতে হবে।
+Kubernetes Secrets হলো একটি API অবজেক্ট যা সংবেদনশীল ডেটা যেমন পাসওয়ার্ড, টোকেন, বা কী সংরক্ষণ করতে ব্যবহৃত হয়। Secret তৈরি করার জন্য আপনাকে প্রথমে আপনার ডেটা base64 এনকোড করতে হবে।
 
 ### Base64 এনকোডিং
 
@@ -240,9 +240,9 @@ echo -n 'password' | base64
 
 এর আউটপুট হবে: `cGFzc3dvcmQ=`
 
-### Secret YAML ফাইল তৈরি করা
+### Secrets YAML ফাইল তৈরি করা
 
-এখন, এনকোড করা ডেটা ব্যবহার করে একটি Secret YAML ফাইল তৈরি করুন:
+এখন, এনকোড করা ডেটা ব্যবহার করে একটি Secrets YAML ফাইল তৈরি করুন:
 
 ```yaml
 apiVersion: v1
@@ -263,9 +263,9 @@ data:
 kubectl apply -f my-secret.yaml
 ```
 
-### Secret ব্যবহার করা
+### Secrets ব্যবহার করা
 
-আপনার পড স্পেসিফিকেশনে এই Secret ব্যবহার করতে পারেন:
+আপনার পড স্পেসিফিকেশনে এই Secrets ব্যবহার করতে পারেন:
 
 ```yaml
 apiVersion: v1
@@ -307,7 +307,7 @@ echo 'cGFzc3dvcmQ=' | base64 --decode
 
 এর আউটপুট হবে: `password`
 
-এইভাবে, আপনি Kubernetes Secret তৈরি এবং base64 এনকোডিং ও ডিকোডিং করতে পারেন।
+এইভাবে, আপনি Kubernetes Secrets তৈরি এবং base64 এনকোডিং ও ডিকোডিং করতে পারেন।
 
 আপনার যদি আরও কোনো প্রশ্ন থাকে বা অন্য কিছু জানতে চান, জানাতে পারেন!
 
