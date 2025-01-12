@@ -2,7 +2,7 @@
 
 Kubernetes Secrets হলো একটি API অবজেক্ট যা সংবেদনশীল ডেটা যেমন পাসওয়ার্ড, টোকেন, বা কী সংরক্ষণ করতে ব্যবহৃত হয়। Secrets তৈরি করার জন্য আপনাকে প্রথমে আপনার ডেটা base64 এনকোড করতে হবে।
 
-### Base64 এনকোডিং করা।
+### ধাপ ১: Base64 এনকোডিং করা।
 
 #### **Base64 এনকোডিং কিভাবে করবেন**
 
@@ -72,7 +72,7 @@ echo 'cGFzc3dvcmQ=' | base64 --decode
 এইভাবে, আপনি Kubernetes Secrets তৈরি এবং base64 এনকোডিং ও ডিকোডিং করতে পারেন।
 
 
-#### Secret YAML ফাইল (`mysql-secret.yaml`)
+### ধাপ ২: Secrets YAML ফাইল (`secrets.yaml`)
 এখন, এনকোড করা ভ্যালু ব্যবহার করে একটি Secrets YAML ফাইল তৈরি করুন:
 ```
 nano secrets.yaml
@@ -94,7 +94,48 @@ data:
 ```
 **নোট:** এখানে data ফিল্ডে base64 এনকোডেড ভ্যালু ব্যবহার করা হয়েছে। আপনি echo -n 'value' | base64 কমান্ড ব্যবহার করে এনকোড করতে পারেন।
 
-#### MySQL Deployment YAML ফাইল (`mysql-deployment.yaml`)
+### ধাপ ৩: MySQL এর জন্য Persistent Volume তৈরি করা
+### আমি এখানে PV হিসাবে NFS Storage ব্যবহার করেছি। 
+#### Persistent Volume এবং Persistent Volume Claim YAML ফাইল (`mysql-pv-pvc.yaml`)
+
+```
+nano mysql-pv-pvc.yaml
+```
+
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: configmap-nfs-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Recycle
+  storageClassName: nfs
+  mountOptions:
+    - hard
+    - nfsvers=4.1
+  nfs:
+    path: /nfs-share/configmap/mysql
+    server: 192.168.0.96
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: configmap-pvc-claim
+spec:
+  storageClassName: nfs
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+```
+
+### ধাপ ৪: MySQL Deployment YAML ফাইল (`mysql-deployment.yaml`)
 Secrets ব্যবহার করে `mysql-deployment.yaml` ফাইল তৈরি করা। 
 
 ```
@@ -153,7 +194,7 @@ spec:
           claimName: configmap-pvc-claim
 ```
 
-#### MySQL Service YAML ফাইল (`mysql-service.yaml`)
+### ধাপ ৫: MySQL Service YAML ফাইল (`mysql-service.yaml`)
 
 ```
 nano mysql-service.yaml
@@ -171,7 +212,7 @@ spec:
     app: mysql
 ```
 
-#### Web Application Deployment YAML ফাইল (`webapp-deployment.yaml`)
+### ধাপ ৬: Web Application Deployment YAML ফাইল (`webapp-deployment.yaml`)
 Secrets ব্যবহার করে `webapp-deployment.yaml` ফাইল তৈরি করা। 
 ```
 nano webapp-deployment.yaml
@@ -220,7 +261,7 @@ spec:
         - containerPort: 80
 ```
 
-#### Web Application Service YAML ফাইল (`webapp-service.yaml`)
+### ধাপ ৭: Web Application Service YAML ফাইল (`webapp-service.yaml`)
 
 ```
 nano webapp-service.yaml
@@ -241,7 +282,7 @@ spec:
   type: LoadBalancer
 ```
 
-#### phpMyAdmin Deployment YAML ফাইল (`phpmyadmin-deployment.yaml`)
+### ধাপ ৮: phpMyAdmin Deployment YAML ফাইল (`phpmyadmin-deployment.yaml`)
 
 Secrets ব্যবহার করে `phpmyadmin-deployment.yaml` ফাইল তৈরি করা। 
 ```
@@ -296,7 +337,7 @@ spec:
               key: MYSQL_PASSWORD
 ```
 
-#### phpMyAdmin Service YAML ফাইল (`phpmyadmin-service.yaml`)
+### ধাপ ৯: phpMyAdmin Service YAML ফাইল (`phpmyadmin-service.yaml`)
 
 ```
 nano phpmyadmin-service.yaml
@@ -319,13 +360,13 @@ spec:
   type: LoadBalancer
 ```
 
-এই ফাইলগুলি তৈরি করার পরে, নিম্নলিখিত কমান্ডগুলি চালান:
+### ধাপ ১০: এই ফাইলগুলি রান করা: 
 
 ```sh
+kubectl apply -f secrets.yaml
 kubectl apply -f mysql-pv-pvc.yaml
 kubectl apply -f mysql-deployment.yaml
 kubectl apply -f mysql-service.yaml
-kubectl apply -f app-configmap.yaml
 kubectl apply -f webapp-deployment.yaml
 kubectl apply -f webapp-service.yaml
 kubectl apply -f phpmyadmin-deployment.yaml
@@ -346,7 +387,7 @@ kubectl get pod
 kubectl get pv,pvc
 ```
 ```
-kubectl get configmap
+kubectl get secret
 ```
 ```
 kubectl get svc
@@ -356,7 +397,7 @@ kubectl get svc
 ```
 kubectl delete deploy webapp phpmyadmin mysql
 kubectl delete svc webapp phpmyadmin-service mysql
-kubectl delete configmap app-configmap
+kubectl delete secret app-secrets
 ```
 ### Delete PV,PVC
 ```
@@ -364,4 +405,4 @@ kubectl delete pvc configmap-pvc-claim
 kubectl delete pv configmap-nfs-pv
 ```
 
-এই ধাপগুলি অনুসরণ করে আপনি MySQL ডাটাবেস এবং phpMyAdmin ডিপ্লয় করতে পারবেন, এবং Secret ব্যবহার করে ডাটাবেস পাসওয়ার্ড সুরক্ষিত রাখতে পারবেন। যদি আপনার আরও প্রশ্ন থাকে বা সাহায্য প্রয়োজন হয়, নির্দ্বিধায় জিজ্ঞাসা করুন!
+এই ধাপগুলি অনুসরণ করে আপনি MySQL ডাটাবেস এবং phpMyAdmin ডিপ্লয় করতে পারবেন, এবং Secrets ব্যবহার করে ডাটাবেস পাসওয়ার্ড সুরক্ষিত রাখতে পারবেন। যদি আপনার আরও প্রশ্ন থাকে বা সাহায্য প্রয়োজন হয়, নির্দ্বিধায় জিজ্ঞাসা করুন!
