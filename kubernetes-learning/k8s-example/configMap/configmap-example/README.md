@@ -16,7 +16,7 @@ kubectl get deploy,pv,pvc,pod,svc,configmap
 
 এখন, অ্যাপ্লিকেশনের জন্য প্রয়োজনীয় কনফিগারেশন ডেটা সংরক্ষণ করতে একটি ConfigMap তৈরি করুন।
 
-#### ConfigMap YAML ফাইল (`app-configmap.yaml`)
+#### ConfigMap YAML ফাইল (`configmap.yaml`)
 
 ```
 nano configmap.yaml
