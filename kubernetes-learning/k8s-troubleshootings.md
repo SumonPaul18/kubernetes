@@ -2,22 +2,30 @@
 As a DevOps Engineer, efficient Kubernetes troubleshooting is a key skill that helps ensure applications run smoothly in production. Here’s a list of must-know commands for troubleshooting Kubernetes clusters:
 
 𝟏. 𝐂𝐡𝐞𝐜𝐤 𝐍𝐨𝐝𝐞 𝐒𝐭𝐚𝐭𝐮𝐬
-
+```
 kubectl get nodes
+```
+```
 kubectl describe node <node-name>
-
+```
 Use these commands to verify node health, resource utilization, and events.
 
 𝟐. 𝐈𝐧𝐬𝐩𝐞𝐜𝐭 𝐏𝐨𝐝𝐬
+```
 kubectl get pods -o wide
+```
+```
 kubectl describe pod <pod-name>
-
+```
 These commands provide pod details, including events and conditions.
 
 𝟑. 𝐃𝐞𝐛𝐮𝐠 𝐏𝐨𝐝 𝐋𝐨𝐠𝐬
+```
 kubectl logs <pod-name>
+```
+```
 kubectl logs <pod-name> — previous
-
+```
 Check logs to understand application behavior or debug container issues.
 
 𝟒. 𝐄𝐱𝐞𝐜 𝐈𝐧𝐭𝐨 𝐚 𝐏𝐨𝐝
