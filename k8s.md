@@ -4,23 +4,24 @@
 
 ### ১. **বিভিন্ন ধরনের অ্যাপ্লিকেশনের জন্য আলাদা ফোল্ডার:**
 
-kubernetes-learning/
-├── base
-│   ├── deployments
-│   ├── services
-│   ├── ingress
-│   ├── persistent-volumes
-│   ├── configmaps
-│   ├── secrets
-│   ├── jobs
-│   ├── cronjobs
-│   └── common
-│       ├── scripts
-│       └── templates
-├── examples
-│   ├── nginx
-│   ├── wordpress
-│   └── mysql
-├── docs
-├── tools
+
+      kubernetes-learning/
+      ├── base
+      │   ├── deployments
+      │   ├── services
+      │   ├── ingress
+      │   ├── persistent-volumes
+      │   ├── configmaps
+      │   ├── secrets
+      │   ├── jobs
+      │   ├── cronjobs
+      │   └── common
+      │       ├── scripts
+      │       └── templates
+      ├── examples
+      │   ├── nginx
+      │   ├── wordpress
+      │   └── mysql
+      ├── docs
+      ├── tools
 
