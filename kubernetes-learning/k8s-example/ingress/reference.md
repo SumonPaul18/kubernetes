@@ -7,3 +7,5 @@ https://learncloudnative.com/blog/2020-06-18-kubernetes-ingress
 https://everythingdevops.dev/getting-started-with-kubernetes-ingress/
 
 https://kubernetes.io/docs/concepts/services-networking/ingress/
+
+- [Using Metal LB on a bare-metal(OnPrem) Kubernetes Setup](https://medium.com/tektutor/using-metal-lb-on-a-bare-metal-onprem-kubernetes-setup-6d036af1d20c)
