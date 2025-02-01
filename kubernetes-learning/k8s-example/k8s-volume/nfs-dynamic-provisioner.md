@@ -34,17 +34,17 @@ Steps 3: Create Persistent Volume Claims (PVCs)
 **Kubernetes Cluster এ NFS Volume ব্যবহার করার পদ্ধতি:**
 
 1. **NFS সার্ভার সেটআপ করুন (IP: 192.168.0.33):**
-   - `sudo apt update`
-   - `sudo apt install nfs-kernel-server -y`
+   - ```sudo apt update```
+   - ```sudo apt install nfs-kernel-server -y```
    - ডিরেক্টরি তৈরি করুন এবং শেয়ার করুন:
      ```bash
-     sudo mkdir /mnt/k8s-dynamic-store
-     sudo chown -R nobody:nogroup /mnt/k8s-dynamic-store
-     sudo chmod 2770 /mnt/k8s-dynamic-store
+     sudo mkdir -p /data/k8s-dynamic-nfs
+     sudo chown -R nobody:nogroup /data/k8s-dynamic-nfs
+     sudo chmod 2770 /data/k8s-dynamic-nfs
      ```
    - `/etc/exports` ফাইলে এন্ট্রি যোগ করুন:
      ```bash
-     /mnt/k8s-dynamic-store 192.168.0.0/24(rw,sync,no_subtree_check)
+     /data/k8s-dynamic-nfs 192.168.0.0/24(rw,sync,no_subtree_check)
      ```
    - সার্ভার রিস্টার্ট করুন:
      ```bash
@@ -62,7 +62,7 @@ Steps 3: Create Persistent Volume Claims (PVCs)
    - NFS প্রভিশনার ডিপ্লয় করুন:
      ```bash
      helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
-     helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner --create-namespace -n nfs-provisioning --set nfs.server=192.168.0.33 --set nfs.path=/mnt/k8s-dynamic-store
+     helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner --create-namespace -n nfs-provisioning --set nfs.server=192.168.0.33 --set nfs.path=/data/k8s-dynamic-nfs
      ```
 
 #
