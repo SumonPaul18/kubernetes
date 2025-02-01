@@ -34,8 +34,14 @@ Steps 3: Create Persistent Volume Claims (PVCs)
 **Kubernetes Cluster এ NFS Volume ব্যবহার করার পদ্ধতি:**
 
 1. **NFS সার্ভার সেটআপ করুন (IP: 192.168.0.33):**
-   - ```sudo apt update```
-   - ```sudo apt install nfs-kernel-server -y```
+   - Update করুনঃ 
+   ```
+   sudo apt update
+   ```
+   - NFS Service Install করুনঃ
+   ```
+   sudo apt install nfs-kernel-server -y
+   ```
    - ডিরেক্টরি তৈরি করুন এবং শেয়ার করুন:
      ```bash
      sudo mkdir -p /data/k8s-dynamic-nfs
@@ -52,7 +58,7 @@ Steps 3: Create Persistent Volume Claims (PVCs)
      sudo systemctl restart nfs-kernel-server
      ```
 
-2. **Kubernetes Cluster এ NFS প্রভিশনার সেটআপ করুন:**
+3. **Kubernetes Cluster এ NFS প্রভিশনার সেটআপ করুন:**
    - Helm ইনস্টল করুন:
      ```bash
      curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
