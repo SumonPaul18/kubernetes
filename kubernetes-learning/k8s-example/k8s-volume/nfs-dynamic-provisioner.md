@@ -60,16 +60,16 @@ Steps 3: Create Persistent Volume Claims (PVCs)
 
 3. **Kubernetes Cluster এ NFS প্রভিশনার সেটআপ করুন:**
    - Helm ইনস্টল করুন:
-     ```bash
-     curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
-     chmod 700 get_helm.sh
-     ./get_helm.sh
-     ```
+   ```bash
+   curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+   chmod 700 get_helm.sh
+   ./get_helm.sh
+   ```
    - NFS প্রভিশনার ডিপ্লয় করুন:
-     ```bash
-     helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
-     helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner --create-namespace -n nfs-provisioning --set nfs.server=192.168.0.33 --set nfs.path=/data/k8s-dynamic-nfs
-     ```
+   ```bash
+   helm repo add nfs-subdir-external-provisioner https://kubernetes-sigs.github.io/nfs-subdir-external-provisioner/
+   helm install nfs-subdir-external-provisioner nfs-subdir-external-provisioner/nfs-subdir-external-provisioner --create-namespace -n nfs-provisioning --set nfs.server=192.168.0.33 --set nfs.path=/data/k8s-dynamic-nfs
+   ```
 
 #
 
