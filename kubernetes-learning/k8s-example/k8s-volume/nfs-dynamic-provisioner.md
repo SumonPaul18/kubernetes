@@ -35,13 +35,13 @@ Steps 3: Create Persistent Volume Claims (PVCs)
 
 1. **NFS সার্ভার সেটআপ করুন (IP: 192.168.0.33):**
    - Update করুনঃ 
-   ```
-   sudo apt update
-   ```
+      ```
+      sudo apt update
+      ```
    - NFS Service Install করুনঃ
-   ```
-   sudo apt install nfs-kernel-server -y
-   ```
+      ```
+      sudo apt install nfs-kernel-server -y
+      ```
    - ডিরেক্টরি তৈরি করুন এবং শেয়ার করুন:
      ```bash
      sudo mkdir -p /data/k8s-dynamic-nfs
