@@ -1,3 +1,5 @@
+## Kubernetes Network Policies
+
 ### Network Policy কী?
 Kubernetes এর Network Policy সম্পর্কে জানতে চাওয়ার জন্য ধন্যবাদ! Network Policy হলো একটি গুরুত্বপূর্ণ ফিচার যা আপনাকে ক্লাস্টারের মধ্যে এবং বাইরের ট্রাফিক নিয়ন্ত্রণ করতে সাহায্য করে।
 
