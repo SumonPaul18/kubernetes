@@ -363,31 +363,480 @@ spec:
 ```
 ---
 
+### 🧰 Using `kubectl` – The Kubernetes Command-Line Tool
 
+#### 🚀 What is `kubectl`?
+
+`kubectl` is the **command-line interface for interacting with your Kubernetes cluster**. It lets you create, inspect, update, delete, and manage resources.
+
+> Think of `kubectl` as your **remote control** to manage Kubernetes from your terminal.
+
+---
+# 🧠 kubectl Command Reference - Grouped & Role-Based
 
 ---
 
-## Definitions
-- **Pod**: The smallest and simplest Kubernetes object. A Pod represents a set of running containers on your cluster.
-- **Node**: A worker machine in Kubernetes, which can be a VM or a physical machine.
-- **Cluster**: A set of nodes that run containerized applications managed by Kubernetes.
-- **Service**: An abstraction which defines a logical set of Pods and a policy by which to access them.
+## 📁 1. Basic Cluster & Configuration Commands
 
-### 2. ⚙️ Installation & Setup
+| Command | Description |
+|--------|-------------|
+| `kubectl version` | Show client & server version |
+| `kubectl config view` | View kubeconfig details |
+| `kubectl config get-contexts` | Show all available contexts |
+| `kubectl config use-context <name>` | Switch to a specific context |
+| `kubectl cluster-info` | Show cluster master and services |
+| `kubectl get componentstatuses` | Health of control plane components |
+| `kubectl api-resources` | List all resource types |
+| `kubectl api-versions` | List supported API versions |
+| `kubectl help` | Show help message |
 
-#### A. Local (Minikube)
-**[Install Kubernetes using Minikube](https://github.com/SumonPaul18/kubernetes/blob/main/install-minikube.md)**
+---
 
-#### B. Multi-node Cluster (kubeadm)
-**[Install Kubernetes using KubeAdm](https://github.com/SumonPaul18/kubernetes/tree/main/install-kubeadm)**
+## 📦 2. Resource Management Commands
 
-#### C. Cloud Providers
+### 🔎 View Resources
 
-- **GKE: Google Kubernetes Engine**
+```bash
+kubectl get [resource]
+kubectl get pods
+kubectl get svc
+kubectl get all
+kubectl get nodes
+kubectl get events
+```
 
-- **EKS: AWS**
+### 📋 Describe / Inspect
 
-- **AKS: Azure Kubernetes Service**
+```bash
+kubectl describe [resource] <name>
+kubectl describe pod mypod
+```
+
+### 📂 Output Formats
+
+```bash
+kubectl get pod -o wide
+kubectl get svc -o yaml
+kubectl get deployment -o json
+```
+
+---
+
+## 🧱 3. Create, Update, Delete Resources
+
+### 📌 Create
+
+```bash
+kubectl create deployment nginx --image=nginx
+kubectl create namespace dev
+kubectl create configmap my-config --from-literal=env=dev
+kubectl create secret generic my-secret --from-literal=password=12345
+```
+
+### ⚙️ Apply / Update
+
+```bash
+kubectl apply -f deployment.yaml
+kubectl apply -k ./kustomization-dir
+```
+
+### 🧹 Delete
+
+```bash
+kubectl delete pod mypod
+kubectl delete svc myservice
+kubectl delete -f deployment.yaml
+kubectl delete namespace dev
+```
+
+---
+
+## ⚙️ 4. Pod Management Commands
+
+| Use | Command |
+|-----|---------|
+| Exec inside container | `kubectl exec -it <pod> -- /bin/bash` |
+| View logs | `kubectl logs <pod>` |
+| Stream logs | `kubectl logs -f <pod>` |
+| Logs for a container | `kubectl logs <pod> -c <container-name>` |
+| Port forwarding | `kubectl port-forward pod/mypod 8080:80` |
+| Copy files | `kubectl cp mypod:/app/file.txt ./file.txt` |
+| Restart Pod | Delete it – it’ll auto-restart from ReplicaSet: <br> `kubectl delete pod <pod>` |
+
+---
+
+## 📋 5. Deployment & Rollouts
+
+```bash
+kubectl rollout status deployment my-deploy
+kubectl rollout history deployment my-deploy
+kubectl rollout undo deployment my-deploy
+kubectl set image deployment/my-deploy nginx=nginx:latest
+```
+
+---
+
+## 🚨 6. Debugging & Troubleshooting
+
+```bash
+kubectl describe pod <pod>
+kubectl get events --sort-by=.metadata.creationTimestamp
+kubectl top pod
+kubectl top node
+kubectl get pod -o wide
+kubectl exec <pod> -- env
+kubectl exec <pod> -- cat /etc/config/settings.yaml
+```
+
+---
+
+## 🧪 7. Testing & Dry Runs
+
+```bash
+kubectl apply -f myapp.yaml --dry-run=client -o yaml
+kubectl create deployment nginx --image=nginx --dry-run=client -o yaml
+```
+
+---
+
+## 🌐 8. Services, Ingress & Networking
+
+```bash
+kubectl expose deployment nginx --port=80 --type=NodePort
+kubectl get svc
+kubectl describe svc nginx
+kubectl port-forward service/myservice 8080:80
+```
+
+---
+
+## 📊 9. Metrics & Monitoring
+
+```bash
+kubectl top nodes
+kubectl top pods
+```
+
+🔔 Requires metrics-server installed
+
+---
+
+## 🗃️ 10. Namespaces
+
+```bash
+kubectl get namespaces
+kubectl create namespace test
+kubectl delete namespace test
+kubectl get pods --namespace=test
+kubectl config set-context --current --namespace=test
+```
+
+---
+
+## 🛠️ 11. Resource Patching
+
+```bash
+kubectl patch deployment nginx -p '{"spec":{"replicas":5}}'
+```
+
+---
+
+## 🧵 12. Jobs & CronJobs
+
+```bash
+kubectl create job myjob --image=busybox -- /bin/sh -c 'echo Hello!'
+kubectl get jobs
+kubectl delete job myjob
+
+kubectl create cronjob mycron --image=busybox --schedule="*/1 * * * *" -- /bin/sh -c 'echo Running Cron'
+kubectl get cronjobs
+```
+
+---
+
+## 🧪 13. Custom Resources & CRDs
+
+```bash
+kubectl get crds
+kubectl describe crd <name>
+kubectl get <custom-resource>
+```
+
+---
+
+## 👩‍💻 14. RBAC & Security
+
+```bash
+kubectl create serviceaccount viewer
+kubectl create role pod-reader --verb=get,list,watch --resource=pods
+kubectl create rolebinding viewer-binding --role=pod-reader --serviceaccount=default:viewer
+kubectl auth can-i create deployments
+```
+
+---
+
+## 🔄 15. Useful Shortcuts
+
+```bash
+# Shorthand
+kubectl get po             # pods
+kubectl get svc            # services
+kubectl get deploy         # deployments
+kubectl get ns             # namespaces
+kubectl get rs             # replicasets
+
+# Alias (recommended)
+alias k='kubectl'
+k get pods
+```
+---
+
+## 🧰 16. Labeling, Annotating & Tainting
+
+### 📌 Labeling Resources
+
+```bash
+kubectl label pod mypod app=nginx
+kubectl get pods --show-labels
+kubectl get pods -l app=nginx
+```
+
+### 📝 Annotations
+
+```bash
+kubectl annotate pod mypod description='This is a test pod'
+kubectl describe pod mypod | grep -i annotations
+```
+
+### ☣️ Node Taints & Tolerations
+
+```bash
+kubectl taint nodes node1 key=value:NoSchedule
+kubectl describe node node1 | grep -i taint
+```
+
+> 🧠 Useful for advanced scheduling and resource management!
+
+---
+
+## 📅 17. Autoscaling & Resource Quotas
+
+### 📈 Autoscaling Deployment
+
+```bash
+kubectl autoscale deployment nginx --cpu-percent=50 --min=1 --max=5
+kubectl get hpa
+```
+
+### 🧮 Resource Quotas
+
+```bash
+kubectl create quota dev-quota --hard=pods=10,cpu=4,memory=8Gi --namespace=dev
+```
+
+---
+
+## 📦 18. Export & Backup
+
+### Export resources to YAML/JSON
+
+```bash
+kubectl get deployment myapp -o yaml > myapp.yaml
+kubectl get all --all-namespaces -o yaml > full-backup.yaml
+```
+
+---
+
+## 🚀 19. Running Imperative Commands
+
+Useful when you don’t want to write YAML:
+
+```bash
+kubectl run nginx --image=nginx --port=80
+kubectl expose pod nginx --port=80 --target-port=80 --type=NodePort
+```
+
+---
+
+## 🧹 20. Clean Up Resources Fast
+
+```bash
+kubectl delete all --all
+kubectl delete pods --all -n dev
+kubectl delete pvc --all
+```
+
+---
+
+## 🔐 21. Authentication & Authorization Debugging
+
+```bash
+kubectl auth can-i list pods --as=dev-user
+kubectl auth reconcile -f rbac.yaml
+```
+
+---
+
+## 📤 22. Kustomize (Built-in!)
+
+```bash
+kubectl kustomize ./overlays/prod/
+kubectl apply -k ./overlays/prod/
+```
+
+---
+
+## 🧪 23. Testing with Ephemeral Containers (K8s 1.23+)
+
+```bash
+kubectl debug pod/mypod --image=busybox --target=mycontainer
+```
+
+---
+
+## 🧭 24. Plugins & Extensions
+
+```bash
+kubectl krew install ctx
+kubectl krew install ns
+kubectl ctx       # switch context
+kubectl ns        # switch namespace
+```
+
+> ✨ `krew` = plugin manager for `kubectl` — opens up tons of community plugins
+
+---
+
+### 👥 Role-Based Views
+
+Kubernetes users typically fall into different roles. Each role interacts with `kubectl` differently, focusing on specific operations. Below is a structured breakdown:
+
+---
+
+### ➤ 👨‍💻 Developers
+
+#### 🛠️ Primary Focus:
+- Writing code
+- Debugging pods
+- Managing application deployments
+- Accessing logs and port forwarding for local testing
+
+#### 🧪 Common Commands:
+
+```bash
+kubectl get pods
+kubectl get services
+kubectl describe pod mypod
+kubectl logs mypod
+kubectl exec -it mypod -- /bin/bash
+kubectl apply -f deployment.yaml
+kubectl delete -f service.yaml
+kubectl port-forward pod/mypod 8080:80
+```
+
+#### ✅ Use Cases:
+- Check if pods are running properly.
+- View logs of a crashed app: `kubectl logs mypod --previous`
+- Exec into container: `kubectl exec -it mypod -- bash`
+- Apply new deployments: `kubectl apply -f app-deploy.yaml`
+
+#### 🔒 Required RBAC Permissions:
+```yaml
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "pods/log", "pods/exec"]
+  verbs: ["get", "list", "watch", "create", "delete", "update"]
+```
+
+---
+
+### ➤ 🔧 DevOps / SRE (Site Reliability Engineers)
+
+#### 🛠️ Primary Focus:
+- Application stability, performance, scaling
+- Monitoring rollout strategies
+- Managing jobs, cronjobs, autoscaling
+- Debugging node-level issues
+
+#### 🧪 Common Commands:
+
+```bash
+kubectl rollout status deployment/myapp
+kubectl top pod
+kubectl patch deployment myapp --patch '{"spec":{"replicas":5}}'
+kubectl autoscale deployment myapp --cpu-percent=50 --min=2 --max=6
+kubectl get events --sort-by='.metadata.creationTimestamp'
+kubectl get job
+kubectl get cronjob
+```
+
+#### ✅ Use Cases:
+- Scale deployments during peak hours
+- Monitor resource usage: `kubectl top node`
+- Observe restart crashes in Pods
+- Run batch jobs with `kubectl create -f backup-job.yaml`
+
+#### 🔒 Required RBAC Permissions:
+```yaml
+rules:
+- apiGroups: ["apps", "batch"]
+  resources: ["deployments", "replicasets", "jobs", "cronjobs"]
+  verbs: ["get", "list", "create", "update", "delete"]
+- apiGroups: ["metrics.k8s.io"]
+  resources: ["pods", "nodes"]
+  verbs: ["get", "list"]
+```
+
+---
+
+### ➤ 🛡️ Cluster Admin
+
+#### 🛠️ Primary Focus:
+- Full control over the cluster
+- Security, RBAC, CRDs, namespace management
+- Certificate and authentication management
+- Diagnosing cluster-level issues
+
+#### 🧪 Common Commands:
+
+```bash
+kubectl config get-contexts
+kubectl config use-context mycluster
+kubectl create namespace dev
+kubectl get componentstatuses
+kubectl get clusterrolebindings
+kubectl auth can-i create deployments --as=dev-user
+kubectl get crds
+kubectl certificate approve <name>
+kubectl taint nodes node1 key=value:NoSchedule
+```
+
+#### ✅ Use Cases:
+- Approve CSR requests for TLS
+- Control user access using RBAC rules
+- Create or delete namespaces
+- Set node-level taints for scheduling constraints
+- Validate user permissions
+
+#### 🔒 Required RBAC Permissions:
+```yaml
+rules:
+- apiGroups: ["", "rbac.authorization.k8s.io", "certificates.k8s.io", "apiextensions.k8s.io"]
+  resources: ["*"]
+  verbs: ["*"]
+```
+
+---
+
+## 🧾 Bonus: Tips for Role Separation
+
+| Role | Recommended Namespace Scope | Automation Scope |
+|------|------------------------------|------------------|
+| Developer | `dev`, `test`, `feature-*` | GitHub Actions, Helm |
+| DevOps / SRE | `dev`, `staging`, `prod` | CI/CD, Monitoring |
+| Admin | All namespaces | RBAC, Cluster Setup |
+
+---
 
 ## Usage Guide
 ### Deploying an Application
