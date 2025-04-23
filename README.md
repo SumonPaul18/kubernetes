@@ -363,12 +363,8 @@ spec:
 ```
 ---
 
-
- ## Installation Guide
- ### [Install Kubernetes using Minikube](https://github.com/SumonPaul18/kubernetes/blob/main/install-minikube.md)
  ### 2. ⚙️ Installation & Setup
  
- ### [Install Kubernetes using KubeAdm](https://github.com/SumonPaul18/kubernetes/tree/main/install-kubeadm)
  #### A. Local (Minikube)
  **[Install Kubernetes using Minikube](https://github.com/SumonPaul18/kubernetes/blob/main/install-minikube.md)**
  
@@ -377,13 +373,13 @@ spec:
  
  #### C. Cloud Providers
  
- - **GKE: Google Kubernetes Engine**
- 
- - **EKS: AWS**
- 
- - **AKS: Azure Kubernetes Service**
+ - **GKE**: Google Kubernetes Engine
+ - **EKS**: AWS
+ - **AKS**: Azure Kubernetes Service
+ - 
 ---
-### 🧰 Using `kubectl` – The Kubernetes Command-Line Tool
+
+### 3. 🧰 Using `kubectl` – The Kubernetes Command-Line Tool
 
 #### 🚀 What is `kubectl`?
 
