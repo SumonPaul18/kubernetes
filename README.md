@@ -12,9 +12,9 @@ Welcome to the **Kubernetes** repository! This is your one-stop destination to l
 
 ### 🧠 Introduction
 - [What is Kubernetes](#1--introduction-to-kubernetes)
-- [Pros & Cons of Kubernetes](#why-kubernetes)
-- [Kubernetes Architecture](#kubernetes-architecture)
-- [Key Components](#key-components)
+- [Pros & Cons of Kubernetes](#2-%EF%B8%8F-pros--cons-of-kubernetes-with-practical-examples)
+- [Kubernetes Architecture](#%EF%B8%8F-kubernetes-architecture--explained-with-real-life-examples)
+- [Key Components](#-4-key-components-updated-with-clarity)
 
 ### ⚙️ Installation & Setup
 - [Install Kubernetes on Local Machine (Minikube)](#install-kubernetes-on-local-machine)
