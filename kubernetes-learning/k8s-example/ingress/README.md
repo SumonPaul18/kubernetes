@@ -1,7 +1,7 @@
 # Kubernetes Ingress
 ## Understanding Ingress in Kubernetes: Key Concepts and Configuration
 
-অবশ্যই! আমি আপনাকে Kubernetes Ingress সম্পর্কে বিস্তারিত জানাতে পারি। চলুন ধাপে ধাপে শুরু করি:
+আমি আপনাকে Kubernetes Ingress সম্পর্কে বিস্তারিত জানাতে পারি। চলুন ধাপে ধাপে শুরু করি:
 
 ### ১। Kubernetes Ingress কি?
 Kubernetes Ingress হলো একটি API অবজেক্ট যা ক্লাস্টারের বাহির থেকে HTTP এবং HTTPS ট্রাফিককে ক্লাস্টারের সার্ভিসগুলিতে রুট করতে ব্যবহৃত হয়। এটি URL ভিত্তিক রাউটিং, SSL/TLS টার্মিনেশন এবং লোড ব্যালেন্সিং এর সুবিধা প্রদান করে[1](https://kubernetes.io/docs/concepts/services-networking/ingress/)[2](https://dev.to/i_am_vesh/kubernetes-ingress-explained-1cp0)।
