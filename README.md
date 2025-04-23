@@ -27,7 +27,7 @@ Welcome to the **Kubernetes** repository! This is your one-stop destination to l
 - [Services & Networking](#-4-services--networking)
 - [Volumes & Persistent Storage](#-5-volumes--persistent-storage)
 - [ConfigMaps & Secrets](#-6-configmaps--secrets)
-- [Namespaces]([#namespaces](#-7-namespaces)
+- [Namespaces](#-7-namespaces)
 - [Helm - Kubernetes Package Manager](#-8-helm---kubernetes-package-manager)
 
 ### 🛠️ Practical Examples
