@@ -11,8 +11,8 @@ Welcome to the **Kubernetes** repository! This is your one-stop destination to l
 ## 📚 Table of Contents
 
 ### 🧠 Introduction
-- [What is Kubernetes?](#what-is-kubernetes)
-- [Pros & Cons of Kubernetes?](#why-kubernetes)
+- [What is Kubernetes](#what-is-kubernetes)
+- [Pros & Cons of Kubernetes](#why-kubernetes)
 - [Kubernetes Architecture](#kubernetes-architecture)
 - [Key Components](#key-components)
 
