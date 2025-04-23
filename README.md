@@ -23,7 +23,7 @@ Welcome to the **Kubernetes** repository! This is your one-stop destination to l
 - [Using kubectl - Kubernetes CLI Tool](#3--using-kubectl--the-kubernetes-command-line-tool)
 
 ### 📦 Core Concepts
-- [Pods, ReplicaSets, Deployments](#pods-replicasets-deployments)
+- [Pods, ReplicaSets, Deployments](#3._📦_Core_Concepts_in_Kubernetes)
 - [Services & Networking](#services--networking)
 - [Volumes & Persistent Storage](#volumes--persistent-storage)
 - [ConfigMaps & Secrets](#configmaps--secrets)
