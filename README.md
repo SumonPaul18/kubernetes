@@ -23,7 +23,7 @@ Welcome to the **Kubernetes** repository! This is your one-stop destination to l
 - [Using kubectl - Kubernetes CLI Tool](#3--using-kubectl--the-kubernetes-command-line-tool)
 
 ### 📦 Core Concepts
-- [Pods, ReplicaSets, Deployments](#3Core-Concepts-in-Kubernetes)
+- [Pods, ReplicaSets, Deployments](#3-Core-Concepts-in-Kubernetes)
 - [Services & Networking](#services--networking)
 - [Volumes & Persistent Storage](#volumes--persistent-storage)
 - [ConfigMaps & Secrets](#configmaps--secrets)
@@ -388,11 +388,11 @@ spec:
 > Think of `kubectl` as your **remote control** to manage Kubernetes from your terminal.
 
 ---
-# 🧠 kubectl Command Reference - Grouped & Role-Based
+### 🧠 kubectl Command Reference - Grouped & Role-Based
 
 ---
 
-## 📁 1. Basic Cluster & Configuration Commands
+### 📁 1. Basic Cluster & Configuration Commands
 
 | Command | Description |
 |--------|-------------|
@@ -408,7 +408,7 @@ spec:
 
 ---
 
-## 📦 2. Resource Management Commands
+### 📦 2. Resource Management Commands
 
 ### 🔎 View Resources
 
@@ -467,7 +467,7 @@ kubectl delete namespace dev
 
 ---
 
-## ⚙️ 4. Pod Management Commands
+### ⚙️ 4. Pod Management Commands
 
 | Use | Command |
 |-----|---------|
@@ -481,7 +481,7 @@ kubectl delete namespace dev
 
 ---
 
-## 📋 5. Deployment & Rollouts
+### 📋 5. Deployment & Rollouts
 
 ```bash
 kubectl rollout status deployment my-deploy
@@ -492,7 +492,7 @@ kubectl set image deployment/my-deploy nginx=nginx:latest
 
 ---
 
-## 🚨 6. Debugging & Troubleshooting
+### 🚨 6. Debugging & Troubleshooting
 
 ```bash
 kubectl describe pod <pod>
@@ -506,7 +506,7 @@ kubectl exec <pod> -- cat /etc/config/settings.yaml
 
 ---
 
-## 🧪 7. Testing & Dry Runs
+### 🧪 7. Testing & Dry Runs
 
 ```bash
 kubectl apply -f myapp.yaml --dry-run=client -o yaml
@@ -515,7 +515,7 @@ kubectl create deployment nginx --image=nginx --dry-run=client -o yaml
 
 ---
 
-## 🌐 8. Services, Ingress & Networking
+### 🌐 8. Services, Ingress & Networking
 
 ```bash
 kubectl expose deployment nginx --port=80 --type=NodePort
@@ -526,7 +526,7 @@ kubectl port-forward service/myservice 8080:80
 
 ---
 
-## 📊 9. Metrics & Monitoring
+### 📊 9. Metrics & Monitoring
 
 ```bash
 kubectl top nodes
@@ -537,7 +537,7 @@ kubectl top pods
 
 ---
 
-## 🗃️ 10. Namespaces
+### 🗃️ 10. Namespaces
 
 ```bash
 kubectl get namespaces
@@ -549,7 +549,7 @@ kubectl config set-context --current --namespace=test
 
 ---
 
-## 🛠️ 11. Resource Patching
+### 🛠️ 11. Resource Patching
 
 ```bash
 kubectl patch deployment nginx -p '{"spec":{"replicas":5}}'
@@ -557,7 +557,7 @@ kubectl patch deployment nginx -p '{"spec":{"replicas":5}}'
 
 ---
 
-## 🧵 12. Jobs & CronJobs
+### 🧵 12. Jobs & CronJobs
 
 ```bash
 kubectl create job myjob --image=busybox -- /bin/sh -c 'echo Hello!'
@@ -570,7 +570,7 @@ kubectl get cronjobs
 
 ---
 
-## 🧪 13. Custom Resources & CRDs
+### 🧪 13. Custom Resources & CRDs
 
 ```bash
 kubectl get crds
@@ -580,7 +580,7 @@ kubectl get <custom-resource>
 
 ---
 
-## 👩‍💻 14. RBAC & Security
+### 👩‍💻 14. RBAC & Security
 
 ```bash
 kubectl create serviceaccount viewer
@@ -591,7 +591,7 @@ kubectl auth can-i create deployments
 
 ---
 
-## 🔄 15. Useful Shortcuts
+### 🔄 15. Useful Shortcuts
 
 ```bash
 # Shorthand
@@ -607,7 +607,7 @@ k get pods
 ```
 ---
 
-## 🧰 16. Labeling, Annotating & Tainting
+### 🧰 16. Labeling, Annotating & Tainting
 
 ### 📌 Labeling Resources
 
@@ -635,7 +635,7 @@ kubectl describe node node1 | grep -i taint
 
 ---
 
-## 📅 17. Autoscaling & Resource Quotas
+### 📅 17. Autoscaling & Resource Quotas
 
 ### 📈 Autoscaling Deployment
 
@@ -652,7 +652,7 @@ kubectl create quota dev-quota --hard=pods=10,cpu=4,memory=8Gi --namespace=dev
 
 ---
 
-## 📦 18. Export & Backup
+### 📦 18. Export & Backup
 
 ### Export resources to YAML/JSON
 
@@ -663,7 +663,7 @@ kubectl get all --all-namespaces -o yaml > full-backup.yaml
 
 ---
 
-## 🚀 19. Running Imperative Commands
+### 🚀 19. Running Imperative Commands
 
 Useful when you don’t want to write YAML:
 
@@ -674,7 +674,7 @@ kubectl expose pod nginx --port=80 --target-port=80 --type=NodePort
 
 ---
 
-## 🧹 20. Clean Up Resources Fast
+### 🧹 20. Clean Up Resources Fast
 
 ```bash
 kubectl delete all --all
@@ -684,7 +684,7 @@ kubectl delete pvc --all
 
 ---
 
-## 🔐 21. Authentication & Authorization Debugging
+### 🔐 21. Authentication & Authorization Debugging
 
 ```bash
 kubectl auth can-i list pods --as=dev-user
@@ -693,7 +693,7 @@ kubectl auth reconcile -f rbac.yaml
 
 ---
 
-## 📤 22. Kustomize (Built-in!)
+### 📤 22. Kustomize (Built-in!)
 
 ```bash
 kubectl kustomize ./overlays/prod/
@@ -702,7 +702,7 @@ kubectl apply -k ./overlays/prod/
 
 ---
 
-## 🧪 23. Testing with Ephemeral Containers (K8s 1.23+)
+### 🧪 23. Testing with Ephemeral Containers (K8s 1.23+)
 
 ```bash
 kubectl debug pod/mypod --image=busybox --target=mycontainer
@@ -710,7 +710,7 @@ kubectl debug pod/mypod --image=busybox --target=mycontainer
 
 ---
 
-## 🧭 24. Plugins & Extensions
+### 🧭 24. Plugins & Extensions
 
 ```bash
 kubectl krew install ctx
