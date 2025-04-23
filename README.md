@@ -90,11 +90,21 @@ Imagine you need 5 web servers running continuously. Kubernetes keeps all 5 runn
 - **Cluster**: A set of nodes that run containerized applications managed by Kubernetes.
 - **Service**: An abstraction which defines a logical set of Pods and a policy by which to access them.
 
-## Installation Guide
-### [Install Kubernetes using Minikube](https://github.com/SumonPaul18/kubernetes/blob/main/install-minikube.md)
+### 2. ⚙️ Installation & Setup
 
-### [Install Kubernetes using KubeAdm](https://github.com/SumonPaul18/kubernetes/tree/main/install-kubeadm)
+#### A. Local (Minikube)
+**[Install Kubernetes using Minikube](https://github.com/SumonPaul18/kubernetes/blob/main/install-minikube.md)**
 
+#### B. Multi-node Cluster (kubeadm)
+**[Install Kubernetes using KubeAdm](https://github.com/SumonPaul18/kubernetes/tree/main/install-kubeadm)**
+
+#### C. Cloud Providers
+
+- **GKE: Google Kubernetes Engine**
+
+- **EKS: AWS**
+
+- **AKS: Azure Kubernetes Service**
 
 ## Usage Guide
 ### Deploying an Application
