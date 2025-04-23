@@ -131,7 +131,7 @@ Kubernetes follows a **Master–Worker Node architecture** to manage containers 
 
 #### 🖼️ Architecture Diagram
 
-![Kubernetes Architecture Diagram](https://d33wubrfki0l68.cloudfront.net/9c15608dd700dd1573b0636e84de0196e51bd759/cf98e/images/docs/components-of-kubernetes.svg)
+![Kubernetes Architecture Diagram](https://kubernetes.io/images/docs/kubernetes-cluster-architecture.svg)
 
 > **Master Node = Brain 🧠**  
 > **Worker Nodes = Muscles 💪**
