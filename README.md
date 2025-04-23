@@ -70,7 +70,7 @@ Welcome to the **Kubernetes** repository! This is your one-stop destination to l
 
 ---
 
-1. 📘 Introduction to Kubernetes
+### 1. 📘 Introduction to Kubernetes
 Kubernetes, also known as K8s, is an open-source system for automating the deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery.
 
 Why Use Kubernetes?
