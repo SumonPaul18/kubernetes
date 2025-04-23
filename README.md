@@ -17,10 +17,10 @@ Welcome to the **Kubernetes** repository! This is your one-stop destination to l
 - [Key Components](#-4-key-components-updated-with-clarity)
 
 ### ⚙️ Installation & Setup
-- [Install Kubernetes on Local Machine (Minikube)](#install-kubernetes-on-local-machine)
-- [Install Kubernetes on Cloud (GKE, EKS, AKS)](#install-kubernetes-on-cloud)
-- [Kubernetes Cluster Setup using kubeadm](#kubernetes-cluster-setup-using-kubeadm)
-- [Using kubectl - Kubernetes CLI Tool](#using-kubectl)
+- [Install Kubernetes on Local Machine (Minikube)](#2-%EF%B8%8F-installation--setup)
+- [Kubernetes Cluster Setup using kubeadm](#2-%EF%B8%8F-installation--setup)
+- [Install Kubernetes on Cloud (GKE, EKS, AKS)](#2-%EF%B8%8F-installation--setup)
+- [Using kubectl - Kubernetes CLI Tool](#3--using-kubectl--the-kubernetes-command-line-tool)
 
 ### 📦 Core Concepts
 - [Pods, ReplicaSets, Deployments](#pods-replicasets-deployments)
