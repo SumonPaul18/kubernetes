@@ -106,7 +106,7 @@ Here’s a clear and practical breakdown of **Kubernetes Pros & Cons** with **re
 
 ---
 
-## 📌 Summary
+### 📌 Summary
 
 Kubernetes is **super powerful** but requires **responsible use** and **deep understanding**. If you're managing microservices, dynamic workloads, or doing multi-cloud — it's a game-changer.
 
@@ -207,7 +207,7 @@ Here’s what happens behind the scenes:
 
 ---
 
-## 🎯 Practical Tips
+### 🎯 Practical Tips
 
 | Use Case | K8s Benefit |
 |----------|-------------|
@@ -438,7 +438,7 @@ kubectl get deployment -o json
 
 ---
 
-## 🧱 3. Create, Update, Delete Resources
+### 🧱 3. Create, Update, Delete Resources
 
 ### 📌 Create
 
@@ -853,7 +853,649 @@ rules:
 | Admin | All namespaces | RBAC, Cluster Setup |
 
 ---
+### 3. 📦 Core Concepts in Kubernetes
 
+---
+
+### 🔹 1. **Pods**
+
+**What is a Pod?**
+- The smallest deployable unit in Kubernetes.
+- A Pod wraps one or more containers that share the same network and storage.
+
+**Think of it like:**  
+A Pod is like a room with several machines (containers) that talk over the same internal network (localhost) and share tools (volumes).
+
+**Use Case:**
+- Running a web server and a log collector together.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - name: app
+    image: nginx
+  - name: sidecar
+    image: busybox
+    command: ["sleep", "3600"]
+```
+
+---
+
+### 🔹 2. **ReplicaSets**
+
+**Purpose:**
+- Ensures a specified number of identical Pods are running.
+- Replaces crashed pods automatically.
+
+**Think of it like:**  
+A backup generator system – if one fails, another is automatically spun up.
+
+```yaml
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+```
+
+---
+
+### 🔹 3. **Deployments**
+
+**Purpose:**
+- Manages ReplicaSets and allows updates, rollbacks.
+- Preferred way to run applications.
+
+**Real-life Use Case:**
+- Rollout version 2.0 of your app without downtime.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: nginx:1.25
+```
+
+---
+
+### 🔹 4. **Services & Networking**
+
+**Why Services?**
+- Pods have dynamic IPs – they can change.
+- Services provide a stable IP and DNS name to access a group of Pods.
+
+**Types:**
+- `ClusterIP`: Internal access only.
+- `NodePort`: Exposes service on each Node IP.
+- `LoadBalancer`: Exposes externally via cloud provider.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservice
+spec:
+  selector:
+    app: myapp
+  ports:
+  - port: 80
+    targetPort: 80
+  type: NodePort
+```
+
+---
+
+### 🔹 5. **Volumes & Persistent Storage**
+
+**Problem:**  
+Containers are ephemeral – data is lost when they stop.
+
+**Solution:**  
+Volumes and PersistentVolumes store data outside containers.
+
+**Use Case:**
+- Database storage, file uploads.
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mypvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+```
+
+Then attach it to a Pod:
+```yaml
+volumes:
+- name: myvol
+  persistentVolumeClaim:
+    claimName: mypvc
+```
+
+---
+
+### 🔹 6. **ConfigMaps & Secrets**
+
+**Use Case:**
+- Store config values (non-sensitive) in ConfigMaps.
+- Store passwords, API keys in Secrets (base64 encoded).
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  APP_MODE: "production"
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+type: Opaque
+data:
+  DB_PASSWORD: cGFzc3dvcmQ=
+```
+
+Inject into Pod:
+```yaml
+env:
+- name: DB_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: app-secret
+      key: DB_PASSWORD
+```
+
+---
+
+### 🔹 7. **Namespaces**
+
+**Why?**
+- Helps isolate environments (dev, test, prod) in the same cluster.
+
+**Example:**
+- Deploy dev apps in `dev` namespace:
+```bash
+kubectl create namespace dev
+kubectl apply -f app.yaml -n dev
+```
+
+---
+
+### 🔹 8. **Helm - Kubernetes Package Manager**
+
+**What is Helm?**
+- A tool to define, install, and upgrade complex Kubernetes apps.
+
+**Think of it like:**  
+`apt` or `yum` for Kubernetes. Install apps using simple commands.
+
+**Example:**
+Install WordPress using Helm:
+
+```bash
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm install mysite bitnami/wordpress
+```
+
+**Why Use Helm?**
+- Simplifies deployment
+- Supports versioning and rollbacks
+- Easy templating using values files
+
+---
+
+### 🔹 9. **StatefulSets**
+
+**Why StatefulSets?**
+- Use when each Pod needs **stable identity** (hostname, storage).
+- Ideal for **databases**, **Kafka**, **Redis**, etc.
+
+**Key Features:**
+- Persistent storage per Pod
+- Ordered, graceful deployment, scaling, and deletion
+
+**Example:**
+```yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+spec:
+  serviceName: "mysql"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:5.7
+        volumeMounts:
+        - name: mysql-pvc
+          mountPath: /var/lib/mysql
+  volumeClaimTemplates:
+  - metadata:
+      name: mysql-pvc
+    spec:
+      accessModes: ["ReadWriteOnce"]
+      resources:
+        requests:
+          storage: 1Gi
+```
+
+---
+
+### 🔹 10. **DaemonSets**
+
+**Purpose:**
+- Ensures a Pod runs **on every node** (or selected nodes).
+
+**Use Case:**
+- Log shippers (e.g., Fluentd), monitoring agents (e.g., Prometheus Node Exporter).
+
+```yaml
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: node-monitor
+spec:
+  selector:
+    matchLabels:
+      name: node-monitor
+  template:
+    metadata:
+      labels:
+        name: node-monitor
+    spec:
+      containers:
+      - name: node-monitor
+        image: prom/node-exporter
+```
+
+---
+
+### 🔹 11. **Ingress**
+
+**Why Ingress?**
+- Acts as a smart router to manage external access to services (HTTP/HTTPS).
+- Supports **routing**, **SSL/TLS**, and **host/path-based access**.
+
+```yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: my-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: myapp.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: myservice
+            port:
+              number: 80
+```
+
+---
+
+### 🔹 12. **Horizontal Pod Autoscaler (HPA)**
+
+**Purpose:**
+- Automatically scales Pods **based on CPU or custom metrics**.
+
+```yaml
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: hpa-example
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: myapp
+  minReplicas: 2
+  maxReplicas: 5
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
+```
+
+> You need to enable `metrics-server` in your cluster.
+
+---
+
+### 🔹 13. **Taints & Tolerations**
+
+**Purpose:**
+- Control Pod placement using node restrictions.
+
+**Example Use Case:**
+You want only **backend jobs** to run on certain high-memory nodes.
+
+**Taint the node:**
+```bash
+kubectl taint nodes node1 role=backend:NoSchedule
+```
+
+**Allow Pod to tolerate the taint:**
+```yaml
+tolerations:
+- key: "role"
+  operator: "Equal"
+  value: "backend"
+  effect: "NoSchedule"
+```
+
+---
+
+### 🔹 14. **Node Affinity & Anti-Affinity**
+
+**Purpose:**
+- Schedule Pods on specific nodes **based on labels**.
+
+**Example:**
+Run frontend apps on nodes labeled with `zone=frontend`.
+
+```yaml
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: zone
+          operator: In
+          values:
+          - frontend
+```
+
+---
+
+### 🔹 15. **Resource Requests & Limits**
+
+**Why?**
+- Prevent one Pod from taking all resources.
+- Helps the scheduler decide placement.
+
+```yaml
+resources:
+  requests:
+    memory: "128Mi"
+    cpu: "250m"
+  limits:
+    memory: "256Mi"
+    cpu: "500m"
+```
+
+---
+
+### 🔹 16. **RBAC (Role-Based Access Control)**
+
+**Purpose:**
+- Secure your cluster by controlling **who can do what**.
+
+```yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: dev
+  name: dev-reader
+rules:
+- apiGroups: [""]
+  resources: ["pods"]
+  verbs: ["get", "watch", "list"]
+```
+
+Bind role to user:
+```yaml
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: dev-user-binding
+  namespace: dev
+subjects:
+- kind: User
+  name: alice
+roleRef:
+  kind: Role
+  name: dev-reader
+  apiGroup: rbac.authorization.k8s.io
+```
+
+---
+### 🔹 17. **Init Containers**
+
+**What is it?**
+- Runs **before** the main container in a Pod.
+- Used for **setup tasks**, like downloading files, waiting for services, or checking dependencies.
+
+**Real Example:**
+Before running your app, you want to fetch configs or secrets from a secure location.
+
+```yaml
+spec:
+  initContainers:
+  - name: init-config
+    image: busybox
+    command: ['sh', '-c', 'wget https://example.com/config.json -O /app/config.json']
+    volumeMounts:
+    - mountPath: /app
+      name: config-volume
+  containers:
+  - name: main-app
+    image: myapp:latest
+    volumeMounts:
+    - mountPath: /app
+      name: config-volume
+```
+
+---
+
+### 🔹 18. **Ephemeral Containers**
+
+**Purpose:**
+- Used **only for debugging** live Pods.
+- They don't become part of the Pod spec or restart automatically.
+
+```bash
+kubectl debug -it mypod --image=busybox --target=myapp-container
+```
+
+👉 This lets DevOps inspect issues **inside running Pods** without modifying deployments.
+
+---
+
+### 🔹 19. **Sidecar Containers**
+
+**What is it?**
+- Extra containers **within the same Pod** to assist the main container.
+- Can do logging, monitoring, or proxying.
+
+**Example Use Case:**
+Add a logging sidecar that ships logs to a remote server.
+
+```yaml
+spec:
+  containers:
+  - name: main-app
+    image: myapp:latest
+    volumeMounts:
+    - name: shared-logs
+      mountPath: /logs
+  - name: log-shipper
+    image: log-collector
+    volumeMounts:
+    - name: shared-logs
+      mountPath: /logs
+```
+
+---
+
+### 🔹 20. **Finalizers**
+
+**Purpose:**
+- Prevent objects from being deleted until **cleanup tasks** are done.
+- Common with CRDs (Custom Resource Definitions), PVCs, etc.
+
+**Example:**
+Don’t delete a database CRD until the backup is completed.
+
+```yaml
+metadata:
+  finalizers:
+    - db.cleanup.kubernetes.io
+```
+
+You must remove the finalizer manually after the task is done.
+
+---
+
+### 🔹 21. **Custom Resources & CRDs**
+
+**Why Custom Resources?**
+- Extend Kubernetes capabilities by creating your own API types.
+
+**Example:**
+You want to create a new resource called `Database` with custom spec.
+
+```yaml
+apiVersion: myorg.com/v1
+kind: Database
+metadata:
+  name: my-db
+spec:
+  engine: postgres
+  version: "13"
+  storage: 5Gi
+```
+
+You need to first create a **CustomResourceDefinition (CRD)**.
+
+---
+
+### 🔹 22. **Admission Controllers**
+
+**What are they?**
+- They are plugins that **intercept requests** to the Kubernetes API.
+- Used to enforce policies (e.g., require labels, deny privileged containers, etc.)
+
+Example use case:
+Block all Pods that do not have a `team` label.
+
+🔒 These are great for implementing **security, policy enforcement**, and **governance**.
+
+---
+
+### 🔹 23. **PodDisruptionBudget (PDB)**
+
+**Why?**
+- Helps maintain **app availability** during voluntary disruptions (like node upgrades).
+
+```yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: myapp-pdb
+spec:
+  minAvailable: 2
+  selector:
+    matchLabels:
+      app: myapp
+```
+
+👉 This ensures at least 2 Pods are always available.
+
+---
+
+### 🔹 24. **PriorityClasses**
+
+**Why?**
+- Define **priority levels** for Pods, so that during resource crunch, **low-priority Pods are evicted first**.
+
+```yaml
+apiVersion: scheduling.k8s.io/v1
+kind: PriorityClass
+metadata:
+  name: high-priority
+value: 100000
+globalDefault: false
+description: "This priority class should be used for critical workloads."
+```
+
+Then use it in your Pod:
+```yaml
+spec:
+  priorityClassName: high-priority
+```
+
+---
+
+### 🔹 25. **ServiceAccounts**
+
+**Purpose:**
+- A way for Pods to **authenticate to the Kubernetes API** or other services.
+
+**Example:**
+Assign a Pod a limited role to list secrets:
+```yaml
+spec:
+  serviceAccountName: limited-reader
+```
+
+---
+
+
+---
 ## Usage Guide
 ### Deploying an Application
 
