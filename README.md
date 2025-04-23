@@ -24,11 +24,11 @@ Welcome to the **Kubernetes** repository! This is your one-stop destination to l
 
 ### 📦 Core Concepts
 - [Pods, ReplicaSets, Deployments](#3--Core-Concepts-in-Kubernetes)
-- [Services & Networking](#services--networking)
-- [Volumes & Persistent Storage](#volumes--persistent-storage)
-- [ConfigMaps & Secrets](#configmaps--secrets)
-- [Namespaces](#namespaces)
-- [Helm - Kubernetes Package Manager](#helm)
+- [Services & Networking](#-4-services--networking)
+- [Volumes & Persistent Storage](#-5-volumes--persistent-storage)
+- [ConfigMaps & Secrets](#-6-configmaps--secrets)
+- [Namespaces]([#namespaces](#-7-namespaces)
+- [Helm - Kubernetes Package Manager](#-8-helm---kubernetes-package-manager)
 
 ### 🛠️ Practical Examples
 - [Deploy a Nginx Web Server](#deploy-a-nginx-web-server)
