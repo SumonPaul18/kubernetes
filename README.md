@@ -1,27 +1,74 @@
-# Kubernetes Documentation
-
-Welcome to the Kubernetes Documentation Repository! This repository contains comprehensive documentation on how to install, configure, and use Kubernetes. Whether you are a beginner or an experienced user, you'll find valuable information here.
+# 📦 Kubernetes Guide - Complete Beginner to Advanced
 
 <div align="center">
 	<img width = "33%" src="https://github.com/SumonPaul18/kubernetes/blob/main/images/Kubernetes.png?raw=true">
 </div>
 
-## Table of Contents
-- Introduction
-- Definitions
-- Installation Guide
-  - Install Kubernetes using Minikube
-  - Install Kubernetes using KubeAdm
-- Usage Guide
-  - Deploying an Application
-  - Using ConfigMaps
-  - Using Secrets
-- Advanced Topics
-  - Networking
-  - Storage
-  - Security
-- Contributing
-- License
+Welcome to the **Kubernetes** repository! This is your one-stop destination to learn Kubernetes from scratch to advanced level with **detailed theory, practical examples**, and **real-world use cases**.
+
+---
+
+## 📚 Table of Contents
+
+### 🧠 Introduction
+- [What is Kubernetes?](#what-is-kubernetes)
+- [Why Kubernetes?](#why-kubernetes)
+- [Kubernetes Architecture](#kubernetes-architecture)
+- [Key Components](#key-components)
+
+### ⚙️ Installation & Setup
+- [Install Kubernetes on Local Machine (Minikube)](#install-kubernetes-on-local-machine)
+- [Install Kubernetes on Cloud (GKE, EKS, AKS)](#install-kubernetes-on-cloud)
+- [Kubernetes Cluster Setup using kubeadm](#kubernetes-cluster-setup-using-kubeadm)
+- [Using kubectl - Kubernetes CLI Tool](#using-kubectl)
+
+### 📦 Core Concepts
+- [Pods, ReplicaSets, Deployments](#pods-replicasets-deployments)
+- [Services & Networking](#services--networking)
+- [Volumes & Persistent Storage](#volumes--persistent-storage)
+- [ConfigMaps & Secrets](#configmaps--secrets)
+- [Namespaces](#namespaces)
+- [Helm - Kubernetes Package Manager](#helm)
+
+### 🛠️ Practical Examples
+- [Deploy a Nginx Web Server](#deploy-a-nginx-web-server)
+- [Rolling Updates & Rollbacks](#rolling-updates--rollbacks)
+- [Scaling Applications](#scaling-applications)
+- [Persistent Volume with MySQL](#persistent-volume-with-mysql)
+- [Ingress Controller Example](#ingress-controller-example)
+
+### 🔐 Security & RBAC
+- [Role-Based Access Control (RBAC)](#rbac)
+- [Network Policies](#network-policies)
+- [TLS & Secrets Management](#tls--secrets-management)
+
+### 📈 Monitoring & Logging
+- [Metrics Server](#metrics-server)
+- [Prometheus & Grafana Setup](#prometheus--grafana-setup)
+- [Logging with EFK Stack](#logging-with-efk-stack)
+
+### ⚙️ CI/CD Integration
+- [Kubernetes + Jenkins Pipeline](#kubernetes--jenkins)
+- [Kubernetes + GitHub Actions](#kubernetes--github-actions)
+
+### ☸️ Advanced Kubernetes
+- [Custom Resource Definitions (CRDs)](#crds)
+- [Operators in Kubernetes](#operators)
+- [Pod Affinity & Tolerations](#affinity--tolerations)
+- [Horizontal & Vertical Pod Autoscaling](#autoscaling)
+- [Kubernetes Backup & Disaster Recovery](#backup--dr)
+
+### 🧪 Real-world Projects
+- [Multi-tier App Deployment (Frontend + Backend + DB)](#multi-tier-app-deployment)
+- [Monitoring & Alerting Dashboard](#monitoring--alerting)
+- [Production Ready Kubernetes Cluster](#production-ready-cluster)
+
+### 🌍 Resources
+- [Kubernetes Official Docs](https://kubernetes.io/docs/)
+- [Kubernetes GitHub](https://github.com/kubernetes/kubernetes)
+- [Kubernetes Tutorials & Blogs](#tutorials--blogs)
+
+---
 
 ## Introduction
 Kubernetes, also known as K8s, is an open-source system for automating the deployment, scaling, and management of containerized applications. It groups containers that make up an application into logical units for easy management and discovery.
@@ -57,11 +104,13 @@ Guide on managing storage in Kubernetes.
 ### Security
 Best practices for securing your Kubernetes cluster.
 
-## Contributing
-We welcome contributions! Please read our CONTRIBUTING.md for guidelines on how to contribute to this repository.
+## 🚀 Contribution
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+Contributions are welcome! If you have tutorials, scripts, or tips to share, feel free to open a pull request.
+
+## 📜 License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ---
 Feel free to explore the documentation and contribute to make it even better!
