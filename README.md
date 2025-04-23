@@ -376,7 +376,7 @@ spec:
  - **GKE**: Google Kubernetes Engine
  - **EKS**: AWS
  - **AKS**: Azure Kubernetes Service
- - 
+
 ---
 
 ### 3. 🧰 Using `kubectl` – The Kubernetes Command-Line Tool
