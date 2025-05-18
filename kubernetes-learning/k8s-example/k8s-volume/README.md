@@ -111,7 +111,29 @@ spec:
 kubectl apply -f nfs-vol.yaml
 ```
 
-### 4. persistentVolumeClaim উদাহরণ
+### 4. Persistent Volume (PV) with nfs উদাহরণ
+```
+nano nfs-pv.yaml
+```
+```yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    path: /path/to/nfs/share
+    server: 192.168.0.96
+```
+```
+kubectl apply -f nfs-pv.yaml
+```
+
+### 5. persistentVolumeClaim উদাহরণ
 ```
 nano pvc.yaml
 ```
@@ -137,7 +159,7 @@ spec:
 kubectl apply -f pvc.yaml
 ```
 
-### 5. configMap উদাহরণ
+### 6. configMap উদাহরণ
 ```
 nano configmap.yaml
 ```
@@ -163,7 +185,7 @@ spec:
 kubectl apply -f configmap.yaml
 ```
 
-### 6. secret উদাহরণ
+### 7. secret উদাহরণ
 ```
 nano secret.yaml
 ```
@@ -188,7 +210,7 @@ spec:
 ```
 kubectl apply -f secret.yaml
 ```
-নিশ্চিতভাবে! এখানে আরও কিছু উদাহরণ দেওয়া হলো যা Kubernetes Volumes এর বিভিন্ন ধরনের ব্যবহার দেখায়:
+এখানে আরও কিছু উদাহরণ দেওয়া হলো যা Kubernetes Volumes এর বিভিন্ন ধরনের ব্যবহার দেখায়:
 
 ### ১. awsElasticBlockStore উদাহরণ
 ```yaml
