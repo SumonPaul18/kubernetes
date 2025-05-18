@@ -332,11 +332,8 @@ spec:
 ```
 **ব্যবহার**: Ceph ফাইল সিস্টেম মাউন্ট করার জন্য।
 
-এই উদাহরণগুলো Kubernetes Volumes এর বিভিন্ন ধরনের ব্যবহার দেখায়। আপনি আপনার প্রয়োজন অনুযায়ী এগুলো ব্যবহার করতে পারেন। কোনো প্রশ্ন থাকলে জানাবেন! 😊
+এই উদাহরণগুলো Kubernetes Volumes এর বিভিন্ন ধরনের ব্যবহার দেখায়। আপনি আপনার প্রয়োজন অনুযায়ী এগুলো ব্যবহার করতে পারেন।
 
-[1](https://kubernetes.io/docs/concepts/storage/volumes/): [Volumes - Kubernetes](https://kubernetes.io/docs/concepts/storage/volumes/)
-[2](https://www.golinuxcloud.com/kubernetes-volumes/): [Beginners guide on Kubernetes volumes with examples](https://www.golinuxcloud.com/kubernetes-volumes/)
-[3](https://bluexp.netapp.com/blog/cvo-blg-5-types-of-kubernetes-volumes-and-how-to-work-with-them): [5 Types of Kubernetes Volumes and How to Work with Them](https://bluexp.netapp.com/blog/cvo-blg-5-types-of-kubernetes-volumes-and-how-to-work-with-them)
 
 ### রান করা
 ```sh
@@ -354,9 +351,6 @@ kubectl logs <pod-name>
 ```sh
 kubectl delete -f <filename>.yaml
 ```
-
-[1](https://kubernetes.io/docs/concepts/storage/volumes/): [Volumes - Kubernetes](https://kubernetes.io/docs/concepts/storage/volumes/)
-[2](https://kubernetes.io/docs/concepts/storage/persistent-volumes/): [Persistent Volumes - Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
 
 ---
 
@@ -394,10 +388,13 @@ Volume Health Monitoring নিশ্চিত করতে Kubernetes এ ব�
 - **Readiness Probes**: পডের রেডিনেস চেক করা।
 - **Prometheus এবং Grafana**: ক্লাস্টারের ওভারঅল হেলথ মনিটর করা।
 
-এই বিষয়গুলো সম্পর্কে আরও বিস্তারিত জানতে আপনি Kubernetes এর অফিসিয়াল ডকুমেন্টেশন এবং অন্যান্য রিসোর্স ব্যবহার করতে পারেন[1](https://dev.to/prodevopsguytech/kubernetes-advanced-concepts-and-best-practices-4kb4)[2](https://roadmap.sh/kubernetes/kubernetes-advanced-topics)[3](https://slickfinch.com/kubernetes-volumemounts-and-volumes-how-when-to-use-them/)।
+এই বিষয়গুলো সম্পর্কে আরও বিস্তারিত জানতে আপনি Kubernetes এর অফিসিয়াল ডকুমেন্টেশন এবং অন্যান্য রিসোর্স ব্যবহার করতে পারেন।
 
-[1](https://dev.to/prodevopsguytech/kubernetes-advanced-concepts-and-best-practices-4kb4): [Volumes - Kubernetes](https://kubernetes.io/docs/concepts/storage/volumes/)
-[2](https://roadmap.sh/kubernetes/kubernetes-advanced-topics): [Kubernetes Advanced Concepts and Best Practices](https://dev.to/prodevopsguytech/kubernetes-advanced-concepts-and-best-practices-4kb4)
-[3](https://slickfinch.com/kubernetes-volumemounts-and-volumes-how-when-to-use-them/): [Kubernetes VolumeMounts and Volumes: How & When To Use Them](https://slickfinch.com/kubernetes-volumemounts-and-volumes-how-when-to-use-them/)
+- 1. [Kubernetes-Volumes-official-Docs](https://kubernetes.io/docs/concepts/storage/volumes/)
+- 2. [Beginners guide on Kubernetes volumes with examples](https://www.golinuxcloud.com/kubernetes-volumes/)
+- 3. [Types of Kubernetes Volumes and How to Work with Them](https://bluexp.netapp.com/blog/cvo-blg-5-types-of-kubernetes-volumes-and-how-to-work-with-them)
+- 4. [Persistent Volumes - Kubernetes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/)
+- 5. [Kubernetes Advanced Concepts and Best Practices](https://dev.to/prodevopsguytech/kubernetes-advanced-concepts-and-best-practices-4kb4)
+- 6. [Kubernetes VolumeMounts and Volumes: How & When To Use Them](https://slickfinch.com/kubernetes-volumemounts-and-volumes-how-when-to-use-them/)
 
 ---
