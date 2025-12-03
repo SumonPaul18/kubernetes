@@ -1,17 +1,17 @@
 # Details of Kong Ingress Controller (KIC)
 
-১। Kong Ingress Controller (KIC) কি ? 
-২। Kong Ingress Controller কি সম্পূর্ণ open source? 
-৩। Kong Ingress Controller এর সুবিধা কি এবং অসুবিধা কি? 
-৪। Kong Ingress Controller এর মত সম্পূর্ণ open source বিকল্প কি আছে ?
-৫। Kong Ingress Controller এর মত অন্য Tools এর মধ্যে পার্থক্য। 
-৬। Kong Ingress Controller কখন, কেনো আর কিভাবে ব্যবহার করতে হয়?
-৭। Kong Ingress Controller ছাড়াও Kong এর আর কি কি Tools আছে যা সম্পূর্ণ open source হিসাবে ব্যবহার করা যাই?
-৮। Kong Ingress Controller কিভাবে ইন্সটল করতে হয় এবং কনফিগার করতে হয়?
-৯। Kong Ingress Controller ইন্সটল ও কনফিগার করার পরে কিভাবে ব্যাসিক ব্যবহার করতে হয়?
-১০। Kong Ingress Controller আসলো আমাদের কি কাজ করে দিবে তা একদম বাস্তব কাজের উদাহরণ দিবেন।
-১১। Kong Ingress Controller (KIC) & Kong Gateway, Gateway API এর গুলো সম্পর্কে বিস্তারিত বলুন। এগুলো কি কেনো কখন কিভাবে, কি কি করা যাই বাস্তব উদাহরণ, ব্যবহার ইত্যাদি সব সকল তথ্য দিবেন।
-১২। Kong Ingress Controller (KIC) & Kong Gateway, Gateway API এগুলো কিভাবে ব্যবহার করতে হয়। মানে কিভাবে k3s এবং k8s এ ইন্সটল করে কাজ করবো , কনফিগার করবো আমাকে ধাপে-ধাপে একদম সহজ ভাবে শেখান।
+- ১। Kong Ingress Controller (KIC) কি ? 
+- ২। Kong Ingress Controller কি সম্পূর্ণ open source? 
+- ৩। Kong Ingress Controller এর সুবিধা কি এবং অসুবিধা কি? 
+- ৪। Kong Ingress Controller এর মত সম্পূর্ণ open source বিকল্প কি আছে ?
+- ৫। Kong Ingress Controller এর মত অন্য Tools এর মধ্যে পার্থক্য। 
+- ৬। Kong Ingress Controller কখন, কেনো আর কিভাবে ব্যবহার করতে হয়?
+- ৭। Kong Ingress Controller ছাড়াও Kong এর আর কি কি Tools আছে যা সম্পূর্ণ open source হিসাবে ব্যবহার করা যাই?
+- ৮। Kong Ingress Controller কিভাবে ইন্সটল করতে হয় এবং কনফিগার করতে হয়?
+- ৯। Kong Ingress Controller ইন্সটল ও কনফিগার করার পরে কিভাবে ব্যাসিক ব্যবহার করতে হয়?
+- ১০। Kong Ingress Controller আসলো আমাদের কি কাজ করে দিবে তা একদম বাস্তব কাজের উদাহরণ দিবেন।
+- ১১। Kong Ingress Controller (KIC) & Kong Gateway, Gateway API এর গুলো সম্পর্কে বিস্তারিত বলুন। এগুলো কি কেনো কখন কিভাবে, কি কি করা যাই বাস্তব উদাহরণ, ব্যবহার ইত্যাদি সব সকল তথ্য দিবেন।
+- ১২। Kong Ingress Controller (KIC) & Kong Gateway, Gateway API এগুলো কিভাবে ব্যবহার করতে হয়। মানে কিভাবে k3s এবং k8s এ ইন্সটল করে কাজ করবো , কনফিগার করবো আমাকে ধাপে-ধাপে একদম সহজ ভাবে শেখান।
 
 ---
 ### **১। Kong Ingress Controller (KIC) কি?**
